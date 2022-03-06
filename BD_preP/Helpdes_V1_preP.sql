@@ -1,6 +1,6 @@
-drop database if exists PT1_MESA;
-create database PT1_MESA;
-use PT1_MESA;
+drop database if exists Helpdesk_QA_preP;
+create database Helpdesk_QA_preP;
+use Helpdesk_QA_preP;
 
 DROP TABLE IF EXISTS  ZonaEstados;    
 	create table ZonaEstados(
