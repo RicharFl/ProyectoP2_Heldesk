@@ -36,4 +36,4 @@ GRANT UPDATE on helpdesk_qa_prep.sol_alm TO 'almacen_n1'@'localhost';
 GRANT UPDATE on helpdesk_qa_prep.ticket TO 'almacen_n1'@'localhost';
 
 
-SHOW GRANTS FOR 'almacen_n1'@'localhost';
+SHOW GRANTS FOR 'admin_heldes'@'localhost';
