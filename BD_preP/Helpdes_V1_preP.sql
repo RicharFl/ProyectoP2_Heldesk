@@ -6,6 +6,8 @@ DROP TABLE IF EXISTS  ZonaEstados;
 	create table ZonaEstados(
 		IDZonEsta int AUTO_INCREMENT,
 		Nombre varchar(20) not null,
+        register_date datetime,
+        last_update_date datetime,
 		primary key(IDZonEsta)
         );
         
@@ -14,6 +16,8 @@ DROP TABLE IF EXISTS  ZonaEstados;
 		IDEstadosRepu int AUTO_INCREMENT ,
 		NombreEstado varchar(20) not null,
         IDZonEstaEs int not null,
+        register_date datetime,
+        last_update_date datetime,
 		primary key(IDEstadosRepu),
   foreign key(IDZonEstaEs) references ZonaEstados(IDZonEsta) on delete cascade on update cascade		
         );
@@ -24,6 +28,8 @@ create table perfil(
 		Nom_per varchar(20) not null,
         desc_per varchar(15) not null,
         Niv_perm_per varchar(10) not null, 
+        register_date datetime,
+        last_update_date datetime,
 		primary key(id_per)
         );
 
@@ -40,6 +46,8 @@ DROP TABLE IF EXISTS  Usuarios;
         staus_user varchar(10) not null,
         id_per int not null, 
         id_zona int not null, 
+        register_date datetime,
+        last_update_date datetime,
          foreign key(id_per) references perfil(id_per) on delete cascade on update cascade	,
          foreign key(id_zona) references ZonaEstados(IDZonEsta) on delete cascade on update cascade	,
 		primary key(Id_user)
@@ -50,6 +58,8 @@ DROP TABLE IF EXISTS  Usuarios;
 create table StatusTiket(
 		IDStatusTiket int AUTO_INCREMENT ,
 		TipoStatus varchar(20) not null,
+        register_date datetime,
+        last_update_date datetime,
 		primary key(IDStatusTiket)
         );
         
@@ -60,6 +70,8 @@ create table Servicio(
         Descr_ser varchar(50) not null,
         Impa_ser varchar(50) not null,
 		SLA int(3) not null,
+        register_date datetime,
+        last_update_date datetime,
 		primary key(id_serv)
         );
     
@@ -70,6 +82,8 @@ create table Cuenta(
         Descripcion_cuen varchar(75) not null,
         Repr_cuen varchar(30) not null,
         Alcan_cuen varchar(30) not null,
+        register_date datetime,
+        last_update_date datetime,
        primary key(Id_cuen)
         );
     
@@ -85,6 +99,8 @@ create table Cliente(
         ext_cli int(6) not null,
         Adscrp_clie varchar(30) not null,
         area_cli varchar(30) not null,
+        register_date datetime,
+        last_update_date datetime,
            foreign key(id_cuen) references Cuenta(Id_cuen) on delete cascade on update cascade	,
        primary key(Id_cli)
         );
@@ -101,6 +117,7 @@ DROP TABLE IF EXISTS  Ticket;
 		date_inic datetime not null ,
         date_cierre datetime ,
         SLA_status varchar (10),
+        last_update_date datetime not null,
         
 		 foreign key(Id_serv) references Servicio(id_serv) on delete cascade on update cascade	,
          foreign key(id_clien) references Cliente(Id_cli) on delete cascade on update cascade	,
@@ -118,6 +135,8 @@ DROP TABLE IF EXISTS  HisTicket;
         comentario text  not null,
 		date_inic datetime not null ,
         SLA_status_His varchar (10),
+        register_date datetime,
+        last_update_date datetime,
         foreign key(Id_ticket) references Ticket(Id_ticket) on delete cascade on update cascade	,
 		primary key(Id_histori)
         );
@@ -143,6 +162,8 @@ DROP TABLE IF EXISTS  HisTicket;
         Marca varchar (10),
 		Modelo varchar (10),
         Descrip varchar (10),
+        register_date datetime,
+        last_update_date datetime,
         foreign key(id_ticket_ref) references Ticket(Id_ticket) on delete cascade on update cascade,
 		primary key(id_ref)
         );
@@ -161,6 +182,8 @@ DROP TABLE IF EXISTS  Sol_alm;
         cantidad  int not null,
 		date_inic datetime not null ,
         SLA_status_asi varchar (10),
+        register_date datetime,
+        last_update_date datetime,
         foreign key(id_ticket) references Ticket(Id_ticket) on delete cascade on update cascade,
 		primary key(id_Solalm)
         );
