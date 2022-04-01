@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Helpdesk/Helpdesk.iml" filepath="$PROJECT_DIR$/Helpdesk/Helpdesk.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/ProyectoP2_Heldesk.iml" filepath="$PROJECT_DIR$/.idea/ProyectoP2_Heldesk.iml" />
+    </modules>
+  </component>
+</project>

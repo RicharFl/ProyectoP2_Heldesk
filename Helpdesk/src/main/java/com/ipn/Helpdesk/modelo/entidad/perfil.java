@@ -29,7 +29,7 @@ public class perfil implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    private Long Id_per;
 
     @Column (name = "nom_per")
     private String nombre_perfIString;
@@ -54,7 +54,7 @@ public class perfil implements Serializable {
     public perfil ( Long id2,  String nombre_perfIString2,  String descripcion_perfiString2, String nieve_permisosString2, Date register_date2)
 
     {
-        this.Id= id2; 
+        this.Id_per= id2; 
         this.nombre_perfIString= nombre_perfIString2;
         this.descripcion_perfiString = descripcion_perfiString2;
         this.nieve_permisosString = nieve_permisosString2;
@@ -67,7 +67,7 @@ public class perfil implements Serializable {
 	{
 		StringBuilder builder = new StringBuilder();
 		builder.append("Perfil [id = ");
-        builder.append(Id);
+        builder.append(Id_per);
         builder.append(", Nombre del Perfil = ");
         builder.append(nombre_perfIString);
         builder.append(", Descripcion  = ");
@@ -86,7 +86,7 @@ public class perfil implements Serializable {
     @Override
 	public int hashCode() 
 	{
-		return Objects.hash(Id, nombre_perfIString);
+		return Objects.hash(Id_per, nombre_perfIString);
 	}
 
 	@Override
@@ -97,7 +97,7 @@ public class perfil implements Serializable {
 		if (!(obj instanceof perfil))
 			return false;
             perfil other = (perfil) obj;
-		return Objects.equals(Id, other.Id) && Objects.equals(nombre_perfIString, other.nombre_perfIString);
+		return Objects.equals(Id_per, other.Id_per) && Objects.equals(nombre_perfIString, other.nombre_perfIString);
 	}
 
 
