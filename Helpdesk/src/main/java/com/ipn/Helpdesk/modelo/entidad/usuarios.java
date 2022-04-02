@@ -62,8 +62,8 @@ public class usuarios implements Serializable {
     @JoinColumn(name = "id_per", foreignKey = @ForeignKey(name = "FK_1_Perfil_ID"))
     private perfil perfil;
 
-   @OneToMany(mappedBy = "id_zona", fetch = FetchType.LAZY)
-    private Set<ZonaEstados> zona_estado;
+  /*  @OneToMany(mappedBy = "id_zona", fetch = FetchType.LAZY)
+    private Set<ZonaEstados> zona_estado; */
 
     @Column(name = "fecha_creacion", nullable = false)
     private Date register_date;
@@ -81,7 +81,7 @@ public class usuarios implements Serializable {
         this.tel_user = tel_user;
         this.staus_user = staus_user;
         this.perfil = perfil;
-        this.zona_estado = zona_estado;
+     /*    this.zona_estado = zona_estado; */
         this.register_date = register_date;
        
     }

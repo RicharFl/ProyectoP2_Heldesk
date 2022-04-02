@@ -61,6 +61,7 @@ public class perfil implements Serializable {
         this.register_date = register_date2;
 
     }
+	
 
     @Override
 	public String toString() 

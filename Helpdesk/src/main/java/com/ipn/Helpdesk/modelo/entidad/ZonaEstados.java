@@ -27,9 +27,9 @@ public class ZonaEstados implements Serializable {
     @Column(name = "last_update_date")
     private Date last_update_date;
 
-    @ManyToOne (optional = true, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-    @JoinColumn(name = "IdZonaEsta", foreignKey = @ForeignKey(name = "FK_1_ZONA_ID"))
-    private usuarios usuarios;
+ /*    @ManyToOne (optional = true, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+    @JoinColumn(name = "ZonaEstados", foreignKey = @ForeignKey(name = "FK_1_ZONA_ID"))
+    private usuarios usuarios; */
 
 
     public ZonaEstados(Long IdZonaEsta, String nombree, Date register_date, Date last_update_date, usuarios usuarios) {
@@ -37,7 +37,7 @@ public class ZonaEstados implements Serializable {
         this.nombree = nombree;
         this.register_date = register_date;
         this.last_update_date = last_update_date;
-        this.usuarios = usuarios;
+        //this.usuarios = usuarios;
     }
 
     @PrePersist
