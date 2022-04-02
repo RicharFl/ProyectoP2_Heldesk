@@ -2,6 +2,7 @@ package com.ipn.Helpdesk.modelo.entidad;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -15,6 +16,8 @@ import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
 import lombok.Getter;
@@ -59,8 +62,8 @@ public class usuarios implements Serializable {
     @JoinColumn(name = "id_per", foreignKey = @ForeignKey(name = "FK_1_Perfil_ID"))
     private perfil perfil;
 
-   // @OneToMany(mappedBy = "id_zona", fetch = FetchType.LAZY)
-    //private Set<ZonaEstados> zona_estado;
+   @OneToMany(mappedBy = "id_zona", fetch = FetchType.LAZY)
+    private Set<ZonaEstados> zona_estado;
 
     @Column(name = "fecha_creacion", nullable = false)
     private Date register_date;
@@ -78,7 +81,7 @@ public class usuarios implements Serializable {
         this.tel_user = tel_user;
         this.staus_user = staus_user;
         this.perfil = perfil;
-        //this.zona_estado = zona_estado;
+        this.zona_estado = zona_estado;
         this.register_date = register_date;
        
     }
@@ -102,6 +105,36 @@ public class usuarios implements Serializable {
 		return builder.toString();
 
 	
+	}
+
+    @Override
+	public int hashCode() 
+	{
+		return Objects.hash(id_user, nombre_user);
+	}
+
+	@Override
+	public boolean equals(Object obj) 
+	{
+		if (this == obj)
+			return true;
+		if (!(obj instanceof usuarios))
+			return false;
+            usuarios other = (usuarios) obj;
+		return Objects.equals(id_user, other.id_user) && Objects.equals(nombre_user, other.nombre_user);
+	}
+
+ 
+    @PrePersist
+	private void antesPersistir()
+	{
+		this.register_date = new Date();
+	}
+	
+	@PreUpdate
+	private void antesActualizar()
+	{
+		this.last_update_date = new Date();
 	}
 
 

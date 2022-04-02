@@ -40,4 +40,15 @@ public class ZonaEstados implements Serializable {
         this.usuarios = usuarios;
     }
 
+    @PrePersist
+    private void antesPersistir()
+    {
+      this.register_date = new Date();
+    }
+    
+    @PreUpdate
+    private void antesActualizar()
+    {
+      this.last_update_date = new Date();
+    }
 }
