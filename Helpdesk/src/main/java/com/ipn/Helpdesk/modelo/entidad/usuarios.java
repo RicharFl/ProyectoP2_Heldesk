@@ -14,7 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+
 import javax.persistence.Table;
 
 import lombok.Getter;
@@ -100,6 +100,8 @@ public class usuarios implements Serializable {
 		builder.append(staus_user);
 		builder.append("]");
 		return builder.toString();
+
+        
 
 	
 	}
