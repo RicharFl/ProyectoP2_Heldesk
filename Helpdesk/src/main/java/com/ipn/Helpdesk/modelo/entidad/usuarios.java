@@ -8,7 +8,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+//import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,7 +16,7 @@ import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import javax.persistence.OneToMany;
+//import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -63,8 +63,10 @@ public class usuarios implements Serializable {
     @JoinColumn(name = "id_per", foreignKey = @ForeignKey(name = "FK_1_Perfil_ID"))
     private perfil perfil;
 
-  /*  @OneToMany(mappedBy = "id_zona", fetch = FetchType.LAZY)
-    private Set<ZonaEstados> zona_estado; */
+ 
+    @ManyToOne (optional = true, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+    @JoinColumn(name = "id_per", foreignKey = @ForeignKey(name = "FK_1_ZONA_ID"))
+    private ZonaEstados zonaestado;
 
     @Column(name = "fecha_creacion", nullable = false)
     private Date register_date;
@@ -72,17 +74,18 @@ public class usuarios implements Serializable {
     @Column(name = "fecha_modificacion")
     private Date last_update_date;
 
-    public usuarios(Long id_user, String nombre_user, String apellidom_user, String apellidop_user, String correo_user, Integer ext_user, Integer tel_user, String staus_user, perfil perfil, Set<ZonaEstados> zona_estado, Date register_date) {
+    public usuarios(Long id_user, String nombre_user,String passw, String apellidom_user, String apellidop_user, String correo_user, Integer ext_user, Integer tel_user, String staus_user, perfil perfil, Set<ZonaEstados> zona_estado, Date register_date) {
         this.id_user = id_user;
         this.nombre_user = nombre_user;
         this.apellidom_user = apellidom_user;
         this.apellidop_user = apellidop_user;
         this.correo_user = correo_user;
+        this.password = passw;
         this.ext_user = ext_user;
         this.tel_user = tel_user;
         this.staus_user = staus_user;
         this.perfil = perfil;
-     /*    this.zona_estado = zona_estado; */
+     
         this.register_date = register_date;
        
     }
