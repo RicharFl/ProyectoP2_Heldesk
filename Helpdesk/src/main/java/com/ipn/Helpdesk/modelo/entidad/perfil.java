@@ -49,7 +49,7 @@ public class perfil implements Serializable {
 
     
     @OneToMany (mappedBy = "perfil", fetch = FetchType.LAZY)
- private Set<usuarios> usuarios;
+ private Set<Usuarios> usuarios;
 
     public perfil ( Long id2,  String nombre_perfIString2,  String descripcion_perfiString2, String nieve_permisosString2, Date register_date2)
 

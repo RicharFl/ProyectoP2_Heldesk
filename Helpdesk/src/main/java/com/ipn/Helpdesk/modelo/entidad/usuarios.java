@@ -8,7 +8,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-//import javax.persistence.FetchType;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,7 +16,7 @@ import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-//import javax.persistence.OneToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -30,7 +30,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name = "usuarios", schema = "helpdesk_qa_prep")
-public class usuarios implements Serializable {
+public class Usuarios implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -65,8 +65,11 @@ public class usuarios implements Serializable {
 
  
     @ManyToOne (optional = true, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-    @JoinColumn(name = "id_per", foreignKey = @ForeignKey(name = "FK_1_ZONA_ID"))
+    @JoinColumn(name = "Id_zona", foreignKey = @ForeignKey(name = "FK_1_ZONA_ID"))
     private ZonaEstados zonaestado;
+
+    @OneToMany (mappedBy = "usuarios", fetch = FetchType.LAZY)
+    private Set<Ticket> ticket;
 
     @Column(name = "fecha_creacion", nullable = false)
     private Date register_date;
@@ -74,7 +77,7 @@ public class usuarios implements Serializable {
     @Column(name = "fecha_modificacion")
     private Date last_update_date;
 
-    public usuarios(Long id_user, String nombre_user,String passw, String apellidom_user, String apellidop_user, String correo_user, Integer ext_user, Integer tel_user, String staus_user, perfil perfil, Set<ZonaEstados> zona_estado, Date register_date) {
+    public Usuarios(Long id_user, String nombre_user,String passw, String apellidom_user, String apellidop_user, String correo_user, Integer ext_user, Integer tel_user, String staus_user, perfil perfil, Set<ZonaEstados> zona_estado, Date register_date) {
         this.id_user = id_user;
         this.nombre_user = nombre_user;
         this.apellidom_user = apellidom_user;
@@ -124,9 +127,9 @@ public class usuarios implements Serializable {
 	{
 		if (this == obj)
 			return true;
-		if (!(obj instanceof usuarios))
+		if (!(obj instanceof Usuarios))
 			return false;
-            usuarios other = (usuarios) obj;
+            Usuarios other = (Usuarios) obj;
 		return Objects.equals(id_user, other.id_user) && Objects.equals(nombre_user, other.nombre_user);
 	}
 

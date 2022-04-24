@@ -23,9 +23,10 @@ import javax.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
+@NoArgsConstructor
 @Getter
 @Setter
+@Entity
 @Table(name = "zonaestados", schema = "helpdesk_qa_prep")
 public class ZonaEstados implements Serializable {
 
@@ -42,7 +43,7 @@ public class ZonaEstados implements Serializable {
   private Date last_update_date;
 
   @OneToMany(mappedBy = "zonaestado", fetch = FetchType.LAZY)
-  private Set<usuarios> usuarios;
+  private Set<Usuarios> usuarios;
 
  /*  @OneToMany(mappedBy = "zonaestado", fetch = FetchType.LAZY)
     private Set<EstadosRepu> estadosrepu; */
@@ -51,6 +52,8 @@ public class ZonaEstados implements Serializable {
     @ManyToOne (optional = true, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
     @JoinColumn(name = "id_per", foreignKey = @ForeignKey(name = "FK_1_ZONA_ID"))
     private EstadosRepu estadosrepu;
+
+    
 
   public ZonaEstados(Long IdZonaEsta, String nombree, Date register_date, Date last_update_date) {
     this.Id_zon = IdZonaEsta;
