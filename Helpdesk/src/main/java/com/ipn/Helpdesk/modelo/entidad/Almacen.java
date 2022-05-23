@@ -27,25 +27,28 @@ import lombok.Setter;
 @Setter
 @Entity
 @NoArgsConstructor
-@Table(name = "Servicios", schema = "helpdesk_qa_prep")
 
-public class Servicios implements Serializable {
+
+@Table(name = "Almacen", schema = "helpdesk_qa_prep")
+public class Almacen implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id_serv;
-    @Column(name = "Nom_service")
-    private String Nom_service;
+    private Long id_almacen;
 
-    @Column(name = "Descr_ser")
-    private String Descr_ser;
+    @OneToMany (mappedBy = "almacen", fetch = FetchType.LAZY)
+    private Set<Sol_Alm> sol_Alms;
 
-    @Column(name = "Impa_ser")
-    private String Impa_ser;
+    @Column(name = "Marca")
+    private String Marca;
 
-    @Column(name = "Sla")
-    private Integer Sla;
-    @OneToMany(mappedBy = "Servicios", fetch = FetchType.LAZY)
-    private Set<Ticket> Ticket;
+    @Column(name = "Modelo")
+    private String Moedelo;
+    @Column(name = "Descripcin")
+    private String Descripcin;
+
+    @Column(name = "stoc")
+    private Integer stoc;
 
     @Column(name = "fecha_creacion", nullable = false)
     private Date register_date;
@@ -53,36 +56,36 @@ public class Servicios implements Serializable {
     @Column(name = "fecha_modificacion")
     private Date last_update_date;
 
-   
-  
 
-    public Servicios(Long Id_serv, String Nom_service, String Descr_ser, String Impa_ser, Integer Sla, Date register_date, Date last_update_date, Set<Ticket> Ticket) {
-        this.Id_serv = Id_serv;
-        this.Nom_service = Nom_service;
-        this.Descr_ser = Descr_ser;
-        this.Impa_ser = Impa_ser;
-        this.Sla = Sla;
+    public Almacen(Long id_almacen, Set<Sol_Alm> sol_Alms, String Descripcin, Integer stoc, Date register_date, Date last_update_date) {
+        this.id_almacen = id_almacen;
+        this.sol_Alms = sol_Alms;
+        this.Descripcin = Descripcin;
+        this.stoc = stoc;
         this.register_date = register_date;
         this.last_update_date = last_update_date;
-        this.Ticket = Ticket;
     }
+
+
     
     @Override
     public int hashCode() {
-      return Objects.hash(Id_serv, Nom_service);
+        return Objects.hash(sol_Alms, id_almacen);
     }
-  
+
     @Override
     public boolean equals(Object obj) {
-      if (this == obj)
-        return true;
-      if (!(obj instanceof Servicios))
-        return false;
-        Servicios other = (Servicios) obj;
-      return Objects.equals(Id_serv, other.Id_serv) && Objects.equals(Nom_service, other.Nom_service);
+        if (this == obj)
+            return true;
+        if (!(obj instanceof Almacen))
+            return false;
+        Almacen other = (Almacen) obj;
+        return Objects.equals(sol_Alms, other.sol_Alms) && Objects.equals(id_almacen, other.id_almacen);
     }
 
     
+
+
     @PrePersist
     private void antesPersistir() {
         this.register_date = new Date();
@@ -92,6 +95,5 @@ public class Servicios implements Serializable {
     private void antesActualizar() {
         this.last_update_date = new Date();
     }
-
-  
+    
 }

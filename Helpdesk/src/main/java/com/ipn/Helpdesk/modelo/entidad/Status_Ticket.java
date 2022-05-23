@@ -27,25 +27,21 @@ import lombok.Setter;
 @Setter
 @Entity
 @NoArgsConstructor
-@Table(name = "Servicios", schema = "helpdesk_qa_prep")
-
-public class Servicios implements Serializable {
+@Table(name = "Status_Ticket", schema = "helpdesk_qa_prep")
+public class Status_Ticket implements Serializable {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id_serv;
-    @Column(name = "Nom_service")
-    private String Nom_service;
+    private Long id_status_ticket;
 
-    @Column(name = "Descr_ser")
-    private String Descr_ser;
-
-    @Column(name = "Impa_ser")
-    private String Impa_ser;
-
-    @Column(name = "Sla")
-    private Integer Sla;
-    @OneToMany(mappedBy = "Servicios", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "status_Ticket", fetch = FetchType.LAZY)
     private Set<Ticket> Ticket;
+
+    @Column(name = "Nom_status")
+    private String Nom_status;
+
+    @Column(name = "Descr_status")
+    private String Descr_status;
 
     @Column(name = "fecha_creacion", nullable = false)
     private Date register_date;
@@ -53,33 +49,30 @@ public class Servicios implements Serializable {
     @Column(name = "fecha_modificacion")
     private Date last_update_date;
 
-   
-  
+    
 
-    public Servicios(Long Id_serv, String Nom_service, String Descr_ser, String Impa_ser, Integer Sla, Date register_date, Date last_update_date, Set<Ticket> Ticket) {
-        this.Id_serv = Id_serv;
-        this.Nom_service = Nom_service;
-        this.Descr_ser = Descr_ser;
-        this.Impa_ser = Impa_ser;
-        this.Sla = Sla;
+    public Status_Ticket(Long id_status_ticket, Set<Ticket> Ticket, String Nom_status, String Descr_status, Date register_date, Date last_update_date) {
+        this.id_status_ticket = id_status_ticket;
+        this.Ticket = Ticket;
+        this.Nom_status = Nom_status;
+        this.Descr_status = Descr_status;
         this.register_date = register_date;
         this.last_update_date = last_update_date;
-        this.Ticket = Ticket;
     }
-    
+
     @Override
     public int hashCode() {
-      return Objects.hash(Id_serv, Nom_service);
+      return Objects.hash(id_status_ticket, Ticket);
     }
   
     @Override
     public boolean equals(Object obj) {
       if (this == obj)
         return true;
-      if (!(obj instanceof Servicios))
+      if (!(obj instanceof Status_Ticket))
         return false;
-        Servicios other = (Servicios) obj;
-      return Objects.equals(Id_serv, other.Id_serv) && Objects.equals(Nom_service, other.Nom_service);
+        Status_Ticket other = (Status_Ticket) obj;
+      return Objects.equals(id_status_ticket, other.id_status_ticket) && Objects.equals(Ticket, other.Ticket);
     }
 
     
@@ -93,5 +86,5 @@ public class Servicios implements Serializable {
         this.last_update_date = new Date();
     }
 
-  
+
 }

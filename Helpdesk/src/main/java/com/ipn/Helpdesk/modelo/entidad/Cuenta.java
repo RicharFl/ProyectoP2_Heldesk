@@ -9,6 +9,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,68 +19,65 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
-
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
+@NoArgsConstructor
 @Getter
 @Setter
 @Entity
-@NoArgsConstructor
-@Table(name = "Servicios", schema = "helpdesk_qa_prep")
+@Table(name = "Cuenta", schema = "helpdesk_qa_prep")
 
-public class Servicios implements Serializable {
+public class Cuenta  implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id_serv;
-    @Column(name = "Nom_service")
-    private String Nom_service;
+    private Long Id_cuen;
 
-    @Column(name = "Descr_ser")
-    private String Descr_ser;
+    @OneToMany(mappedBy = "cuenta", fetch = FetchType.LAZY)
+    private Set<Cliente> cliente; 
 
-    @Column(name = "Impa_ser")
-    private String Impa_ser;
+    @Column(name = "Nombre_cuen")
+    private String Nombre_cuen;
+    @Column(name = "Desc_cuen")
+    private String Desc_cuenta;
 
-    @Column(name = "Sla")
-    private Integer Sla;
-    @OneToMany(mappedBy = "Servicios", fetch = FetchType.LAZY)
-    private Set<Ticket> Ticket;
+    @Column(name = "Repre_cuen")
+    private String Repre_cuen;
+    @Column(name = "Alcan_cuen")
+    private String Alcan_cuen;
 
+    
     @Column(name = "fecha_creacion", nullable = false)
     private Date register_date;
 
     @Column(name = "fecha_modificacion")
     private Date last_update_date;
 
-   
-  
-
-    public Servicios(Long Id_serv, String Nom_service, String Descr_ser, String Impa_ser, Integer Sla, Date register_date, Date last_update_date, Set<Ticket> Ticket) {
-        this.Id_serv = Id_serv;
-        this.Nom_service = Nom_service;
-        this.Descr_ser = Descr_ser;
-        this.Impa_ser = Impa_ser;
-        this.Sla = Sla;
+    public Cuenta(Long Id_cuen, Set<Cliente> cliente, String Nombre_cuen, String Desc_cuenta, String Repre_cuen, String Alcan_cuen, Date register_date, Date last_update_date) {
+        this.Id_cuen = Id_cuen;
+        this.cliente = cliente;
+        this.Nombre_cuen = Nombre_cuen;
+        this.Desc_cuenta = Desc_cuenta;
+        this.Repre_cuen = Repre_cuen;
+        this.Alcan_cuen = Alcan_cuen;
         this.register_date = register_date;
         this.last_update_date = last_update_date;
-        this.Ticket = Ticket;
     }
-    
+
     @Override
     public int hashCode() {
-      return Objects.hash(Id_serv, Nom_service);
+      return Objects.hash(Id_cuen, cliente);
     }
   
     @Override
     public boolean equals(Object obj) {
       if (this == obj)
         return true;
-      if (!(obj instanceof Servicios))
+      if (!(obj instanceof Cuenta))
         return false;
-        Servicios other = (Servicios) obj;
-      return Objects.equals(Id_serv, other.Id_serv) && Objects.equals(Nom_service, other.Nom_service);
+        Cuenta other = (Cuenta) obj;
+      return Objects.equals(Id_cuen, other.Id_cuen) && Objects.equals(cliente, other.cliente);
     }
 
     
@@ -93,5 +91,6 @@ public class Servicios implements Serializable {
         this.last_update_date = new Date();
     }
 
-  
+
+
 }
