@@ -41,7 +41,7 @@ public class Ticket  implements Serializable {
     
     @ManyToOne (optional = true, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
     @JoinColumn(name = "id_user", foreignKey = @ForeignKey(name = "FK_1_ID_usiarios"))
-    private Usuarios usuarios; 
+    private usuarios usuarios; 
 
     @Column (name ="Sla_status")
     private String sla_status;

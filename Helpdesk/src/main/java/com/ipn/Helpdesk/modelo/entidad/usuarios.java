@@ -29,8 +29,8 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @Entity
-@Table(name = "usuarios", schema = "helpdesk_qa_prep")
-public class Usuarios implements Serializable {
+@Table(name = "Usuarios", schema = "helpdesk_qa_prep")
+public class usuarios implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -77,7 +77,7 @@ public class Usuarios implements Serializable {
     @Column(name = "fecha_modificacion")
     private Date last_update_date;
 
-    public Usuarios(Long id_user, String nombre_user,String passw, String apellidom_user, String apellidop_user, String correo_user, Integer ext_user, Integer tel_user, String staus_user, perfil perfil, Set<ZonaEstados> zona_estado, Date register_date) {
+    public usuarios(Long id_user, String nombre_user,String passw, String apellidom_user, String apellidop_user, String correo_user, Integer ext_user, Integer tel_user, String staus_user, perfil perfil, Set<ZonaEstados> zona_estado, Date register_date) {
         this.id_user = id_user;
         this.nombre_user = nombre_user;
         this.apellidom_user = apellidom_user;
@@ -127,9 +127,9 @@ public class Usuarios implements Serializable {
 	{
 		if (this == obj)
 			return true;
-		if (!(obj instanceof Usuarios))
+		if (!(obj instanceof usuarios))
 			return false;
-            Usuarios other = (Usuarios) obj;
+            usuarios other = (usuarios) obj;
 		return Objects.equals(id_user, other.id_user) && Objects.equals(nombre_user, other.nombre_user);
 	}
 

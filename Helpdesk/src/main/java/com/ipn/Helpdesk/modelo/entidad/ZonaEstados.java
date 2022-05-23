@@ -43,7 +43,7 @@ public class ZonaEstados implements Serializable {
   private Date last_update_date;
 
   @OneToMany(mappedBy = "zonaestado", fetch = FetchType.LAZY)
-  private Set<Usuarios> usuarios;
+  private Set<usuarios> usuarios;
 
  /*  @OneToMany(mappedBy = "zonaestado", fetch = FetchType.LAZY)
     private Set<EstadosRepu> estadosrepu; */
