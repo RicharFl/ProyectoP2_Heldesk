@@ -45,7 +45,9 @@ public class Ticket implements Serializable {
 
     @ManyToOne(optional = true, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
     @JoinColumn(name = "id_user", foreignKey = @ForeignKey(name = "FK_1_ID_usiarios"))
+
     private Usuarios usuarios;
+
 
     @ManyToOne(optional = true, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
     @JoinColumn(name = "Id_serv", foreignKey = @ForeignKey(name = "FK_1_Id_serv"))
