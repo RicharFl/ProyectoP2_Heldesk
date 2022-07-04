@@ -29,6 +29,10 @@ import lombok.Setter;
 @Entity
 @Table(name = "zonaestados", schema = "helpdesk_qa_prep")
 public class ZonaEstados implements Serializable {
+	 /**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)

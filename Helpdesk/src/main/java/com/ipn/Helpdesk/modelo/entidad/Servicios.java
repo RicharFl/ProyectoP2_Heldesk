@@ -30,6 +30,11 @@ import lombok.Setter;
 @Table(name = "Servicios", schema = "helpdesk_qa_prep")
 
 public class Servicios implements Serializable {
+	
+	 /**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id_serv;

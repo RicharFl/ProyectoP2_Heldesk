@@ -33,6 +33,12 @@ import lombok.Setter;
 
 @Table(name = "HisTicket", schema = "helpdesk_qa_prep")
 public class HisTicket implements Serializable  {
+	
+	
+	 /**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_histori;

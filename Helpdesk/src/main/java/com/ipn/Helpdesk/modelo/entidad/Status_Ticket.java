@@ -29,6 +29,11 @@ import lombok.Setter;
 @NoArgsConstructor
 @Table(name = "Status_Ticket", schema = "helpdesk_qa_prep")
 public class Status_Ticket implements Serializable {
+	
+	 /**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

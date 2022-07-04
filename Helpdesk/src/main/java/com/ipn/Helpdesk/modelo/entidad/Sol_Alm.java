@@ -31,6 +31,11 @@ import lombok.Setter;
 @Table(name = "Sol_Alm", schema = "helpdesk_qa_prep")
 
 public class Sol_Alm implements Serializable {
+	
+	 /**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

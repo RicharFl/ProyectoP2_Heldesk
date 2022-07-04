@@ -31,6 +31,10 @@ import lombok.Setter;
 @Table(name = "ticket", schema = "helpdesk_qa_prep")
 
 public class Ticket implements Serializable {
+	 /**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
