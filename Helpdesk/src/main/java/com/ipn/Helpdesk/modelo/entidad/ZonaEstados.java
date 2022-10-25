@@ -91,4 +91,58 @@ public class ZonaEstados implements Serializable {
   private void antesActualizar() {
     this.last_update_date = new Date();
   }
+
+public Long getId_zon() {
+	return Id_zon;
+}
+
+public void setId_zon(Long id_zon) {
+	Id_zon = id_zon;
+}
+
+public String getNombree() {
+	return nombree;
+}
+
+public void setNombree(String nombree) {
+	this.nombree = nombree;
+}
+
+public Date getRegister_date() {
+	return register_date;
+}
+
+public void setRegister_date(Date register_date) {
+	this.register_date = register_date;
+}
+
+public Date getLast_update_date() {
+	return last_update_date;
+}
+
+public void setLast_update_date(Date last_update_date) {
+	this.last_update_date = last_update_date;
+}
+
+public Set<Usuarios> getUsuarios() {
+	return usuarios;
+}
+
+public void setUsuarios(Set<Usuarios> usuarios) {
+	this.usuarios = usuarios;
+}
+
+public EstadosRepu getEstadosrepu() {
+	return estadosrepu;
+}
+
+public void setEstadosrepu(EstadosRepu estadosrepu) {
+	this.estadosrepu = estadosrepu;
+}
+  
+  
+  
+  
+  
+  
 }

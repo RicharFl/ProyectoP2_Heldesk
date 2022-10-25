@@ -101,6 +101,73 @@ public class His_asignacion implements Serializable  {
         this.last_update_date = new Date();
     }
 
+	public Long getId_his_asignacion() {
+		return id_his_asignacion;
+	}
 
+	public void setId_his_asignacion(Long id_his_asignacion) {
+		this.id_his_asignacion = id_his_asignacion;
+	}
+
+	public Ticket getTicket() {
+		return ticket;
+	}
+
+	public void setTicket(Ticket ticket) {
+		this.ticket = ticket;
+	}
+
+	public Long getId_user_inicio() {
+		return id_user_inicio;
+	}
+
+	public void setId_user_inicio(Long id_user_inicio) {
+		this.id_user_inicio = id_user_inicio;
+	}
+
+	public Long getId_user_final() {
+		return id_user_final;
+	}
+
+	public void setId_user_final(Long id_user_final) {
+		this.id_user_final = id_user_final;
+	}
+
+	public String getComentarios() {
+		return comentarios;
+	}
+
+	public void setComentarios(String comentarios) {
+		this.comentarios = comentarios;
+	}
+
+	public Date getRegister_date() {
+		return register_date;
+	}
+
+	public void setRegister_date(Date register_date) {
+		this.register_date = register_date;
+	}
+
+	public Date getLast_update_date() {
+		return last_update_date;
+	}
+
+	public void setLast_update_date(Date last_update_date) {
+		this.last_update_date = last_update_date;
+	}
+
+	public String getStatus_sla() {
+		return status_sla;
+	}
+
+	public void setStatus_sla(String status_sla) {
+		this.status_sla = status_sla;
+	}
+
+
+    
+    
+    
 
 }

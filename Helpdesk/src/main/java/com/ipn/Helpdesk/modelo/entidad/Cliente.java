@@ -125,5 +125,164 @@ public class Cliente implements Serializable {
     }
 
 
+
+	public Long getId_cliente() {
+		return id_cliente;
+	}
+
+
+
+	public void setId_cliente(Long id_cliente) {
+		this.id_cliente = id_cliente;
+	}
+
+
+
+	public Cuenta getCuenta() {
+		return cuenta;
+	}
+
+
+
+	public void setCuenta(Cuenta cuenta) {
+		this.cuenta = cuenta;
+	}
+
+
+
+	public Set<Ticket> getTicket() {
+		return ticket;
+	}
+
+
+
+	public void setTicket(Set<Ticket> ticket) {
+		this.ticket = ticket;
+	}
+
+
+
+	public String getNombre_cli() {
+		return Nombre_cli;
+	}
+
+
+
+	public void setNombre_cli(String nombre_cli) {
+		Nombre_cli = nombre_cli;
+	}
+
+
+
+	public String getApellidoP_cli() {
+		return ApellidoP_cli;
+	}
+
+
+
+	public void setApellidoP_cli(String apellidoP_cli) {
+		ApellidoP_cli = apellidoP_cli;
+	}
+
+
+
+	public String getApellidoM_cli() {
+		return ApellidoM_cli;
+	}
+
+
+
+	public void setApellidoM_cli(String apellidoM_cli) {
+		ApellidoM_cli = apellidoM_cli;
+	}
+
+
+
+	public String getCorreo_cli() {
+		return Correo_cli;
+	}
+
+
+
+	public void setCorreo_cli(String correo_cli) {
+		Correo_cli = correo_cli;
+	}
+
+
+
+	public String getTel_cli() {
+		return Tel_cli;
+	}
+
+
+
+	public void setTel_cli(String tel_cli) {
+		Tel_cli = tel_cli;
+	}
+
+
+
+	public String getExt_cli() {
+		return Ext_cli;
+	}
+
+
+
+	public void setExt_cli(String ext_cli) {
+		Ext_cli = ext_cli;
+	}
+
+
+
+	public String getAdscrp_cli() {
+		return Adscrp_cli;
+	}
+
+
+
+	public void setAdscrp_cli(String adscrp_cli) {
+		Adscrp_cli = adscrp_cli;
+	}
+
+
+
+	public String getArea_cli() {
+		return Area_cli;
+	}
+
+
+
+	public void setArea_cli(String area_cli) {
+		Area_cli = area_cli;
+	}
+
+
+
+	public Date getRegister_date() {
+		return register_date;
+	}
+
+
+
+	public void setRegister_date(Date register_date) {
+		this.register_date = register_date;
+	}
+
+
+
+	public Date getLast_update_date() {
+		return last_update_date;
+	}
+
+
+
+	public void setLast_update_date(Date last_update_date) {
+		this.last_update_date = last_update_date;
+	}
+
+    
+    
+    
+
     
 }

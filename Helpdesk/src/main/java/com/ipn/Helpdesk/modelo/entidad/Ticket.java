@@ -2,6 +2,7 @@ package com.ipn.Helpdesk.modelo.entidad;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -83,7 +84,49 @@ public class Ticket implements Serializable {
     @Column(name = "fecha_modificacion")
     private Date last_update_date;
 
-    @PrePersist
+    
+    
+    
+    
+    
+    
+    public Ticket(Long id_ticket, String des_error, EstadosRepu estadosrepu, Usuarios usuarios,
+			com.ipn.Helpdesk.modelo.entidad.Servicios servicios, Cliente cliente, Status_Ticket status_Ticket,
+			Set<HisTicket> histicket, Set<Sol_Alm> sol_Alms, String sla_status, Date register_date,
+			Date last_update_date) {
+		super();
+		Id_ticket = id_ticket;
+		this.des_error = des_error;
+		this.estadosrepu = estadosrepu;
+		this.usuarios = usuarios;
+		Servicios = servicios;
+		this.cliente = cliente;
+		this.status_Ticket = status_Ticket;
+		this.histicket = histicket;
+		this.sol_Alms = sol_Alms;
+		this.sla_status = sla_status;
+		this.register_date = register_date;
+		this.last_update_date = last_update_date;
+	}
+
+    
+    
+    @Override
+    public int hashCode() {
+      return Objects.hash(Id_ticket);
+    }
+  
+    @Override
+    public boolean equals(Object obj) {
+      if (this == obj)
+        return true;
+      if (!(obj instanceof Ticket))
+        return false;
+      Ticket other = (Ticket) obj;
+      return Objects.equals(Id_ticket, other.Id_ticket);
+    }
+    
+	@PrePersist
     private void antesPersistir() {
         this.register_date = new Date();
     }
@@ -93,4 +136,157 @@ public class Ticket implements Serializable {
         this.last_update_date = new Date();
     }
 
+
+
+	public Long getId_ticket() {
+		return Id_ticket;
+	}
+
+
+
+	public void setId_ticket(Long id_ticket) {
+		Id_ticket = id_ticket;
+	}
+
+
+
+	public String getDes_error() {
+		return des_error;
+	}
+
+
+
+	public void setDes_error(String des_error) {
+		this.des_error = des_error;
+	}
+
+
+
+	public EstadosRepu getEstadosrepu() {
+		return estadosrepu;
+	}
+
+
+
+	public void setEstadosrepu(EstadosRepu estadosrepu) {
+		this.estadosrepu = estadosrepu;
+	}
+
+
+
+	public Usuarios getUsuarios() {
+		return usuarios;
+	}
+
+
+
+	public void setUsuarios(Usuarios usuarios) {
+		this.usuarios = usuarios;
+	}
+
+
+
+	public Servicios getServicios() {
+		return Servicios;
+	}
+
+
+
+	public void setServicios(Servicios servicios) {
+		Servicios = servicios;
+	}
+
+
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+
+
+	public Status_Ticket getStatus_Ticket() {
+		return status_Ticket;
+	}
+
+
+
+	public void setStatus_Ticket(Status_Ticket status_Ticket) {
+		this.status_Ticket = status_Ticket;
+	}
+
+
+
+	public Set<HisTicket> getHisticket() {
+		return histicket;
+	}
+
+
+
+	public void setHisticket(Set<HisTicket> histicket) {
+		this.histicket = histicket;
+	}
+
+
+
+	public Set<Sol_Alm> getSol_Alms() {
+		return sol_Alms;
+	}
+
+
+
+	public void setSol_Alms(Set<Sol_Alm> sol_Alms) {
+		this.sol_Alms = sol_Alms;
+	}
+
+
+
+	public String getSla_status() {
+		return sla_status;
+	}
+
+
+
+	public void setSla_status(String sla_status) {
+		this.sla_status = sla_status;
+	}
+
+
+
+	public Date getRegister_date() {
+		return register_date;
+	}
+
+
+
+	public void setRegister_date(Date register_date) {
+		this.register_date = register_date;
+	}
+
+
+
+	public Date getLast_update_date() {
+		return last_update_date;
+	}
+
+
+
+	public void setLast_update_date(Date last_update_date) {
+		this.last_update_date = last_update_date;
+	}
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

@@ -123,4 +123,77 @@ public class perfil implements Serializable {
 	}
 
 
+	public Long getId_per() {
+		return Id_per;
+	}
+
+
+	public void setId_per(Long id_per) {
+		Id_per = id_per;
+	}
+
+
+	public String getNombre_perfIString() {
+		return nombre_perfIString;
+	}
+
+
+	public void setNombre_perfIString(String nombre_perfIString) {
+		this.nombre_perfIString = nombre_perfIString;
+	}
+
+
+	public String getDescripcion_perfiString() {
+		return descripcion_perfiString;
+	}
+
+
+	public void setDescripcion_perfiString(String descripcion_perfiString) {
+		this.descripcion_perfiString = descripcion_perfiString;
+	}
+
+
+	public String getNieve_permisosString() {
+		return nieve_permisosString;
+	}
+
+
+	public void setNieve_permisosString(String nieve_permisosString) {
+		this.nieve_permisosString = nieve_permisosString;
+	}
+
+
+	public Date getRegister_date() {
+		return register_date;
+	}
+
+
+	public void setRegister_date(Date register_date) {
+		this.register_date = register_date;
+	}
+
+
+	public Date getLast_update_date() {
+		return last_update_date;
+	}
+
+
+	public void setLast_update_date(Date last_update_date) {
+		this.last_update_date = last_update_date;
+	}
+
+
+	public Set<Usuarios> getUsuarios() {
+		return usuarios;
+	}
+
+
+	public void setUsuarios(Set<Usuarios> usuarios) {
+		this.usuarios = usuarios;
+	}
+
+	
+	
+	
+
 }

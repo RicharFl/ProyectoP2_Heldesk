@@ -98,5 +98,72 @@ public class Servicios implements Serializable {
         this.last_update_date = new Date();
     }
 
+	public Long getId_serv() {
+		return Id_serv;
+	}
+
+	public void setId_serv(Long id_serv) {
+		Id_serv = id_serv;
+	}
+
+	public String getNom_service() {
+		return Nom_service;
+	}
+
+	public void setNom_service(String nom_service) {
+		Nom_service = nom_service;
+	}
+
+	public String getDescr_ser() {
+		return Descr_ser;
+	}
+
+	public void setDescr_ser(String descr_ser) {
+		Descr_ser = descr_ser;
+	}
+
+	public String getImpa_ser() {
+		return Impa_ser;
+	}
+
+	public void setImpa_ser(String impa_ser) {
+		Impa_ser = impa_ser;
+	}
+
+	public Integer getSla() {
+		return Sla;
+	}
+
+	public void setSla(Integer sla) {
+		Sla = sla;
+	}
+
+	public Set<Ticket> getTicket() {
+		return Ticket;
+	}
+
+	public void setTicket(Set<Ticket> ticket) {
+		Ticket = ticket;
+	}
+
+	public Date getRegister_date() {
+		return register_date;
+	}
+
+	public void setRegister_date(Date register_date) {
+		this.register_date = register_date;
+	}
+
+	public Date getLast_update_date() {
+		return last_update_date;
+	}
+
+	public void setLast_update_date(Date last_update_date) {
+		this.last_update_date = last_update_date;
+	}
+
+    
+    
+    
   
 }

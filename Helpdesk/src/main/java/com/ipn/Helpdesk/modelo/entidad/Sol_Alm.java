@@ -124,5 +124,142 @@ public class Sol_Alm implements Serializable {
 
 
 
+	public Long getId_solalm() {
+		return Id_solalm;
+	}
+
+
+
+	public void setId_solalm(Long id_solalm) {
+		Id_solalm = id_solalm;
+	}
+
+
+
+	public Ticket getTicket() {
+		return ticket;
+	}
+
+
+
+	public void setTicket(Ticket ticket) {
+		this.ticket = ticket;
+	}
+
+
+
+	public String getId_user() {
+		return id_user;
+	}
+
+
+
+	public void setId_user(String id_user) {
+		this.id_user = id_user;
+	}
+
+
+
+	public Almacen getAlmacen() {
+		return almacen;
+	}
+
+
+
+	public void setAlmacen(Almacen almacen) {
+		this.almacen = almacen;
+	}
+
+
+
+	public String getComeString() {
+		return comeString;
+	}
+
+
+
+	public void setComeString(String comeString) {
+		this.comeString = comeString;
+	}
+
+
+
+	public Integer getCantidad() {
+		return Cantidad;
+	}
+
+
+
+	public void setCantidad(Integer cantidad) {
+		Cantidad = cantidad;
+	}
+
+
+
+	public String getGuia() {
+		return Guia;
+	}
+
+
+
+	public void setGuia(String guia) {
+		Guia = guia;
+	}
+
+
+
+	public Date getFec_inicio() {
+		return Fec_inicio;
+	}
+
+
+
+	public void setFec_inicio(Date fec_inicio) {
+		Fec_inicio = fec_inicio;
+	}
+
+
+
+	public Long getSla_status_hist() {
+		return Sla_status_hist;
+	}
+
+
+
+	public void setSla_status_hist(Long sla_status_hist) {
+		Sla_status_hist = sla_status_hist;
+	}
+
+
+
+	public Date getRegister_date() {
+		return register_date;
+	}
+
+
+
+	public void setRegister_date(Date register_date) {
+		this.register_date = register_date;
+	}
+
+
+
+	public Date getLast_update_date() {
+		return last_update_date;
+	}
+
+
+
+	public void setLast_update_date(Date last_update_date) {
+		this.last_update_date = last_update_date;
+	}
+
+
+    
+    
+    
+    
+    
+
 
 }

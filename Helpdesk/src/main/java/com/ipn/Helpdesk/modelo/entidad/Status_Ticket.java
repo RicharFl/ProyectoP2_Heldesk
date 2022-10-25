@@ -91,5 +91,55 @@ public class Status_Ticket implements Serializable {
         this.last_update_date = new Date();
     }
 
+	public Long getId_status_ticket() {
+		return id_status_ticket;
+	}
 
+	public void setId_status_ticket(Long id_status_ticket) {
+		this.id_status_ticket = id_status_ticket;
+	}
+
+	public Set<Ticket> getTicket() {
+		return Ticket;
+	}
+
+	public void setTicket(Set<Ticket> ticket) {
+		Ticket = ticket;
+	}
+
+	public String getNom_status() {
+		return Nom_status;
+	}
+
+	public void setNom_status(String nom_status) {
+		Nom_status = nom_status;
+	}
+
+	public String getDescr_status() {
+		return Descr_status;
+	}
+
+	public void setDescr_status(String descr_status) {
+		Descr_status = descr_status;
+	}
+
+	public Date getRegister_date() {
+		return register_date;
+	}
+
+	public void setRegister_date(Date register_date) {
+		this.register_date = register_date;
+	}
+
+	public Date getLast_update_date() {
+		return last_update_date;
+	}
+
+	public void setLast_update_date(Date last_update_date) {
+		this.last_update_date = last_update_date;
+	}
+
+
+    
+    
 }

@@ -148,6 +148,95 @@ public class Usuarios implements Serializable {
 	{
 		this.last_update_date = new Date();
 	}
+	public Long getId_user() {
+		return id_user;
+	}
+	public void setId_user(Long id_user) {
+		this.id_user = id_user;
+	}
+	public String getNombre_user() {
+		return nombre_user;
+	}
+	public void setNombre_user(String nombre_user) {
+		this.nombre_user = nombre_user;
+	}
+	public String getApellidom_user() {
+		return apellidom_user;
+	}
+	public void setApellidom_user(String apellidom_user) {
+		this.apellidom_user = apellidom_user;
+	}
+	public String getApellidop_user() {
+		return apellidop_user;
+	}
+	public void setApellidop_user(String apellidop_user) {
+		this.apellidop_user = apellidop_user;
+	}
+	public String getCorreo_user() {
+		return correo_user;
+	}
+	public void setCorreo_user(String correo_user) {
+		this.correo_user = correo_user;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public Integer getExt_user() {
+		return ext_user;
+	}
+	public void setExt_user(Integer ext_user) {
+		this.ext_user = ext_user;
+	}
+	public Integer getTel_user() {
+		return tel_user;
+	}
+	public void setTel_user(Integer tel_user) {
+		this.tel_user = tel_user;
+	}
+	public String getStaus_user() {
+		return staus_user;
+	}
+	public void setStaus_user(String staus_user) {
+		this.staus_user = staus_user;
+	}
+	public perfil getPerfil() {
+		return perfil;
+	}
+	public void setPerfil(perfil perfil) {
+		this.perfil = perfil;
+	}
+	public ZonaEstados getZonaestado() {
+		return zonaestado;
+	}
+	public void setZonaestado(ZonaEstados zonaestado) {
+		this.zonaestado = zonaestado;
+	}
+	public Set<Ticket> getTicket() {
+		return ticket;
+	}
+	public void setTicket(Set<Ticket> ticket) {
+		this.ticket = ticket;
+	}
+	public Date getRegister_date() {
+		return register_date;
+	}
+	public void setRegister_date(Date register_date) {
+		this.register_date = register_date;
+	}
+	public Date getLast_update_date() {
+		return last_update_date;
+	}
+	public void setLast_update_date(Date last_update_date) {
+		this.last_update_date = last_update_date;
+	}
+	
+	
+	
+	
+	
 
 
 

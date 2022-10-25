@@ -100,5 +100,104 @@ public class Almacen implements Serializable {
     private void antesActualizar() {
         this.last_update_date = new Date();
     }
+
+
+
+	public Long getId_almacen() {
+		return id_almacen;
+	}
+
+
+
+	public void setId_almacen(Long id_almacen) {
+		this.id_almacen = id_almacen;
+	}
+
+
+
+	public Set<Sol_Alm> getSol_Alms() {
+		return sol_Alms;
+	}
+
+
+
+	public void setSol_Alms(Set<Sol_Alm> sol_Alms) {
+		this.sol_Alms = sol_Alms;
+	}
+
+
+
+	public String getMarca() {
+		return Marca;
+	}
+
+
+
+	public void setMarca(String marca) {
+		Marca = marca;
+	}
+
+
+
+	public String getMoedelo() {
+		return Moedelo;
+	}
+
+
+
+	public void setMoedelo(String moedelo) {
+		Moedelo = moedelo;
+	}
+
+
+
+	public String getDescripcin() {
+		return Descripcin;
+	}
+
+
+
+	public void setDescripcin(String descripcin) {
+		Descripcin = descripcin;
+	}
+
+
+
+	public Integer getStoc() {
+		return stoc;
+	}
+
+
+
+	public void setStoc(Integer stoc) {
+		this.stoc = stoc;
+	}
+
+
+
+	public Date getRegister_date() {
+		return register_date;
+	}
+
+
+
+	public void setRegister_date(Date register_date) {
+		this.register_date = register_date;
+	}
+
+
+
+	public Date getLast_update_date() {
+		return last_update_date;
+	}
+
+
+
+	public void setLast_update_date(Date last_update_date) {
+		this.last_update_date = last_update_date;
+	}
+    
+    
+    
     
 }

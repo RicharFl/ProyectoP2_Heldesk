@@ -89,4 +89,57 @@ public class EstadosRepu implements Serializable {
         this.last_update_date = new Date();
     }
 
+	public Long getId_est_repu() {
+		return Id_est_repu;
+	}
+
+	public void setId_est_repu(Long id_est_repu) {
+		Id_est_repu = id_est_repu;
+	}
+
+	public String getNombre_esatdo() {
+		return nombre_esatdo;
+	}
+
+	public void setNombre_esatdo(String nombre_esatdo) {
+		this.nombre_esatdo = nombre_esatdo;
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+	public Date getRegister_date() {
+		return register_date;
+	}
+
+	public void setRegister_date(Date register_date) {
+		this.register_date = register_date;
+	}
+
+	public Date getLast_update_date() {
+		return last_update_date;
+	}
+
+	public void setLast_update_date(Date last_update_date) {
+		this.last_update_date = last_update_date;
+	}
+
+	public ZonaEstados getZona() {
+		return zona;
+	}
+
+	public void setZona(ZonaEstados zona) {
+		this.zona = zona;
+	}
+
+    
+    
+    
+    
+    
 }

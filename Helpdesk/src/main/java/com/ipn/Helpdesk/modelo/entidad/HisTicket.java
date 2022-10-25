@@ -109,6 +109,90 @@ public class HisTicket implements Serializable  {
     }
 
 
+	public Long getId_histori() {
+		return id_histori;
+	}
+
+
+	public void setId_histori(Long id_histori) {
+		this.id_histori = id_histori;
+	}
+
+
+	public Ticket getTicket() {
+		return ticket;
+	}
+
+
+	public void setTicket(Ticket ticket) {
+		this.ticket = ticket;
+	}
+
+
+	public Long getId_user() {
+		return Id_user;
+	}
+
+
+	public void setId_user(Long id_user) {
+		Id_user = id_user;
+	}
+
+
+	public String getComentario() {
+		return Comentario;
+	}
+
+
+	public void setComentario(String comentario) {
+		Comentario = comentario;
+	}
+
+
+	public Date getFec_inicio() {
+		return Fec_inicio;
+	}
+
+
+	public void setFec_inicio(Date fec_inicio) {
+		Fec_inicio = fec_inicio;
+	}
+
+
+	public Long getSla_status_hist() {
+		return Sla_status_hist;
+	}
+
+
+	public void setSla_status_hist(Long sla_status_hist) {
+		Sla_status_hist = sla_status_hist;
+	}
+
+
+	public Date getRegister_date() {
+		return register_date;
+	}
+
+
+	public void setRegister_date(Date register_date) {
+		this.register_date = register_date;
+	}
+
+
+	public Date getLast_update_date() {
+		return last_update_date;
+	}
+
+
+	public void setLast_update_date(Date last_update_date) {
+		this.last_update_date = last_update_date;
+	}
+
+
+    
+    
+    
+    
 
 
 }

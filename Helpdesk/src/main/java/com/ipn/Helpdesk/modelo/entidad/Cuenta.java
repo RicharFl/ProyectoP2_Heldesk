@@ -96,6 +96,73 @@ public class Cuenta  implements Serializable {
         this.last_update_date = new Date();
     }
 
+	public Long getId_cuen() {
+		return Id_cuen;
+	}
 
+	public void setId_cuen(Long id_cuen) {
+		Id_cuen = id_cuen;
+	}
+
+	public Set<Cliente> getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Set<Cliente> cliente) {
+		this.cliente = cliente;
+	}
+
+	public String getNombre_cuen() {
+		return Nombre_cuen;
+	}
+
+	public void setNombre_cuen(String nombre_cuen) {
+		Nombre_cuen = nombre_cuen;
+	}
+
+	public String getDesc_cuenta() {
+		return Desc_cuenta;
+	}
+
+	public void setDesc_cuenta(String desc_cuenta) {
+		Desc_cuenta = desc_cuenta;
+	}
+
+	public String getRepre_cuen() {
+		return Repre_cuen;
+	}
+
+	public void setRepre_cuen(String repre_cuen) {
+		Repre_cuen = repre_cuen;
+	}
+
+	public String getAlcan_cuen() {
+		return Alcan_cuen;
+	}
+
+	public void setAlcan_cuen(String alcan_cuen) {
+		Alcan_cuen = alcan_cuen;
+	}
+
+	public Date getRegister_date() {
+		return register_date;
+	}
+
+	public void setRegister_date(Date register_date) {
+		this.register_date = register_date;
+	}
+
+	public Date getLast_update_date() {
+		return last_update_date;
+	}
+
+	public void setLast_update_date(Date last_update_date) {
+		this.last_update_date = last_update_date;
+	}
+
+
+    
+    
+    
 
 }
