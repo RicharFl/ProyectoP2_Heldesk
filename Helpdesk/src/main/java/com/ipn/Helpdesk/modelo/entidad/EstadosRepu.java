@@ -69,7 +69,7 @@ public class EstadosRepu implements Serializable {
         return Objects.hash(Id_est_repu, nombre_esatdo);
     }
 
-    @Override
+    @Override 
     public boolean equals(Object obj) {
         if (this == obj)
             return true;

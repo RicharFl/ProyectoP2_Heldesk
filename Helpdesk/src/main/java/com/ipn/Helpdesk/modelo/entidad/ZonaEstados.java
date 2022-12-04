@@ -5,16 +5,15 @@ import java.util.Date;
 import java.util.Objects;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.ForeignKey;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+
 import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
@@ -29,9 +28,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "zonaestados", schema = "helpdesk_qa_prep")
 public class ZonaEstados implements Serializable {
-	 /**
-		 * 
-		 */
+
 		private static final long serialVersionUID = 1L;
 
   @Id
@@ -49,30 +46,35 @@ public class ZonaEstados implements Serializable {
   @OneToMany(mappedBy = "zonaestado", fetch = FetchType.LAZY)
   private Set<Usuarios> usuarios;
 
- /*  @OneToMany(mappedBy = "zonaestado", fetch = FetchType.LAZY)
-    private Set<EstadosRepu> estadosrepu; */
+  @OneToMany(mappedBy = "zona", fetch = FetchType.LAZY)
+    private Set<EstadosRepu> estadosrepu; 
 
-
+/*
     @ManyToOne (optional = true, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-    @JoinColumn(name = "id_per", foreignKey = @ForeignKey(name = "FK_1_ZONA_ID"))
+    @JoinColumn(name = "Id_est_repu", foreignKey = @ForeignKey(name = "FK_1_ZONA_ID"))
     private EstadosRepu estadosrepu;
-
+*/
     
+public ZonaEstados () {
+	System.out.println("estoy en el constructor de zona estados");
+}
+  
+  public ZonaEstados(Long id_zon,Date last_update_date, String nombree, Date register_date) {
+	super();
+	Id_zon = id_zon;
+	this.nombree = nombree;
+	this.register_date = register_date;
+	this.last_update_date = last_update_date;
+}
 
-  public ZonaEstados(Long IdZonaEsta, String nombree, Date register_date, Date last_update_date) {
-    this.Id_zon = IdZonaEsta;
-    this.nombree = nombree;
-    this.register_date = register_date;
-    this.last_update_date = last_update_date;
-
-  }
 
   @Override
   public int hashCode() {
     return Objects.hash(Id_zon, nombree);
   }
 
-  @Override
+
+@Override
   public boolean equals(Object obj) {
     if (this == obj)
       return true;
@@ -132,14 +134,7 @@ public void setUsuarios(Set<Usuarios> usuarios) {
 	this.usuarios = usuarios;
 }
 
-public EstadosRepu getEstadosrepu() {
-	return estadosrepu;
-}
 
-public void setEstadosrepu(EstadosRepu estadosrepu) {
-	this.estadosrepu = estadosrepu;
-}
-  
   
   
   
