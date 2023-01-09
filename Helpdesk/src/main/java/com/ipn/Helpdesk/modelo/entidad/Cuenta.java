@@ -59,6 +59,11 @@ public class Cuenta  implements Serializable {
     @Column(name = "fecha_modificacion")
     private Date last_update_date;
 
+    public Cuenta()
+    {
+    	
+    }
+    
     public Cuenta(Long Id_cuen, Set<Cliente> cliente, String Nombre_cuen, String Desc_cuenta, String Repre_cuen, String Alcan_cuen, Date register_date, Date last_update_date) {
         this.Id_cuen = Id_cuen;
         this.cliente = cliente;

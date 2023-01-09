@@ -18,6 +18,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.ForeignKey;
 
 import lombok.Getter;
@@ -67,10 +70,12 @@ public class Ticket implements Serializable {
     private Status_Ticket status_Ticket;
 
     @OneToMany (mappedBy = "ticket", fetch = FetchType.LAZY)
+    @JsonIgnore
     private Set<HisTicket> histicket;
 
 
     @OneToMany (mappedBy = "ticket", fetch = FetchType.LAZY)
+    @JsonIgnore
     private Set<Sol_Alm> sol_Alms;
 
     

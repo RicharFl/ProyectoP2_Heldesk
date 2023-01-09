@@ -2,12 +2,16 @@
 create database Helpdesk_QA_preP;
 */
 use Helpdesk_QA_preP;
+
+Select * from perfil ;
 /*
 select *from estadosrepu;
 delete FROM  zonaestados;
 select *from zonaestados;
 */
 
+Select id_per from perfil where id_per= 1 ;
+select *from zonaestados;
 insert into zonaestados (id_zon,nombree,register_date,last_update_date) values
 (1,'Noroeste','2022/01/01','2022/01/01'),
 (2,'Noreste','2022/01/01','2022/01/01'),
@@ -62,7 +66,9 @@ insert into perfil values
 (4,'Operativo Nivel 2','2022/01/01','Operativo2','Operativo Nivel 2','2022/01/01'),
 (5,'Operativo Nivel 3','2022/01/01','Operativo3','Operativo Nivel 3','2022/01/01');
 
+select  * from usuarios;
 
-INSERT INTO usuarios (id_user,apellidom_user,apellidop_user,correo_user,ext_user,fecha_modificacion,nombre_user,password,fecha_creacion,staus_user,tel_user,id_per,id_zona) 
-VALUES (1,'Lima','Flores','ricardo_6_11@got.com',55621,'2022/02/01','ricardo','123456','2022/02/01','activo','5519360328',1,4);
+INSERT INTO usuarios (id_user,apellidom_user,apellidop_user,correo_user,ext_user,fecha_modificacion,nombre_user,password,fecha_creacion,staus_user,tel_user,id_perfil,id_zona) 
+VALUES (1,'Lima','Flores','ricardo_6_11@got.com',55621,'2022/02/01','ricardo','123456','2022/02/01','activo','5519360328',1,4),
+(2,'Sanches','Ramirez','sandy@got.com',55621,'2022/02/01','sandy','123456','2022/02/01','activo','5555555555',1,4);
 

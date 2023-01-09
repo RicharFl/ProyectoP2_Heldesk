@@ -58,7 +58,9 @@ public class Servicios implements Serializable {
     @Column(name = "fecha_modificacion")
     private Date last_update_date;
 
-   
+   public Servicios () {
+	   
+   }
   
 
     public Servicios(Long Id_serv, String Nom_service, String Descr_ser, String Impa_ser, Integer Sla, Date register_date, Date last_update_date, Set<Ticket> Ticket) {

@@ -19,6 +19,8 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -43,10 +45,12 @@ public class ZonaEstados implements Serializable {
   @Column(name = "last_update_date")
   private Date last_update_date;
 
-  @OneToMany(mappedBy = "zonaestado", fetch = FetchType.LAZY)
+  @OneToMany(mappedBy = "zonaestados", fetch = FetchType.LAZY)
+	@JsonIgnore
   private Set<Usuarios> usuarios;
 
-  @OneToMany(mappedBy = "zona", fetch = FetchType.LAZY)
+  @OneToMany(mappedBy = "zonaestados", fetch = FetchType.LAZY)
+	@JsonIgnore
     private Set<EstadosRepu> estadosrepu; 
 
 /*

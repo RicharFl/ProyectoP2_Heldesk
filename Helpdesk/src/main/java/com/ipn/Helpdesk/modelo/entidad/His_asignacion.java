@@ -61,13 +61,19 @@ public class His_asignacion implements Serializable  {
     private Date last_update_date;
 
 
-    @Column(name = "status SLA")
+  
+    
+    @Column(name = "status_sla")
     private String status_sla;
 
+    public His_asignacion()
+    {
+    	
+    }
 
-    public His_asignacion(Long id_his_asignacion, Ticket ticket, Long id_user_inicio, Long id_user_final, String comentarios, Date register_date, Date last_update_date, String status_sla) {
+    public His_asignacion(Long id_his_asignacion,  Long id_user_inicio, Long id_user_final, String comentarios, Date register_date, Date last_update_date, String status_sla) {
         this.id_his_asignacion = id_his_asignacion;
-        this.ticket = ticket;
+ 
         this.id_user_inicio = id_user_inicio;
         this.id_user_final = id_user_final;
         this.comentarios = comentarios;

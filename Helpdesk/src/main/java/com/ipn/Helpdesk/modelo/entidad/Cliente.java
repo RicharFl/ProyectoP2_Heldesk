@@ -78,12 +78,15 @@ public class Cliente implements Serializable {
     @Column(name = "fecha_modificacion")
     private Date last_update_date;
 
+    public Cliente ()
+    {
+    	
+    }
 
 
-    public Cliente(Long id_cliente, Cuenta cuenta, Set<Ticket> ticket, String Nombre_cli, String ApellidoP_cli, String ApellidoM_cli, String Correo_cli, String Tel_cli, String Ext_cli, String Adscrp_cli, String Area_cli, Date register_date, Date last_update_date) {
+    public Cliente(Long id_cliente, Cuenta cuenta, String Nombre_cli, String ApellidoP_cli, String ApellidoM_cli, String Correo_cli, String Tel_cli, String Ext_cli, String Adscrp_cli, String Area_cli, Date register_date, Date last_update_date) {
         this.id_cliente = id_cliente;
         this.cuenta = cuenta;
-        this.ticket = ticket;
         this.Nombre_cli = Nombre_cli;
         this.ApellidoP_cli = ApellidoP_cli;
         this.ApellidoM_cli = ApellidoM_cli;

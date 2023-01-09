@@ -21,6 +21,8 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -63,14 +65,15 @@ public class Usuarios implements Serializable {
 	private String staus_user;
 
 	@ManyToOne(optional = true, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-	@JoinColumn(name = "id_per", foreignKey = @ForeignKey(name = "FK_1_Perfil_ID"))
-	private perfil perfil;
+	@JoinColumn(name = "id_perfil", foreignKey = @ForeignKey(name = "FK_1_Perfil_ID"))
+	private Perfil perfil;
 
 	@ManyToOne(optional = true, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	@JoinColumn(name = "Id_zona", foreignKey = @ForeignKey(name = "FK_1_ZONA_ID"))
-	private ZonaEstados zonaestado;
+	private ZonaEstados zonaestados;
 
 	@OneToMany(mappedBy = "usuarios", cascade = { CascadeType.PERSIST, CascadeType.MERGE },fetch = FetchType.LAZY)
+	@JsonIgnore
 	private Set<Ticket> ticket;
 
 	@Column(name = "fecha_creacion", nullable = false)
@@ -86,8 +89,7 @@ public class Usuarios implements Serializable {
 	}
 
 	public Usuarios(Long id_user, String nombre_user, String apellidom_user, String apellidop_user, String correo_user,
-			String password, Integer ext_user, String tel_user, String staus_user,
-			com.ipn.Helpdesk.modelo.entidad.perfil perfil, ZonaEstados zonaestado, Set<Ticket> ticket,
+			String password, Integer ext_user, String tel_user, String staus_user,  
 			Date register_date, Date last_update_date) {
 		super();
 		this.id_user = id_user;
@@ -99,9 +101,9 @@ public class Usuarios implements Serializable {
 		this.ext_user = ext_user;
 		this.tel_user = tel_user;
 		this.staus_user = staus_user;
-		this.perfil = perfil;
-		this.zonaestado = zonaestado;
-		this.ticket = ticket;
+		
+		//this.zonaestado = zonaestado;
+		//this.ticket = ticket;
 		this.register_date = register_date;
 		this.last_update_date = last_update_date;
 	}
@@ -223,20 +225,28 @@ public class Usuarios implements Serializable {
 		this.staus_user = staus_user;
 	}
 
-	public perfil getPerfil() {
-		return perfil;
-	}
 
-	public void setPerfil(perfil perfil) {
-		this.perfil = perfil;
-	}
+
+
 
 	public ZonaEstados getZonaestado() {
-		return zonaestado;
+		return zonaestados;
 	}
 
 	public void setZonaestado(ZonaEstados zonaestado) {
-		this.zonaestado = zonaestado;
+		this.zonaestados = zonaestado;
+	}
+
+	
+	
+	
+	
+	public Perfil getPerfil() {
+		return perfil;
+	}
+
+	public void setPerfil(Perfil perfil) {
+		this.perfil = perfil;
 	}
 
 	public Set<Ticket> getTicket() {

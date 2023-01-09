@@ -64,9 +64,16 @@ public class HisTicket implements Serializable  {
 
     @Column(name = "fecha_modificacion")
     private Date last_update_date;
+    
+    
+    @ManyToOne(optional = true, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+    @JoinColumn(name = "id_sla", foreignKey = @ForeignKey(name = "FK_1_Id_sla_ticket"), nullable=false)
+    private Sla_ticket sla_ticket;
 
     
-
+public HisTicket()
+{
+	}
 
     public HisTicket(Long id_histori, Ticket ticket, Long Id_user, String Comentario, Date Fec_inicio, Long Sla_status_hist, Date register_date, Date last_update_date) {
         this.id_histori = id_histori;

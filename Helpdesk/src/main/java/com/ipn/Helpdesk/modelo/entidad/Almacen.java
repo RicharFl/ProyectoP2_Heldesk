@@ -61,10 +61,14 @@ public class Almacen implements Serializable {
     @Column(name = "fecha_modificacion")
     private Date last_update_date;
 
-
-    public Almacen(Long id_almacen, Set<Sol_Alm> sol_Alms, String Descripcin, Integer stoc, Date register_date, Date last_update_date) {
+    public Almacen()
+    {
+    	
+    }
+    
+    public Almacen(Long id_almacen, String Descripcin, Integer stoc, Date register_date, Date last_update_date) {
         this.id_almacen = id_almacen;
-        this.sol_Alms = sol_Alms;
+      
         this.Descripcin = Descripcin;
         this.stoc = stoc;
         this.register_date = register_date;

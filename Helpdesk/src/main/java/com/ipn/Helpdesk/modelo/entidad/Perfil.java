@@ -16,6 +16,8 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -25,7 +27,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name = "perfil", schema = "helpdesk_qa_prep")
-public class perfil implements Serializable {
+public class Perfil implements Serializable {
 
 	/**
 	 * 
@@ -52,14 +54,15 @@ public class perfil implements Serializable {
 	private Date last_update_date;
 
 	@OneToMany(mappedBy = "perfil", fetch = FetchType.LAZY)
+	@JsonIgnore
 	private Set<Usuarios> usuarios;
 
 	
-	public perfil() {
+	public Perfil() {
 		System.out.println("estoy en el vacio ");
 	}
 	
-	public perfil(Long id_per, String desc_per,	Date last_update_date,String niv_perm_per, String nom_per,   Date register_date) {
+	public Perfil(Long id_per, String desc_per,	Date last_update_date,String niv_perm_per, String nom_per,   Date register_date) {
 		super();
 		Id_per = id_per;
 		this.nom_per = nom_per;
@@ -99,9 +102,9 @@ public class perfil implements Serializable {
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (!(obj instanceof perfil))
+		if (!(obj instanceof Perfil))
 			return false;
-		perfil other = (perfil) obj;
+		Perfil other = (Perfil) obj;
 		return Objects.equals(Id_per, other.Id_per) && Objects.equals(nom_per, other.nom_per);
 	}
 

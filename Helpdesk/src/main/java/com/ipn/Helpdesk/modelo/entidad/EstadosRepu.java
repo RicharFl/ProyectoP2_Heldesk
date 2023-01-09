@@ -52,8 +52,11 @@ public class EstadosRepu implements Serializable {
 
     @ManyToOne(optional = true, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
     @JoinColumn(name = "Id_zon", foreignKey = @ForeignKey(name = "FK_1_ZonaEstado_ID"), nullable=false)
-    private ZonaEstados zona;
+    private ZonaEstados zonaestados;
 
+    public  EstadosRepu() {
+	
+	}
     public EstadosRepu(Long Id_est_repu, String nombre_esatdo, String descripcion, Date register_date,
             Date last_update_date) {
         this.Id_est_repu = Id_est_repu;
@@ -130,11 +133,11 @@ public class EstadosRepu implements Serializable {
 	}
 
 	public ZonaEstados getZona() {
-		return zona;
+		return zonaestados;
 	}
 
-	public void setZona(ZonaEstados zona) {
-		this.zona = zona;
+	public void setZona(ZonaEstados zonaestados) {
+		this.zonaestados = zonaestados;
 	}
 
     
