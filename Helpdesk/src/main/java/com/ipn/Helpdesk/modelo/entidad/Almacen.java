@@ -18,6 +18,7 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -42,15 +43,16 @@ public class Almacen implements Serializable {
     private Long id_almacen;
 
     @OneToMany (mappedBy = "almacen", fetch = FetchType.LAZY)
+    @JsonIgnore
     private Set<Sol_Alm> sol_Alms;
 
     @Column(name = "Marca")
-    private String Marca;
+    private String marca;
 
     @Column(name = "Modelo")
-    private String Moedelo;
-    @Column(name = "Descripcin")
-    private String Descripcin;
+    private String modelo;
+    @Column(name = "Descripcion")
+    private String descripcion;
 
     @Column(name = "stoc")
     private Integer stoc;
@@ -66,18 +68,27 @@ public class Almacen implements Serializable {
     	
     }
     
-    public Almacen(Long id_almacen, String Descripcin, Integer stoc, Date register_date, Date last_update_date) {
-        this.id_almacen = id_almacen;
-      
-        this.Descripcin = Descripcin;
-        this.stoc = stoc;
-        this.register_date = register_date;
-        this.last_update_date = last_update_date;
-    }
+  
 
 
     
-    @Override
+    public Almacen(Long id_almacen,  String marca, String modelo, String descripcion,
+			Integer stoc, Date register_date, Date last_update_date) {
+		super();
+		this.id_almacen = id_almacen;
+		this.marca = marca;
+		this.modelo = modelo;
+		this.descripcion = descripcion;
+		this.stoc = stoc;
+		this.register_date = register_date;
+		this.last_update_date = last_update_date;
+	}
+
+
+
+
+
+	@Override
     public int hashCode() {
         return Objects.hash(sol_Alms, id_almacen);
     }
@@ -132,37 +143,37 @@ public class Almacen implements Serializable {
 
 
 	public String getMarca() {
-		return Marca;
+		return marca;
 	}
 
 
 
-	public void setMarca(String marca) {
-		Marca = marca;
+	public void setMarca(String marcar) {
+		marca = marcar;
 	}
 
 
 
 	public String getMoedelo() {
-		return Moedelo;
+		return modelo;
 	}
 
 
 
 	public void setMoedelo(String moedelo) {
-		Moedelo = moedelo;
+		modelo = moedelo;
 	}
 
 
 
 	public String getDescripcin() {
-		return Descripcin;
+		return descripcion;
 	}
 
 
 
 	public void setDescripcin(String descripcin) {
-		Descripcin = descripcin;
+		descripcion = descripcin;
 	}
 
 

@@ -72,3 +72,6 @@ INSERT INTO usuarios (id_user,apellidom_user,apellidop_user,correo_user,ext_user
 VALUES (1,'Lima','Flores','ricardo_6_11@got.com',55621,'2022/02/01','ricardo','123456','2022/02/01','activo','5519360328',1,4),
 (2,'Sanches','Ramirez','sandy@got.com',55621,'2022/02/01','sandy','123456','2022/02/01','activo','5555555555',1,4);
 
+select *from almacen;
+
+insert into almacen  (descripcion, fecha_modificacion, marca, modelo, fecha_creacion, stoc) values ("Monitor azul", '2022/02/01', "Dell", "Monitor",'2022/02/01', 50)
