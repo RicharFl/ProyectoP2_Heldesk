@@ -3,10 +3,14 @@ package com.ipn.Helpdesk.controladores;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ipn.Helpdesk.Servicios.UsuarioService;
+import com.ipn.Helpdesk.Servicios.ServiciosImpl.UsurioServiceImpl;
 import com.ipn.Helpdesk.modelo.entidad.Usuarios;
 import com.ipn.Helpdesk.repositorios.UsuarioRepository;
 
@@ -15,63 +19,45 @@ import lombok.extern.slf4j.Slf4j;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.http.ResponseEntity;
 
 @Slf4j
 @RestController
 @RequestMapping("/IPN/helpdesk/Usuario/")
 public class UsuarioController {
 
-	
-	
 	@Autowired
 	private UsuarioRepository usuartioRepository;
-	
-	
 
-	@GetMapping("/ListaUsuarios")
-	public List<Usuarios> listarTodosLosUsuarios1() 
-	{
+	@Autowired
+	private UsuarioService usuarioService;
 
-		System.out.println("Entre a a la lista" + usuartioRepository.findAll() );
-		return usuartioRepository.findAll();
-		
+	@PostMapping("/")
+	public ResponseEntity<Usuarios> CrearUsaurio(@RequestBody Usuarios usuarios) {
+		Usuarios usuarios2 = usuarioService.CrearUsuario(usuarios);
+		return ResponseEntity.ok(usuarios2);
 	}
-	
-	
-	//Este metodo buscara perfil por  id perfil 
-	  
-	@GetMapping (value = "/ListaUsuarios/{id}" )
 
-	public Usuarios UsarioPorId(  @PathVariable("id") Long Id)  {
-    	return usuartioRepository.getById(Id);
-    }
+	@PutMapping("/")
+	public Usuarios ActulizarUsuario(@RequestBody Usuarios usuarios) {
+		return usuarioService.ActulizarUsurio(usuarios);
+	}
 
+	@GetMapping("/")
+	public ResponseEntity<?> ListarTodosLosUsuarios() {
+		return ResponseEntity.ok(usuarioService.ObtenerUsuarios());
+	}
 
-	@DeleteMapping (value = "/EliminaUsuarios/" )
+	@GetMapping(value = "/{id}")
 
-	public void EliminaUsuarios( Long Id)  {
-    	 usuartioRepository.deleteById(Id);
-    }
-	
-	
-	@PutMapping (value = "/Actuliza_usuario/" )
+	public Usuarios UsarioPorId(@PathVariable("id") Long Id) {
+		return usuarioService.ObetenerUsurio(Id);
+	}
 
-	public Usuarios Actuliza_usuario( Long Id)  {
-    	return usuartioRepository.save(null);
-    }
-	
-	
+	@DeleteMapping(value = "/{id}")
 
-	@GetMapping (value = "/Inserta_usuario/" )
-
-	public Usuarios Inserta_usuario()  {
-    	return usuartioRepository.save(null);
-    }
-	
-
-	
-	
-	
+	public void EliminaUsuarios(@PathVariable("id") Long Id) {
+		usuartioRepository.deleteById(Id);
+	}
 
 }

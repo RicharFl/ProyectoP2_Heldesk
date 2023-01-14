@@ -29,7 +29,7 @@ public class TicketServiceImpl implements TicketService {
 	}
 
 	@Override
-	public Set<Ticket> ListasTicket(Ticket ticket) {
+	public Set<Ticket> ListasTicket() {
 		// TODO Auto-generated method stub
 		return new LinkedHashSet<>(ticketRepository.findAll());
 	}

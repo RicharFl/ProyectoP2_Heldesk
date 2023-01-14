@@ -10,7 +10,7 @@ public interface UsuarioService {
 	
 	Usuarios ActulizarUsurio(Usuarios usuarios);
 	
-	Set<Usuarios> ObtenerUsuarios(Usuarios usuarios);
+	Set<Usuarios> ObtenerUsuarios();
 	
 	Usuarios ObetenerUsurio(Long id_usaurio);
 	

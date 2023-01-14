@@ -5,6 +5,7 @@ import java.util.Set;
 import com.ipn.Helpdesk.modelo.entidad.His_asignacion;
 
 public interface HistAginacionService {
+	His_asignacion AgregarAsignacion (His_asignacion asignacion);
 
 	His_asignacion ActilizarAsignacion (His_asignacion asignacion);
 	

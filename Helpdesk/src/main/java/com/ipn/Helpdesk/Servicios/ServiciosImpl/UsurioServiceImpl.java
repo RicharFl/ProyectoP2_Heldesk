@@ -29,7 +29,7 @@ public class UsurioServiceImpl implements UsuarioService {
 	}
 
 	@Override
-	public Set<Usuarios> ObtenerUsuarios(Usuarios usuarios) {
+	public Set<Usuarios> ObtenerUsuarios() {
 		// lista todo los empleados con todos los atributos
 		return new LinkedHashSet<>(usuarioRepository.findAll());
 	}

@@ -43,4 +43,10 @@ public class HisAsignacionServiceImpl implements HistAginacionService {
 
 	}
 
+	@Override
+	public His_asignacion AgregarAsignacion(His_asignacion asignacion) {
+		// TODO Auto-generated method stub
+		return asignacionRepository.save(asignacion);
+	}
+
 }

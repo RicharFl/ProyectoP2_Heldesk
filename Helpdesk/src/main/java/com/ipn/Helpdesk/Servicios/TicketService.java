@@ -10,7 +10,7 @@ public interface TicketService {
 	
 	Ticket ActualizarTicket (Ticket ticket);
 	
-	Set<Ticket> ListasTicket (Ticket ticket);
+	Set<Ticket> ListasTicket ();
 	
 	Ticket ListaTicketUnico (Long Id_empleado);
 	
