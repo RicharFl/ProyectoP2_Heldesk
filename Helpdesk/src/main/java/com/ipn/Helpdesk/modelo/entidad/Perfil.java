@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.Objects;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -47,15 +48,14 @@ public class Perfil implements Serializable {
 	@Column(name = "niv_perm_per")
 	private String niv_perm_per;
 
-	@Column(name = "register_date", nullable = false)
+	@Column(name = "register_date")
 	private Date register_date;
 
 	@Column(name = "last_update_date")
 	private Date last_update_date;
-
-	@OneToMany(mappedBy = "perfil", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "perfil", cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.LAZY)
 	@JsonIgnore
-	private Set<Usuarios> usuarios;
+	private Set<UsuarioPerfil> UsuarioPerfil;
 
 	
 	public Perfil() {
@@ -126,28 +126,28 @@ public class Perfil implements Serializable {
 		Id_per = id_per;
 	}
 
-	public String getNombre_perfIString() {
+	public String getNom_per() {
 		return nom_per;
 	}
 
-	public void setNombre_perfIString(String nombre_perfIString) {
-		this.nom_per = nombre_perfIString;
+	public void setNom_per(String nom_per) {
+		this.nom_per = nom_per;
 	}
 
-	public String getDescripcion_perfiString() {
+	public String getDesc_per() {
 		return desc_per;
 	}
 
-	public void setDescripcion_perfiString(String descripcion_perfiString) {
-		this.desc_per = descripcion_perfiString;
+	public void setDesc_per(String desc_per) {
+		this.desc_per = desc_per;
 	}
 
-	public String getNieve_permisosString() {
+	public String getNiv_perm_per() {
 		return niv_perm_per;
 	}
 
-	public void setNieve_permisosString(String nieve_permisosString) {
-		this.niv_perm_per = nieve_permisosString;
+	public void setNiv_perm_per(String niv_perm_per) {
+		this.niv_perm_per = niv_perm_per;
 	}
 
 	public Date getRegister_date() {
@@ -166,12 +166,14 @@ public class Perfil implements Serializable {
 		this.last_update_date = last_update_date;
 	}
 
-	public Set<Usuarios> getUsuarios() {
-		return usuarios;
+	public Set<UsuarioPerfil> getUsuarioPerfil() {
+		return UsuarioPerfil;
 	}
 
-	public void setUsuarios(Set<Usuarios> usuarios) {
-		this.usuarios = usuarios;
+	public void setUsuarioPerfil(Set<UsuarioPerfil> usuarioPerfil) {
+		UsuarioPerfil = usuarioPerfil;
 	}
+
+	
 
 }

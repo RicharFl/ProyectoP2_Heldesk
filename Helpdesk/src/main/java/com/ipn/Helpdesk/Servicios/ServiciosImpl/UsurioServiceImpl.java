@@ -7,7 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ipn.Helpdesk.Servicios.UsuarioService;
+import com.ipn.Helpdesk.excepciones.UsuarioFoundException;
+import com.ipn.Helpdesk.modelo.entidad.UsuarioPerfil;
 import com.ipn.Helpdesk.modelo.entidad.Usuarios;
+
 import com.ipn.Helpdesk.repositorios.UsuarioRepository;
 
 @Service
@@ -16,10 +19,24 @@ public class UsurioServiceImpl implements UsuarioService {
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 
+	
+
 	@Override
-	public Usuarios CrearUsuario(Usuarios usuarios) {
-		// GUarda el empleado
-		return usuarioRepository.save(usuarios);
+	public Usuarios CrearUsuario(Usuarios usuarios, Set<UsuarioPerfil> perfils) throws Exception {
+		Usuarios usuarios2 = usuarioRepository.findByCorreo(usuarios.getCorreo());
+		
+		
+		System.out.println("Esta es la informacion del usuario" );
+		if (usuarios2 != null) {
+			System.out.println("El Usuario ya Existe");
+			throw new UsuarioFoundException("El usuario ya esta presente");
+		} else {
+			
+			usuarios.getUsuarioPerfils().addAll(perfils);
+			usuarios2 = usuarioRepository.save(usuarios);
+		}
+
+		return usuarios2;
 	}
 
 	@Override

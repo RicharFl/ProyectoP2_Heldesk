@@ -1,7 +1,9 @@
 package com.ipn.Helpdesk.modelo.entidad;
 
-import java.io.Serializable;
+
+import java.util.Collection;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -21,6 +23,9 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Getter;
@@ -32,7 +37,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name = "usuarios", schema = "helpdesk_qa_prep")
-public class Usuarios implements Serializable {
+public class Usuarios implements UserDetails {
 	/**
 	 * 
 	 */
@@ -50,8 +55,8 @@ public class Usuarios implements Serializable {
 	@Column(name = "ApellidoP_user")
 	private String apellidop_user;
 
-	@Column(name = "correo_user")
-	private String correo_user;
+	@Column(name = "correo")
+	private String correo;
 	@Column(name = "password")
 	private String password;
 
@@ -64,15 +69,15 @@ public class Usuarios implements Serializable {
 	@Column(name = "staus_user")
 	private String staus_user;
 
-	@ManyToOne(optional = true, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-	@JoinColumn(name = "id_perfil", foreignKey = @ForeignKey(name = "FK_1_Perfil_ID"))
-	private Perfil perfil;
+	@OneToMany(mappedBy = "usuarios", cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.LAZY)
+	@JsonIgnore
+	private Set<UsuarioPerfil> usuarioPerfils = new HashSet<>();
 
 	@ManyToOne(optional = true, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-	@JoinColumn(name = "Id_zona", foreignKey = @ForeignKey(name = "FK_1_ZONA_ID"))
+	@JoinColumn(name = "id_zona", foreignKey = @ForeignKey(name = "FK_1_ZONA_ID"))
 	private ZonaEstados zonaestados;
 
-	@OneToMany(mappedBy = "usuarios", cascade = { CascadeType.PERSIST, CascadeType.MERGE },fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "usuarios", cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.LAZY)
 	@JsonIgnore
 	private Set<Ticket> ticket;
 
@@ -81,52 +86,39 @@ public class Usuarios implements Serializable {
 
 	@Column(name = "fecha_modificacion")
 	private Date last_update_date;
-	
-	
-	public Usuarios()
-	{
-		
+
+	public Usuarios() {
+
 	}
 
 	public Usuarios(Long id_user, String nombre_user, String apellidom_user, String apellidop_user, String correo_user,
-			String password, Integer ext_user, String tel_user, String staus_user,  
-			Date register_date, Date last_update_date) {
+			String password, Integer ext_user, String tel_user, String staus_user, Date register_date,
+			Date last_update_date) {
 		super();
 		this.id_user = id_user;
 		this.nombre_user = nombre_user;
 		this.apellidom_user = apellidom_user;
 		this.apellidop_user = apellidop_user;
-		this.correo_user = correo_user;
+		this.correo = correo_user;
 		this.password = password;
 		this.ext_user = ext_user;
 		this.tel_user = tel_user;
 		this.staus_user = staus_user;
-		
-		//this.zonaestado = zonaestado;
-		//this.ticket = ticket;
 		this.register_date = register_date;
 		this.last_update_date = last_update_date;
 	}
-/*
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Usuario [id = ");
-		builder.append(id_user);
-		builder.append(", Nombre  = ");
-		builder.append(nombre_user);
-		builder.append(", Apellido Parterno  = ");
-		builder.append(apellidop_user);
-		builder.append(", Apellido Parterno   = ");
-		builder.append(apellidom_user);
-		builder.append(", Correo=");
-		builder.append(correo_user);
-		builder.append(", Estaus de Usuario =");
-		builder.append(staus_user);
-		builder.append("]");
-		return builder.toString();
-
-	}*/
+	/*
+	 * @Override public String toString() { StringBuilder builder = new
+	 * StringBuilder(); builder.append("Usuario [id = "); builder.append(id_user);
+	 * builder.append(", Nombre  = "); builder.append(nombre_user);
+	 * builder.append(", Apellido Parterno  = "); builder.append(apellidop_user);
+	 * builder.append(", Apellido Parterno   = "); builder.append(apellidom_user);
+	 * builder.append(", Correo="); builder.append(correo_user);
+	 * builder.append(", Estaus de Usuario ="); builder.append(staus_user);
+	 * builder.append("]"); return builder.toString();
+	 * 
+	 * }
+	 */
 
 	@Override
 	public int hashCode() {
@@ -185,12 +177,12 @@ public class Usuarios implements Serializable {
 		this.apellidop_user = apellidop_user;
 	}
 
-	public String getCorreo_user() {
-		return correo_user;
+	public String getCorreo() {
+		return correo;
 	}
 
-	public void setCorreo_user(String correo_user) {
-		this.correo_user = correo_user;
+	public void setCorreo(String correo) {
+		this.correo = correo;
 	}
 
 	public String getPassword() {
@@ -225,28 +217,20 @@ public class Usuarios implements Serializable {
 		this.staus_user = staus_user;
 	}
 
-
-
-
-
-	public ZonaEstados getZonaestado() {
+	public ZonaEstados getZonaestados() {
 		return zonaestados;
 	}
 
-	public void setZonaestado(ZonaEstados zonaestado) {
-		this.zonaestados = zonaestado;
+	public void setZonaestados(ZonaEstados zonaestados) {
+		this.zonaestados = zonaestados;
 	}
 
-	
-	
-	
-	
-	public Perfil getPerfil() {
-		return perfil;
+	public Set<UsuarioPerfil> getUsuarioPerfils() {
+		return usuarioPerfils;
 	}
 
-	public void setPerfil(Perfil perfil) {
-		this.perfil = perfil;
+	public void setUsuarioPerfils(Set<UsuarioPerfil> usuarioPerfils) {
+		this.usuarioPerfils = usuarioPerfils;
 	}
 
 	public Set<Ticket> getTicket() {
@@ -271,6 +255,46 @@ public class Usuarios implements Serializable {
 
 	public void setLast_update_date(Date last_update_date) {
 		this.last_update_date = last_update_date;
+	}
+	
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		 Set<Authority> autoridades = new HashSet<>();
+	        this.usuarioPerfils.forEach(usuarioRol -> {
+	            autoridades.add(new Authority(usuarioRol.getPerfil().getNom_per()));
+	        });
+	        return autoridades;
+	}
+
+	@Override
+	public String getUsername() {
+		// TODO Auto-generated method stub
+		return correo;
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+//VERFICAR QUE ESTE ACTIVO EL PERRO EMPLEADO 
+	@Override
+	public boolean isEnabled() {
+		// TODO Auto-generated method stub
+		return true;
 	}
 
 }

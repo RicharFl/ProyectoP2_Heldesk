@@ -7,10 +7,12 @@ import org.springframework.stereotype.Repository;
 
 import com.ipn.Helpdesk.modelo.entidad.Usuarios;
 
+
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuarios, Long> 
 {
 
+	public  Usuarios findByCorreo(String correo_user);
 
  
 }

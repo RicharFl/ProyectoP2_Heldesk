@@ -3,15 +3,20 @@ create database Helpdesk_QA_preP;
 */
 use Helpdesk_QA_preP;
 
-Select * from perfil ;
+delimiter //
+create  TRIGGER insertaZonaEstadoInicial
+AFTER INSERT
+on  usuarios
+FOR EACH ROW
+update usuarios set  id_zona= 9L;
+delimiter ;
 /*
 select *from estadosrepu;
 delete FROM  zonaestados;
 select *from zonaestados;
 */
 
-Select id_per from perfil where id_per= 1 ;
-select *from zonaestados;
+delete From zonaestados;
 insert into zonaestados (id_zon,nombree,register_date,last_update_date) values
 (1,'Noroeste','2022/01/01','2022/01/01'),
 (2,'Noreste','2022/01/01','2022/01/01'),
@@ -20,7 +25,9 @@ insert into zonaestados (id_zon,nombree,register_date,last_update_date) values
 (5,'Centronorte','2022/01/01','2022/01/01'),
 (6,'Centrosur','2022/01/01','2022/01/01'),
 (7,'Suroeste','2022/01/01','2022/01/01'),
-(8,'Sureste ','2022/01/01','2022/01/01');
+(8,'Sureste ','2022/01/01','2022/01/01'),
+(9,'Sin asignacion','2022/01/01','2022/01/01')
+;
 
 insert into estadosrepu (id_est_repu,nombre_esatdo,descripcion,register_date,last_update_date,id_zon) values
 (1, 'Aguascalientes','estado','2022/01/01','2022/01/01',5),
@@ -58,20 +65,23 @@ insert into estadosrepu (id_est_repu,nombre_esatdo,descripcion,register_date,las
 
 
 select *from perfil;
-
+delete from perfil ;
 insert into perfil values 
 (1,'Admistrador General del sistema','2022/01/01','Administrador','Administrdor General','2022/01/01'),
 (2,'Gerente general','2022/01/01','Gerente','Gerente','2022/01/01'),
-(3,'Operativo Nivel 1','2022/01/01','Operativo1','Operativo Nivel 1','2022/01/01'),
-(4,'Operativo Nivel 2','2022/01/01','Operativo2','Operativo Nivel 2','2022/01/01'),
-(5,'Operativo Nivel 3','2022/01/01','Operativo3','Operativo Nivel 3','2022/01/01');
+(3,'Coordinador de Zona','2022/01/01','Operativo2','Operativo Nivel 2','2022/01/01'),
+(4,'Agentes de la mesa de servicio','2022/01/01','Operativo1','Operativo Nivel 1','2022/01/01'),
+(5,'Tecnicos especialista','2022/01/01','Tecnicos especialista 2','Tecnicos especialista 2','2022/01/01'),
+(6,'Almacen','2022/01/01','Almacen','Operativo Nivel 1','2022/01/01'),
+ (7,'Invitado','2022/01/01','invitado','invitado','2022/01/01');
 
 select  * from usuarios;
-
-INSERT INTO usuarios (id_user,apellidom_user,apellidop_user,correo_user,ext_user,fecha_modificacion,nombre_user,password,fecha_creacion,staus_user,tel_user,id_perfil,id_zona) 
-VALUES (1,'Lima','Flores','ricardo_6_11@got.com',55621,'2022/02/01','ricardo','123456','2022/02/01','activo','5519360328',1,4),
-(2,'Sanches','Ramirez','sandy@got.com',55621,'2022/02/01','sandy','123456','2022/02/01','activo','5555555555',1,4);
-
+select * From usuario_perfil;
+/*
+INSERT INTO usuarios (id_user,apellidom_user,apellidop_user,correo,ext_user,fecha_modificacion,nombre_user,password,fecha_creacion,staus_user,tel_user,id_zona) 
+VALUES (1,'Lima','Flores','ricardo_6_11@got.com',55621,'2022/02/01','ricardo','123456','2022/02/01','activo','5519360328',4),
+(2,'Sanches','Ramirez','sandy@got.com',55621,'2022/02/01','sandy','123456','2022/02/01','activo','5555555555',4);
+*/
 select *from almacen;
 
 insert into almacen  (descripcion, fecha_modificacion, marca, modelo, fecha_creacion, stoc) values ("Monitor azul", '2022/02/01', "Dell", "Monitor",'2022/02/01', 50)
