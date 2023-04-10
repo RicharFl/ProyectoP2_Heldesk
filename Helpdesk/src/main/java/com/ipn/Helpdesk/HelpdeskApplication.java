@@ -7,6 +7,7 @@ import org.springframework.boot.SpringApplication;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+
 import com.ipn.Helpdesk.Servicios.UsuarioService;
 
 @SpringBootApplication(scanBasePackages={
@@ -15,8 +16,8 @@ import com.ipn.Helpdesk.Servicios.UsuarioService;
 
 public class HelpdeskApplication implements CommandLineRunner {
 
-	@Autowired
-	private UsuarioService service;
+
+
 	public static void main(String[] args) {
 		SpringApplication.run(HelpdeskApplication.class, args);
 	}

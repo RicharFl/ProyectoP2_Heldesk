@@ -10,6 +10,12 @@
                     <h1 class="text-center">Registratar Usurio aqui</h1>
                     
                     <form (ngSubmit) = "formSubmit()">
+
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Id de Usuario</mat-label>
+                            <input  required [(ngModel)] = "user.username"  name="username" type="email" matInput placeholder="Digite su nombre de usuario ">
+                        </mat-form-field>
+
                         <mat-form-field class="full-width" appearance="outline">
                             <mat-label>Nombre de usuario</mat-label>
                             <input required [(ngModel)] = "user.nombre_user" name="nombre_user" matInput placeholder="Digite su nombre de usuario">

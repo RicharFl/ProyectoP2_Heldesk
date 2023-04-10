@@ -23,7 +23,7 @@ public class UsurioServiceImpl implements UsuarioService {
 
 	@Override
 	public Usuarios CrearUsuario(Usuarios usuarios, Set<UsuarioPerfil> perfils) throws Exception {
-		Usuarios usuarios2 = usuarioRepository.findByCorreo(usuarios.getCorreo());
+		Usuarios usuarios2 = usuarioRepository.findByUsername(usuarios.getUsername());
 		
 		
 		System.out.println("Esta es la informacion del usuario" );
@@ -70,6 +70,12 @@ public class UsurioServiceImpl implements UsuarioService {
 	public Usuarios BloquearUsuario(Usuarios usuarios) {
 		//
 		return usuarioRepository.save(usuarios);
+	}
+
+	@Override
+	public Usuarios BuscaporUserName(String username) {
+		// TODO Auto-generated method stub
+		return usuarioRepository.findByUsername(username);
 	}
 
 }

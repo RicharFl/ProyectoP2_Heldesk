@@ -20,7 +20,9 @@ public interface UsuarioService {
 
 	Usuarios BloquearUsuario(Usuarios usuarios);
 	
-	
+	Usuarios BuscaporUserName (String  UserName);
+
+
 	
 	
 }

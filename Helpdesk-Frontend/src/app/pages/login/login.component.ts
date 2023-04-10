@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   loginData = {
-    "correo_user": '',
+    "nameuser": '',
     "password": '',
   }
 
@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   }
 
   formSubmit() {
-    if (this.loginData.correo_user.trim() == '' || this.loginData.correo_user.trim() == null) {
+    if (this.loginData.nameuser.trim() == '' || this.loginData.nameuser.trim() == null) {
       this.snack.open('El nombre de usuario es requerido !!', 'Aceptar', {
         duration: 3000
       })
@@ -36,4 +36,12 @@ export class LoginComponent implements OnInit {
 
 
   }
+
+
+
+
+
+
+
+  
 }

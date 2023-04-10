@@ -1,7 +1,8 @@
 package com.ipn.Helpdesk.modelo.entidad;
 
 
-import java.util.Collection;
+import java.io.Serializable;
+
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Objects;
@@ -23,8 +24,6 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -37,7 +36,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name = "usuarios", schema = "helpdesk_qa_prep")
-public class Usuarios implements UserDetails {
+public class Usuarios implements Serializable {
 	/**
 	 * 
 	 */
@@ -55,8 +54,12 @@ public class Usuarios implements UserDetails {
 	@Column(name = "ApellidoP_user")
 	private String apellidop_user;
 
+	@Column(name = "username")
+	private String username;
+	
 	@Column(name = "correo")
 	private String correo;
+	
 	@Column(name = "password")
 	private String password;
 
@@ -91,21 +94,22 @@ public class Usuarios implements UserDetails {
 
 	}
 
-	public Usuarios(Long id_user, String nombre_user, String apellidom_user, String apellidop_user, String correo_user,
+	public Usuarios(Long id_user, String nombre_user, String apellidom_user, String apellidop_user, String username,
 			String password, Integer ext_user, String tel_user, String staus_user, Date register_date,
-			Date last_update_date) {
+			Date last_update_date,  String correo) {
 		super();
 		this.id_user = id_user;
 		this.nombre_user = nombre_user;
 		this.apellidom_user = apellidom_user;
 		this.apellidop_user = apellidop_user;
-		this.correo = correo_user;
+		this.username = username;
 		this.password = password;
 		this.ext_user = ext_user;
 		this.tel_user = tel_user;
 		this.staus_user = staus_user;
 		this.register_date = register_date;
 		this.last_update_date = last_update_date;
+		this.correo = correo;
 	}
 	/*
 	 * @Override public String toString() { StringBuilder builder = new
@@ -177,12 +181,10 @@ public class Usuarios implements UserDetails {
 		this.apellidop_user = apellidop_user;
 	}
 
-	public String getCorreo() {
-		return correo;
-	}
 
-	public void setCorreo(String correo) {
-		this.correo = correo;
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getPassword() {
@@ -256,45 +258,24 @@ public class Usuarios implements UserDetails {
 	public void setLast_update_date(Date last_update_date) {
 		this.last_update_date = last_update_date;
 	}
-	
 
-	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		 Set<Authority> autoridades = new HashSet<>();
-	        this.usuarioPerfils.forEach(usuarioRol -> {
-	            autoridades.add(new Authority(usuarioRol.getPerfil().getNom_per()));
-	        });
-	        return autoridades;
+	public String getUsername() {
+		return username;
 	}
 
-	@Override
-	public String getUsername() {
-		// TODO Auto-generated method stub
+	public String getCorreo() {
 		return correo;
 	}
 
-	@Override
-	public boolean isAccountNonExpired() {
-		// TODO Auto-generated method stub
-		return true;
+	public void setCorreo(String correo) {
+		this.correo = correo;
 	}
 
-	@Override
-	public boolean isAccountNonLocked() {
-		// TODO Auto-generated method stub
-		return true;
-	}
 
-	@Override
-	public boolean isCredentialsNonExpired() {
-		// TODO Auto-generated method stub
-		return true;
-	}
-//VERFICAR QUE ESTE ACTIVO EL PERRO EMPLEADO 
-	@Override
-	public boolean isEnabled() {
-		// TODO Auto-generated method stub
-		return true;
-	}
+
+	
+	
+	
+	
 
 }

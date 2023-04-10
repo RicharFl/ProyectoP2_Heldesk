@@ -15,7 +15,7 @@ select *from estadosrepu;
 delete FROM  zonaestados;
 select *from zonaestados;
 */
-
+SELECT *fROM zonaestados;
 delete From zonaestados;
 insert into zonaestados (id_zon,nombree,register_date,last_update_date) values
 (1,'Noroeste','2022/01/01','2022/01/01'),
@@ -26,8 +26,7 @@ insert into zonaestados (id_zon,nombree,register_date,last_update_date) values
 (6,'Centrosur','2022/01/01','2022/01/01'),
 (7,'Suroeste','2022/01/01','2022/01/01'),
 (8,'Sureste ','2022/01/01','2022/01/01'),
-(9,'Sin asignacion','2022/01/01','2022/01/01')
-;
+(9,'Sin asignacion','2022/01/01','2022/01/01');
 
 insert into estadosrepu (id_est_repu,nombre_esatdo,descripcion,register_date,last_update_date,id_zon) values
 (1, 'Aguascalientes','estado','2022/01/01','2022/01/01',5),
@@ -78,10 +77,13 @@ insert into perfil values
 select  * from usuarios;
 select * From usuario_perfil;
 /*
-INSERT INTO usuarios (id_user,apellidom_user,apellidop_user,correo,ext_user,fecha_modificacion,nombre_user,password,fecha_creacion,staus_user,tel_user,id_zona) 
-VALUES (1,'Lima','Flores','ricardo_6_11@got.com',55621,'2022/02/01','ricardo','123456','2022/02/01','activo','5519360328',4),
-(2,'Sanches','Ramirez','sandy@got.com',55621,'2022/02/01','sandy','123456','2022/02/01','activo','5555555555',4);
+INSERT INTO usuarios (id_user,apellidom_user,apellidop_user,username,ext_user,fecha_modificacion,nombre_user,password,fecha_creacion,staus_user,tel_user,id_zona) 
+VALUES (1,'Lima','Flores','ricardo_6_11@got.com',55621,'2022/02/01','ricardo','123456','2022/02/01','activo','5519360328',1),
+(2,'Sanches','Ramirez','sandy@got.com',55621,'2022/02/01','sandy','123456','2022/02/01','activo','5555555555',2);
+
+insert into usuario_perfil values  (1,1,1),(2,2,2);
 */
-select *from almacen;
+
+select *from usuario_perfil;
 
 insert into almacen  (descripcion, fecha_modificacion, marca, modelo, fecha_creacion, stoc) values ("Monitor azul", '2022/02/01', "Dell", "Monitor",'2022/02/01', 50)

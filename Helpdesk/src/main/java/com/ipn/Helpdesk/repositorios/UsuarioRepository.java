@@ -12,7 +12,7 @@ import com.ipn.Helpdesk.modelo.entidad.Usuarios;
 public interface UsuarioRepository extends JpaRepository<Usuarios, Long> 
 {
 
-	public  Usuarios findByCorreo(String correo_user);
+	public  Usuarios findByUsername(String usuername);
 
  
 }
