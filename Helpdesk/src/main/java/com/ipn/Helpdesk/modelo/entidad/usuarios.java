@@ -111,18 +111,38 @@ public class Usuarios implements Serializable {
 		this.last_update_date = last_update_date;
 		this.correo = correo;
 	}
-	/*
-	 * @Override public String toString() { StringBuilder builder = new
-	 * StringBuilder(); builder.append("Usuario [id = "); builder.append(id_user);
-	 * builder.append(", Nombre  = "); builder.append(nombre_user);
-	 * builder.append(", Apellido Parterno  = "); builder.append(apellidop_user);
-	 * builder.append(", Apellido Parterno   = "); builder.append(apellidom_user);
-	 * builder.append(", Correo="); builder.append(correo_user);
-	 * builder.append(", Estaus de Usuario ="); builder.append(staus_user);
-	 * builder.append("]"); return builder.toString();
-	 * 
-	 * }
-	 */
+	
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Usuario [id = ");
+		builder.append(id_user);
+		builder.append("\n");
+		builder.append(", Nombre  = ");
+		builder.append(nombre_user);
+		builder.append("\n");
+		builder.append(", Apellido Parterno  = ");
+		builder.append(apellidop_user);
+		builder.append("\n");
+		builder.append(", Apellido Parterno   = ");
+		builder.append(apellidom_user);
+		builder.append("\n");
+		builder.append(", Correo=");
+		builder.append(correo);
+		builder.append("\n");
+		builder.append(", Estaus de Usuario =");
+		builder.append(staus_user);
+		builder.append("\n");
+		builder.append(", Estaus de UserName =");
+		builder.append(username);
+		builder.append("\n");
+		builder.append(", Estaus de Password =");
+		builder.append(password);
+		builder.append("\n");
+		builder.append("]");
+		return builder.toString();
+
+	}
 
 	@Override
 	public int hashCode() {

@@ -53,7 +53,7 @@ public class UsuarioController {
 		zonaEstados = estadosService.ListarZonaEstadoUnica(usuarios.getZonaestados().getId_zon());
 		String PasswordSHA256;
 		PasswordSHA256 = sha256(usuarios.getPassword());
-		System.out.println("Este es el  Password " + usuarios.getPassword() + "Este es el HAS 256 = " + PasswordSHA256);
+		//System.out.println("Este es el  Password " + usuarios.getPassword() + "Este es el HAS 256 = " + PasswordSHA256);
 		usuarios.setPassword(PasswordSHA256);
 
 		System.out.println("Id_zonas Inyectado = " + usuarios.getZonaestados().getId_zon());
@@ -73,53 +73,55 @@ public class UsuarioController {
 	}
 
 	@GetMapping("/Login")
-	public String LoginUsuario(@RequestBody Usuarios usuarios) throws Exception {
-		
+	public String LoginUsuario(@RequestBody Usuarios usuarioss) throws Exception {
+
+		//System.out.println("El argunto del empleado es " + usuarioss.toString());
 		Usuarios usuarioshast = new Usuarios();
-		
-	
-		//String auxPaswword = usuarioshast.getPassword();
-		//System.out.println("Paswword de usuarios antes de entrar a IF es= " + usuarios.getPassword() + " \n");
-		usuarioshast = RetornaHast(usuarios);
-		
-		//System.out.println("Paswword de usuarios antes de entrar a IF y pásando el hast es= " + usuarios.getPassword() + " \n");
-		//usuariocoimpleto = usuarioService.BuscaporUserName(usuarios.getUsername());
-		if ((usuarioService.BuscaporUserName(usuarios.getUsername())).getId_user() != null) {
-			System.out.println("El usuario es = "+ usuarios.getId_user());
-			//System.out.println("Paswword de usuarios es= " + usuarios.getPassword() + " \n");
-			//System.out.println("Paswword de usuarioshast es= " + usuarioshast.getPassword() + " \n");
+
+		// String auxPaswword = usuarioshast.getPassword();
+		// System.out.println("Paswword de usuarios antes de entrar a IF es= " +
+		// usuarios.getPassword() + " \n");
+		usuarioshast = RetornaHast(usuarioss);
+		//String NameUserAux = (usuarioService.BuscaporUserName(usuarioss.getUsername()).getUsername());
+		 //System.out.println(" Esto es lo que devuelve NameUserAux" + NameUserAux + "\n");
+		// System.out.println("Paswword de usuarios antes de entrar a IF y pásando el
+		// hast es= " + usuarios.getPassword() + " \n");
+		// usuariocoimpleto = usuarioService.BuscaporUserName(usuarios.getUsername());
+		if (usuarioService.BuscaporUserName(usuarioss.getUsername()) != null ) {
+		/// System.out.println("El usuario es = "+ NameUserAux);
+			// System.out.println("Paswword de usuarios es= " + usuarios.getPassword() + "
+			// \n");
+			// System.out.println("Paswword de usuarioshast es= " +
+			// usuarioshast.getPassword() + " \n");
+
+			String pss1 = ((usuarioService.BuscaporUserName(usuarioss.getUsername())).getPassword()).toString();
+
 			
+			String pss2 = (usuarioshast.getPassword()).toString();
 		
-			String pss1= (usuarioService.ObetenerUsurio(usuarios.getId_user())).getPassword();
-			String pss2= usuarioshast.getPassword() ;
-			
-			System.out.println("Paswword de usuarios es=" + pss1 + "*\n");
-			System.out.println("Paswword de usuarioshast es=" + pss2 + "*\n");
-			if (pss1 == pss2) {
+			//System.out.println("Paswword de usuarios es=" + pss1 + "*\n");
+			//System.out.println("Paswword de usuarioshast es=" + pss2 + "*\n");
+
+			if (pss1.equals(pss2)) {
 				System.out.println(" La autentificacion del Usario fue correcta");
 				return "true";
-			}
-			else
-			{
+			} else {
 				System.out.println("La autentificacion del empleado es incorrecta password erronio");
 				return "false";
 			}
 
-		} 
-		else 
-		{
+		} else {
 			System.out.println("No se encontro ningun registro del empleado");
 			return "false";
 		}
-	
-
 
 	}
 
 	public Usuarios RetornaHast(@RequestBody Usuarios usuarios) throws Exception {
 		String PasswordSHA256;
 		PasswordSHA256 = sha256(usuarios.getPassword());
-		System.out.println("Este es el  Password " + usuarios.getPassword() + "  Este es el HAS 256 = " + PasswordSHA256);
+		// System.out.println("Este es el Password " + usuarios.getPassword() + " Este
+		// es el HAS 256 = " + PasswordSHA256);
 		usuarios.setPassword(PasswordSHA256);
 		return usuarios;
 	}
@@ -149,7 +151,12 @@ public class UsuarioController {
 		return ResponseEntity.ok(usuarioService.ObtenerUsuarios());
 	}
 
-	@GetMapping(value = "/{id}")
+	@GetMapping("/userName/{userName}")
+	public Usuarios UsarioPorId(@PathVariable("userName") String userName) {
+		return usuarioService.BuscaporUserName(userName);
+	}
+
+	@GetMapping(value = "/id/{id}")
 	public Usuarios UsarioPorId(@PathVariable("id") Long Id) {
 		return usuarioService.ObetenerUsurio(Id);
 	}
