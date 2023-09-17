@@ -17,7 +17,10 @@ export class LoginService {
     return this.http.get(`${baseUrl}/IPN/helpdesk/Usuario/SHA256`, LoginData)
   }
 
-
+public evaluar_login (LoginData: any)
+{
+  return this.http.get(`${baseUrl}/IPN/helpdesk/Usuario/login`,LoginData)
+}
   
 
 
