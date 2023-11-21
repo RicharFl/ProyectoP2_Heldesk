@@ -71,8 +71,10 @@ public class UsuarioController {
 
 		return usuarioService.CrearUsuario(usuarios, perfils);
 	}
+	
 
-	@GetMapping("/Login")
+
+	@PostMapping("/Login")
 	public String LoginUsuario(@RequestBody Usuarios usuarioss) throws Exception {
 
 		//System.out.println("El argunto del empleado es " + usuarioss.toString());
@@ -116,6 +118,8 @@ public class UsuarioController {
 		}
 
 	}
+	
+	
 
 	public Usuarios RetornaHast(@RequestBody Usuarios usuarios) throws Exception {
 		String PasswordSHA256;
@@ -156,7 +160,7 @@ public class UsuarioController {
 		return usuarioService.BuscaporUserName(userName);
 	}
 
-	@GetMapping(value = "/id/{id}")
+	@GetMapping(value = "/id/{id}")	
 	public Usuarios UsarioPorId(@PathVariable("id") Long Id) {
 		return usuarioService.ObetenerUsurio(Id);
 	}

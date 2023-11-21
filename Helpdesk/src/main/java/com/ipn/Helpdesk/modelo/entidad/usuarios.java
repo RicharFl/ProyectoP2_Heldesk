@@ -74,7 +74,8 @@ public class Usuarios implements Serializable {
 
 	@OneToMany(mappedBy = "usuarios", cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.LAZY)
 	@JsonIgnore
-	private Set<UsuarioPerfil> usuarioPerfils = new HashSet<>();
+	private Set<UsuarioPerfil> usuarioPerfils ;
+	//private Set<UsuarioPerfil> usuarioPerfils = new HashSet<>();
 
 	@ManyToOne(optional = true, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	@JoinColumn(name = "id_zona", foreignKey = @ForeignKey(name = "FK_1_ZONA_ID"))

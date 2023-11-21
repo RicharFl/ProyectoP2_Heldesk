@@ -23,14 +23,28 @@ public class UsuarioPerfil implements Serializable {
 	private Long idusuarioPerfil;
 
 	//@ManyToOne(optional = true, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-	 @ManyToOne(fetch = FetchType.EAGER)
+	 @ManyToOne(optional = true, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	@JoinColumn(name = "id_user", foreignKey = @ForeignKey(name = "FK_1_USUARIO_PERFIL_ID"))
 	private Usuarios usuarios;
 
 	//@ManyToOne(optional = true, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-	 @ManyToOne
-	@JoinColumn(name = "id_per", foreignKey = @ForeignKey(name = "FK_4_PERFIL_ID"))
+	 @ManyToOne(optional = true, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@JoinColumn(name = "Id_per", foreignKey = @ForeignKey(name = "FK_4_PERFIL_ID"))
 	private Perfil perfil;
+	 //@ManyToOne(optional = true, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+		//@JoinColumn(name = "id_zona", foreignKey = @ForeignKey(name = "FK_1_ZONA_ID"))
+	//	private ZonaEstados zonaestados;
+	 
+	 public UsuarioPerfil()
+	 {
+		 
+	 }
+	public UsuarioPerfil(Long idusuarioPerfil, Usuarios usuarios, Perfil perfil) {
+		super();
+		this.idusuarioPerfil = idusuarioPerfil;
+		this.usuarios = usuarios;
+		this.perfil = perfil;
+	}
 
 	public Long getIdusuarioPerfil() {
 		return idusuarioPerfil;

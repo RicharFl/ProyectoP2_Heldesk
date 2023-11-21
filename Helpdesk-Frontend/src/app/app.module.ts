@@ -24,6 +24,9 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { HomeComponent } from './pages/home/home.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
+import { DashboarAdminComponent } from './pages/admin/dashboar-admin/dashboar-admin.component';
+
+
 
 @NgModule({
   declarations: [
@@ -31,7 +34,8 @@ import {MatIconModule} from '@angular/material/icon';
     NavbarComponent,
     SignupComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    DashboarAdminComponent
     
   ],
   imports: [
@@ -48,6 +52,7 @@ import {MatIconModule} from '@angular/material/icon';
     MatSnackBarModule,
     MatToolbarModule,
     MatIconModule
+     
   ],
   providers: [{
     provide: LOCALE_ID,
