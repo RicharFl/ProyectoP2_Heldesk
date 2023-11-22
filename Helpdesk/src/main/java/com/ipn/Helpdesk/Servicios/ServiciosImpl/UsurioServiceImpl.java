@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.ipn.Helpdesk.Servicios.UsuarioService;
 import com.ipn.Helpdesk.excepciones.UsuarioFoundException;
-import com.ipn.Helpdesk.modelo.entidad.UsuarioPerfil;
+
 import com.ipn.Helpdesk.modelo.entidad.Usuarios;
 
 import com.ipn.Helpdesk.repositorios.UsuarioRepository;
@@ -22,7 +22,7 @@ public class UsurioServiceImpl implements UsuarioService {
 	
 
 	@Override
-	public Usuarios CrearUsuario(Usuarios usuarios, Set<UsuarioPerfil> perfils) throws Exception {
+	public Usuarios CrearUsuario(Usuarios usuarios ) throws Exception {
 		Usuarios usuarios2 = usuarioRepository.findByUsername(usuarios.getUsername());
 		
 		
@@ -32,7 +32,7 @@ public class UsurioServiceImpl implements UsuarioService {
 			throw new UsuarioFoundException("El usuario ya esta presente");
 		} else {
 			
-			usuarios.getUsuarioPerfils().addAll(perfils);
+			
 			usuarios2 = usuarioRepository.save(usuarios);
 		}
 

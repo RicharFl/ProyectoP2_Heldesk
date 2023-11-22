@@ -1,0 +1,50 @@
+<mat-toolbar-row color="primary">
+  <a
+    [routerLink]="'/'"
+    mat-icon-button
+    class="example-icon"
+    arial-label="Example icon-button with menu icon"
+  >
+    <mat-icon>class</mat-icon>
+  </a>
+  <span>Helpdesk</span>
+  <span class="example-spacer"></span>
+  <a
+    *ngIf = "!esta_concectado"
+    [routerLink]="'/login'"
+    mat-icon-button
+    class = "example-icon favorite-icon"
+    aria-label = "Example icon-button with heart icon"
+  >
+    Iniciar sesión
+  </a>
+  <a
+    *ngIf = "!esta_concectado"
+    [routerLink]="'/signup'"
+    mat-icon-button
+    class="example-icon favorite-icon mr20 ml70"
+    aria-label="Example icon-button with heart icon"
+  >
+    Registrar
+  </a>
+  <a
+    *ngIf = "esta_concectado"
+    (click) = "logout()"
+    style="margin-right: 10px"
+    mat-icon-button
+    class="example-icon favorite-icon"
+    aria-label="Example icon-button with heart icon"
+  >
+    Cerrar sesión
+  </a>
+  <button
+    *ngIf = "esta_concectado && user"
+    mat-button
+    style="margin-right: 10px"
+    class="example-icon favorite-icon"
+    aria-label="Example icon-button with heart icon"
+    [routerLink] = "'/admin/profile'"
+  >
+    {{ user.username }}
+  </button>
+</mat-toolbar-row>

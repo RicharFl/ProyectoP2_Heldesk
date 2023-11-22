@@ -3,6 +3,8 @@ import { SignupComponent } from './pages/signup/signup.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { DashboarAdminComponent } from './pages/admin/dashboar-admin/dashboar-admin.component';
+import { AdminGuard } from './services/admin.guard';
 
 const routes: Routes = [
   {
@@ -19,7 +21,15 @@ const routes: Routes = [
     path: 'login',
     component: LoginComponent,
     pathMatch: 'full'
+  },
+  {
+    path: 'admin',
+    component: DashboarAdminComponent,
+    pathMatch: 'full',
+    canActivate:[AdminGuard]
+
   }
+  
 ];
 
 @NgModule({

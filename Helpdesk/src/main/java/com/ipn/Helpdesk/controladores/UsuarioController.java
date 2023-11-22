@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ipn.Helpdesk.Servicios.UsuarioService;
 import com.ipn.Helpdesk.Servicios.ZonaEstadosService;
 import com.ipn.Helpdesk.modelo.entidad.Perfil;
-import com.ipn.Helpdesk.modelo.entidad.UsuarioPerfil;
+
 import com.ipn.Helpdesk.modelo.entidad.Usuarios;
 import com.ipn.Helpdesk.modelo.entidad.ZonaEstados;
 import com.ipn.Helpdesk.repositorios.UsuarioRepository;
@@ -57,19 +57,9 @@ public class UsuarioController {
 		usuarios.setPassword(PasswordSHA256);
 
 		System.out.println("Id_zonas Inyectado = " + usuarios.getZonaestados().getId_zon());
-		Set<UsuarioPerfil> perfils = new HashSet<>();
-		Perfil perfil = new Perfil();
-		perfil.setId_per(7L);
-		perfil.setNom_per("Invitado");
+		
 
-		UsuarioPerfil usuarioPerfil = new UsuarioPerfil();
-		usuarios.setZonaestados(zonaEstados);
-		usuarioPerfil.setUsuarios(usuarios);
-		usuarioPerfil.setPerfil(perfil);
-
-		perfils.add(usuarioPerfil);
-
-		return usuarioService.CrearUsuario(usuarios, perfils);
+		return usuarioService.CrearUsuario(usuarios);
 	}
 	
 

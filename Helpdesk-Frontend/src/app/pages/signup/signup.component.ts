@@ -26,7 +26,8 @@ export class SignupComponent implements OnInit {
     ext_user: '',
     register_date: Date.now(),
     last_update_date: Date.now(),
-    staus_user: "Pendiente"
+    staus_user: "Pendiente", 
+    perfil:{id_per : 7}
 
 
   }

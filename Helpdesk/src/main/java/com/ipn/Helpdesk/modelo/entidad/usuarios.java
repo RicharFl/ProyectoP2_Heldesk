@@ -4,7 +4,7 @@ package com.ipn.Helpdesk.modelo.entidad;
 import java.io.Serializable;
 
 import java.util.Date;
-import java.util.HashSet;
+
 import java.util.Objects;
 import java.util.Set;
 
@@ -72,16 +72,12 @@ public class Usuarios implements Serializable {
 	@Column(name = "staus_user")
 	private String staus_user;
 
-	@OneToMany(mappedBy = "usuarios", cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.LAZY)
-	@JsonIgnore
-	private Set<UsuarioPerfil> usuarioPerfils ;
-	//private Set<UsuarioPerfil> usuarioPerfils = new HashSet<>();
 
-	@ManyToOne(optional = true, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@ManyToOne(optional = true, cascade = { CascadeType.MERGE })
 	@JoinColumn(name = "id_zona", foreignKey = @ForeignKey(name = "FK_1_ZONA_ID"))
 	private ZonaEstados zonaestados;
 
-	@OneToMany(mappedBy = "usuarios", cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "usuarios", cascade = { CascadeType.MERGE }, fetch = FetchType.LAZY)
 	@JsonIgnore
 	private Set<Ticket> ticket;
 
@@ -90,29 +86,65 @@ public class Usuarios implements Serializable {
 
 	@Column(name = "fecha_modificacion")
 	private Date last_update_date;
+	
+	
+	@ManyToOne(optional = true, cascade = { CascadeType.MERGE })
+	@JoinColumn(name = "Id_per", foreignKey = @ForeignKey(name = "FK_4_PERFIL_ID"))
+	private Perfil perfil ;
 
 	public Usuarios() {
 
 	}
 
+
+	
+
+
+
 	public Usuarios(Long id_user, String nombre_user, String apellidom_user, String apellidop_user, String username,
-			String password, Integer ext_user, String tel_user, String staus_user, Date register_date,
-			Date last_update_date,  String correo) {
+			String correo, String password, Integer ext_user, String tel_user, String staus_user,
+			ZonaEstados zonaestados, Set<Ticket> ticket, Date register_date, Date last_update_date, Perfil perfil) {
 		super();
 		this.id_user = id_user;
 		this.nombre_user = nombre_user;
 		this.apellidom_user = apellidom_user;
 		this.apellidop_user = apellidop_user;
 		this.username = username;
+		this.correo = correo;
 		this.password = password;
 		this.ext_user = ext_user;
 		this.tel_user = tel_user;
 		this.staus_user = staus_user;
+		this.zonaestados = zonaestados;
+		this.ticket = ticket;
 		this.register_date = register_date;
 		this.last_update_date = last_update_date;
-		this.correo = correo;
+		this.perfil = perfil;
 	}
-	
+
+
+
+
+
+
+	public Perfil getPerfil() {
+		return perfil;
+	}
+
+
+
+
+
+
+	public void setPerfil(Perfil perfil) {
+		this.perfil = perfil;
+	}
+
+
+
+
+
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -248,13 +280,7 @@ public class Usuarios implements Serializable {
 		this.zonaestados = zonaestados;
 	}
 
-	public Set<UsuarioPerfil> getUsuarioPerfils() {
-		return usuarioPerfils;
-	}
 
-	public void setUsuarioPerfils(Set<UsuarioPerfil> usuarioPerfils) {
-		this.usuarioPerfils = usuarioPerfils;
-	}
 
 	public Set<Ticket> getTicket() {
 		return ticket;

@@ -26,6 +26,9 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import { DashboarAdminComponent } from './pages/admin/dashboar-admin/dashboar-admin.component';
 
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatSidenavModule } from '@angular/material/sidenav';
+
 
 
 @NgModule({
@@ -51,7 +54,8 @@ import { DashboarAdminComponent } from './pages/admin/dashboar-admin/dashboar-ad
     HttpClientModule,
     MatSnackBarModule,
     MatToolbarModule,
-    MatIconModule
+    MatIconModule,
+    MatSidenavModule
      
   ],
   providers: [{

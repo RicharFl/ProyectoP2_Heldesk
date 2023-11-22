@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.Objects;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -23,9 +23,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Setter
-@Getter
 @NoArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table(name = "perfil", schema = "helpdesk_qa_prep")
 public class Perfil implements Serializable {
@@ -53,16 +53,20 @@ public class Perfil implements Serializable {
 
 	@Column(name = "last_update_date")
 	private Date last_update_date;
-	@OneToMany(mappedBy = "perfil", cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.LAZY)
+	
+	@OneToMany(mappedBy = "perfil", fetch = FetchType.LAZY)
 	@JsonIgnore
-	private Set<UsuarioPerfil> UsuarioPerfil;
+	private Set<Usuarios> usuarios;
 
 	
 	public Perfil() {
-		System.out.println("estoy en el vacio ");
+		System.out.println("perfil Vacio");
 	}
 	
-	public Perfil(Long id_per, String desc_per,	Date last_update_date,String niv_perm_per, String nom_per,   Date register_date) {
+
+
+	public Perfil(Long id_per, String nom_per, String desc_per, String niv_perm_per, Date register_date,
+			Date last_update_date) {
 		super();
 		Id_per = id_per;
 		this.nom_per = nom_per;
@@ -70,8 +74,10 @@ public class Perfil implements Serializable {
 		this.niv_perm_per = niv_perm_per;
 		this.register_date = register_date;
 		this.last_update_date = last_update_date;
-		//System.out.println("el nombre del empleado es = " + this.nom_per);
+
 	}
+
+
 
 	@Override
 	public String toString() {
@@ -166,13 +172,14 @@ public class Perfil implements Serializable {
 		this.last_update_date = last_update_date;
 	}
 
-	public Set<UsuarioPerfil> getUsuarioPerfil() {
-		return UsuarioPerfil;
+	public Set<Usuarios> getUsuarios() {
+		return usuarios;
 	}
 
-	public void setUsuarioPerfil(Set<UsuarioPerfil> usuarioPerfil) {
-		UsuarioPerfil = usuarioPerfil;
+	public void setUsuarios(Set<Usuarios> usuarios) {
+		this.usuarios = usuarios;
 	}
+
 
 	
 

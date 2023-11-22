@@ -51,6 +51,7 @@ export class LoginComponent implements OnInit {
           this.loginService.BuscaUsario(this.loginData).subscribe(
             (data: any) => 
             { 
+              console.log ("este es el perfil de usurio "+ data.perfil.id_per);
               if (data.staus_user == "Pendiente")
               {
                 console.log("Empleado no ha sido autorizado cotactar con ADMIN");
@@ -58,7 +59,16 @@ export class LoginComponent implements OnInit {
 
               }
               else{
-                console.log("Mandar a HOME DE USUARIO")
+                this.loginService.SAVE_LOCAL_STORAGE_USER(this.loginData) 
+                console.log(this.loginService.getUser());
+                if(this.loginService.getUserRole()==1){
+                  console.log("Mandar a HOME DE USUARIO");
+                  this.router.navigate(['admin'])
+                  this.loginService.loginStatusSubjec.next(true);
+                }
+                
+                
+              
               }
               console.log(data);
              

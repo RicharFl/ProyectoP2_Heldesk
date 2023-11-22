@@ -35,6 +35,8 @@ public SAVE_LOCAL_STORAGE_USER (loginData:any){
     (data:any)=> {
       localStorage.setItem('id_user_front',JSON.stringify(data.id_user));
       localStorage.setItem('username_front',JSON.stringify(data.username));
+      localStorage.setItem('perfil_front',JSON.stringify(data.perfil.id_per));
+
       return true;
     }
   )
@@ -53,6 +55,10 @@ public esta_concectado(){
  //obtenemos usuario 
  public getusarname_storage(){
   return localStorage.getItem('id_user_front');
+ 
+}
+public getperfil_storage(){
+  return localStorage.getItem('perfil_front');
 }
 
 //obtenemos id_user
@@ -64,8 +70,37 @@ public getiduser_storage(){
 public logout(){
   localStorage.removeItem('id_user_front');
   localStorage.removeItem('username_front');
+  localStorage.removeItem('perfil_front');
   return true;
+
+}
+public getUser(){
+    
+  let userStr = localStorage.getItem('perfil_front');
+  if(userStr != null){
+    console.log("info del perfil del usuario en el storage" +userStr)
+    return JSON.parse(userStr);
+  }else{
+    this.logout();
+    return null;
+  }
 }
 
+public getUsername(){
+    
+  let userStr = localStorage.getItem('username_front');
+  if(userStr != null){
+    return JSON.parse(userStr);
+  }else{
+    this.logout();
+    return null;
+  }
+}
+
+
+public getUserRole(){
+  let user = this.getUser();
+  return user;
+}
 
 }
