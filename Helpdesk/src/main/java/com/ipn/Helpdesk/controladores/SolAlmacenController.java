@@ -16,7 +16,7 @@ import com.ipn.Helpdesk.Servicios.SolAlmacenService;
 import com.ipn.Helpdesk.modelo.entidad.Sol_Alm;
 
 @RestController
-@RequestMapping("/IPN/helpdesk/SolicitudAlmacen")
+@RequestMapping("/IPN/helpdesk/SolicitudAlmacen/")
 @CrossOrigin("*")
 public class SolAlmacenController {
 	@Autowired

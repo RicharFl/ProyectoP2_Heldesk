@@ -19,7 +19,7 @@ import com.ipn.Helpdesk.Servicios.StatusTicketService;
 import com.ipn.Helpdesk.modelo.entidad.Status_Ticket;
 
 @RestController
-@RequestMapping("/IPN/helpdesk/StatusTicket")
+@RequestMapping("/IPN/helpdesk/StatusTicket/")
 @CrossOrigin("*")
 public class StatusTicketController {
 	@Autowired

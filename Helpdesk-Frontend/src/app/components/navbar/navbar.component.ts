@@ -14,17 +14,35 @@ export class NavbarComponent implements OnInit {
   constructor(public login:LoginService){
 
   }
+  loginData_nuevi = {
+    "username": '',
+    "password": '10',
+  }
 
 
   ngOnInit(): void {
     this.esta_concectado = this.login.esta_concectado();
-    this.user = this.login.getUsername();
+    //this.user = this.login.getUsername();
     this.login.loginStatusSubjec.asObservable().subscribe(
       data => {
         this.esta_concectado = this.login.esta_concectado();
-        this.user = this.login.getUsername();
+      //  this.user = this.login.getUsername();
       }
     )
+
+
+
+    this.loginData_nuevi.username= this.login.getUsername();
+    this.login.BuscaUsario(this.loginData_nuevi).subscribe(
+      (data:any) => {
+        this.user = data;
+      },
+      (error) => {
+        alert("error");
+      }
+    )
+
+
   }
  public logout()
  {

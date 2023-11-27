@@ -1,0 +1,125 @@
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <div class="row" style="margin-top : 20px;">
+            <div class="col-md-6 offset-md-3">
+                <mat-card>
+                    <div class="container text-center">
+                        <img src="../../../assets/icon.png" width="100" height="100">
+                    </div>
+
+                    <h1 class="text-center">Registratar Usuario aqui</h1>
+
+                    <form (ngSubmit)="formSubmit()">
+
+                        <mat-form-field class="full-width container text-center" appearance="outline">
+                            <mat-label>Id de Usuario</mat-label>
+                            <input required [(ngModel)]="user.username" name="username" type="email" matInput
+                                placeholder="Digite su nombre de usuario ">
+                        </mat-form-field>
+
+                        <mat-form-field class="full-width container text-center" appearance="outline">
+                            <mat-label>Nombre de usuario</mat-label>
+                            <input required [(ngModel)]="user.nombre_user" name="nombre_user" matInput
+                                placeholder="Digite su nombre de usuario">
+                        </mat-form-field>
+
+                        <mat-form-field class="full-width container text-center" appearance="outline">
+                            <mat-label>Apellido Paterno</mat-label>
+                            <input required [(ngModel)]="user.apellidop_user" name="apellidop_user" matInput
+                                placeholder="Digite su Apellido Paterno">
+                        </mat-form-field>
+
+                        <mat-form-field class="full-width container text-center" appearance="outline">
+                            <mat-label>Apellido Materno</mat-label>
+                            <input required [(ngModel)]="user.apellidom_user" name="apellidom_user" matInput
+                                placeholder="Digite su Apellido Materno">
+                        </mat-form-field>
+
+                        <mat-form-field class="full-width container text-center" appearance="outline">
+                            <mat-label>Contraseña</mat-label>
+                            <input required [(ngModel)]="user.password" name="password" type="password" matInput
+                                placeholder="Digite su contraseña">
+                        </mat-form-field>
+
+                        <mat-form-field class="full-width container text-center" appearance="outline">
+                            <mat-label>Email</mat-label>
+                            <input required [(ngModel)]="user.correo" name="correo_user" type="email" matInput
+                                placeholder="Digite su email">
+                        </mat-form-field>
+
+                        <mat-form-field class="full-width container text-center" appearance="outline">
+                            <mat-label>Telefono</mat-label>
+                            <input required [(ngModel)]="user.tel_user" name="tel_user" matInput
+                                placeholder="Digite su telefono">
+                        </mat-form-field>
+
+                        <mat-form-field class="full-width container text-center" appearance="outline">
+                            <mat-label>Extencion</mat-label>
+                            <input required [(ngModel)]="user.ext_user" name="ext_user" matInput
+                                placeholder="Digite su Extencion">
+                        </mat-form-field>
+                        <div class="input-group mb-3 full-width container text-center" appearance="outline">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="inputGroupSelect01"> Rol </label>
+                            </div>
+                            <select required [(ngModel)]="user.perfil.id_per" name="inputGroupSelect01"
+                                id="inputGroupSelect01">
+                                <option selected>Rol...</option>
+                                <option value=1>Admistrador General del sistema</option>
+                                <option value=2>Gerente general</option>
+                                <option value=3>Coordinador de Zona</option>
+                                <option value=4>Agentes de la mesa de servicio</option>
+                                <option value=5>Tecnicos especialista</option>
+                                <option value=6>Almacen</option>
+                                <option value=7>Invitado</option>
+                            </select>
+                        </div>
+                        <div class="input-group mb-3 full-width container text-center" appearance="outline">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="inputGroupSelect03"> Estatus </label>
+                            </div>
+                            <select required [(ngModel)]="user.staus_user" name="inputGroupSelect03"
+                                id="inputGroupSelect03">
+                                <option selected>Estatus del Empleado</option>
+                                <option value="Activo">Activo</option>
+                                <option value="Pendiente">Pendiente</option>
+                                <option value="Bloqueado">Bloqueado</option>
+                            </select>
+                        </div>
+
+
+                        <div class="input-group mb-3 full-width container text-center" appearance="outline">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="inputGroupSelect02"> Regional </label>
+                            </div>
+                            <select required [(ngModel)]="user.zonaestados.id_zon" name="inputGroupSelect02"
+                                id="inputGroupSelect02">
+                                <option selected>Regional Zona</option>
+                                <option value=1>Noroeste</option>
+                                <option value=2>Noreste</option>
+                                <option value=3>Oeste</option>
+                                <option value=4>Oriente</option>
+                                <option value=5>Centro norte</option>
+                                <option value=6>Centro sur</option>
+                                <option value=7>Suroeste</option>
+                                <option value=8>Sureste</option>
+                                <option value=9>Suroeste</option>
+
+                            </select>
+                        </div>
+
+                        <div class="container text-center">
+                            <button mat-raised-button color="primary">Registrar</button>
+
+                            <button type="reset" style="margin-left: 60px;" mat-raised-button
+                                color="accent">Limpiar</button>
+
+                              
+                        </div>
+                    </form>
+                </mat-card>
+                <br><br><br>
+            </div>
+        </div>
+    </div>
+</div>

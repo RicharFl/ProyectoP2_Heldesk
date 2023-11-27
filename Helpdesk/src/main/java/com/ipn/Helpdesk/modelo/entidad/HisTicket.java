@@ -49,15 +49,15 @@ public class HisTicket implements Serializable  {
     private Ticket ticket;
 
     @Column(name = "Id_user")
-    private Long Id_user;
+    private Long id_user;
     @Column(name = "Comentario")
-    private String  Comentario;
+    private String  comentario;
     
     @Column(name = "Fec_inicio", nullable = false)
-    private Date Fec_inicio;
+    private Date fec_inicio;
 
     @Column(name = "Sla_status_hist")
-    private Long Sla_status_hist;
+    private Long sla_status_hist;
 
     @Column(name = "fecha_creacion", nullable = false)
     private Date register_date;
@@ -75,21 +75,31 @@ public HisTicket()
 {
 	}
 
-    public HisTicket(Long id_histori, Ticket ticket, Long Id_user, String Comentario, Date Fec_inicio, Long Sla_status_hist, Date register_date, Date last_update_date) {
-        this.id_histori = id_histori;
-        this.ticket = ticket;
-        this.Id_user = Id_user;
-        this.Comentario = Comentario;
-        this.Fec_inicio = Fec_inicio;
-        this.Sla_status_hist = Sla_status_hist;
-        this.register_date = register_date;
-        this.last_update_date = last_update_date;
-    }
+   
+  
 
 
-    @Override
+	public HisTicket(Long id_histori, Ticket ticket, Long id_user, String comentario, Date fec_inicio, Long sla_status_hist,
+		Date register_date, Date last_update_date, Sla_ticket sla_ticket) {
+	super();
+	this.id_histori = id_histori;
+	this.ticket = ticket;
+	this.id_user = id_user;
+	this.comentario = comentario;
+	this.fec_inicio = fec_inicio;
+	this.sla_status_hist = sla_status_hist;
+	this.register_date = register_date;
+	this.last_update_date = last_update_date;
+	this.sla_ticket = sla_ticket;
+}
+
+
+
+
+
+	@Override
     public int hashCode() {
-        return Objects.hash(id_histori, Id_user);
+        return Objects.hash(id_histori, id_user);
     }
 
     @Override
@@ -99,7 +109,7 @@ public HisTicket()
         if (!(obj instanceof HisTicket))
             return false;
         HisTicket other = (HisTicket) obj;
-        return Objects.equals(id_histori, other.id_histori) && Objects.equals(Id_user, other.Id_user);
+        return Objects.equals(id_histori, other.id_histori) && Objects.equals(id_user, other.id_user);
     }
 
     
@@ -134,48 +144,6 @@ public HisTicket()
 	public void setTicket(Ticket ticket) {
 		this.ticket = ticket;
 	}
-
-
-	public Long getId_user() {
-		return Id_user;
-	}
-
-
-	public void setId_user(Long id_user) {
-		Id_user = id_user;
-	}
-
-
-	public String getComentario() {
-		return Comentario;
-	}
-
-
-	public void setComentario(String comentario) {
-		Comentario = comentario;
-	}
-
-
-	public Date getFec_inicio() {
-		return Fec_inicio;
-	}
-
-
-	public void setFec_inicio(Date fec_inicio) {
-		Fec_inicio = fec_inicio;
-	}
-
-
-	public Long getSla_status_hist() {
-		return Sla_status_hist;
-	}
-
-
-	public void setSla_status_hist(Long sla_status_hist) {
-		Sla_status_hist = sla_status_hist;
-	}
-
-
 	public Date getRegister_date() {
 		return register_date;
 	}
@@ -193,6 +161,86 @@ public HisTicket()
 
 	public void setLast_update_date(Date last_update_date) {
 		this.last_update_date = last_update_date;
+	}
+
+
+
+
+
+	public Long getId_user() {
+		return id_user;
+	}
+
+
+
+
+
+	public void setId_user(Long id_user) {
+		this.id_user = id_user;
+	}
+
+
+
+
+
+	public String getComentario() {
+		return comentario;
+	}
+
+
+
+
+
+	public void setComentario(String comentario) {
+		this.comentario = comentario;
+	}
+
+
+
+
+
+	public Date getFec_inicio() {
+		return fec_inicio;
+	}
+
+
+
+
+
+	public void setFec_inicio(Date fec_inicio) {
+		this.fec_inicio = fec_inicio;
+	}
+
+
+
+
+
+	public Long getSla_status_hist() {
+		return sla_status_hist;
+	}
+
+
+
+
+
+	public void setSla_status_hist(Long sla_status_hist) {
+		this.sla_status_hist = sla_status_hist;
+	}
+
+
+
+
+
+	public Sla_ticket getSla_ticket() {
+		return sla_ticket;
+	}
+
+
+
+
+
+	public void setSla_ticket(Sla_ticket sla_ticket) {
+		this.sla_ticket = sla_ticket;
 	}
 
 

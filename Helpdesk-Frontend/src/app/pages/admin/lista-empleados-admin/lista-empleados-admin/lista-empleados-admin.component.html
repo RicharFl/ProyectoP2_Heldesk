@@ -1,0 +1,39 @@
+<h2 class="text-center ">Lista empleados</h2>
+
+<table class="table table-striped"  >
+  <thead class="table-dark text-center ">   
+    <tr>
+      <th>Nombre</th>
+      <th>Apellido Paterno</th>
+      <th>Apellido p</th>
+      <th>Estatus</th>
+      <th>Rol</th>
+      <th>Zona Asignada</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody class="text-center ">
+    <tr *ngFor="let e of usuarios |  paginate: { itemsPerPage: 6, currentPage: pagina }">
+      <td>{{e.nombre_user}}</td>
+      <td>{{e.apellidom_user}}</td>
+      <td>{{e.apellidop_user}}</td>
+      <td>{{e.staus_user}}</td>
+      <td>{{e.perfil.nom_per}}</td>
+      <td>{{e.zonaestados.nombree}}</td>
+      <td class="text-center">
+        <button (click)="EditarDelEmpleado(e.username)" class="btn btn-info">Editar</button>
+        <button (click)="verDetallesDelEmpleado(e.username)" class="btn btn-primary"
+          style="margin-left : 10px;">Detalles</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div>
+<div class="text-center" >
+<pagination-controls (pageChange)="pagina = $event"  previousLabel="anterior" nextLabel="siguiente" 
+  screenReaderPageLabel="page" screenReaderCurrentLabel="You're on page">></pagination-controls>
+</div>
+<div class="container text-center mt20">
+  <button  mat-raised-button color="primary" >Descargar EXCEL</button>
+  <button routerLink="/admin/agregar-user" mat-raised-button color="primary">Agregar empleado</button>
+</div>

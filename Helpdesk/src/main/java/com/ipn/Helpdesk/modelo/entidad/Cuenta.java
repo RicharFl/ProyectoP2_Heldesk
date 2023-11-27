@@ -19,6 +19,8 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -40,6 +42,7 @@ public class Cuenta  implements Serializable {
     private Long Id_cuen;
 
     @OneToMany(mappedBy = "cuenta", fetch = FetchType.LAZY)
+    @JsonIgnore
     private Set<Cliente> cliente; 
 
     @Column(name = "Nombre_cuen")

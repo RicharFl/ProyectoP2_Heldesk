@@ -71,18 +71,24 @@ public class His_asignacion implements Serializable  {
     	
     }
 
-    public His_asignacion(Long id_his_asignacion,  Long id_user_inicio, Long id_user_final, String comentarios, Date register_date, Date last_update_date, String status_sla) {
-        this.id_his_asignacion = id_his_asignacion;
- 
-        this.id_user_inicio = id_user_inicio;
-        this.id_user_final = id_user_final;
-        this.comentarios = comentarios;
-        this.register_date = register_date;
-        this.last_update_date = last_update_date;
-        this.status_sla = status_sla;
-    }
 
-    @Override
+
+    public His_asignacion(Long id_his_asignacion, Ticket ticket, Long id_user_inicio, Long id_user_final,
+			String comentarios, Date register_date, Date last_update_date, String status_sla) {
+		super();
+		this.id_his_asignacion = id_his_asignacion;
+		this.ticket = ticket;
+		this.id_user_inicio = id_user_inicio;
+		this.id_user_final = id_user_final;
+		this.comentarios = comentarios;
+		this.register_date = register_date;
+		this.last_update_date = last_update_date;
+		this.status_sla = status_sla;
+	}
+
+
+
+	@Override
     public int hashCode() {
       return Objects.hash(id_his_asignacion);
     }

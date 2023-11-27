@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.Objects;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -42,30 +42,30 @@ public class Ticket implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id_ticket;
+    private Long id_ticket;
 
     @Column(name = "des_error")
     private String des_error;
-
-    @ManyToOne(optional = true, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+//cascade = { CascadeType.PERSIST, CascadeType.MERGE }
+    @ManyToOne(optional = true )
     @JoinColumn(name = "Id_est_repu", foreignKey = @ForeignKey(name = "FK_1_ID_Estados_REPU"))
     private EstadosRepu estadosrepu;
 
-    @ManyToOne(optional = true, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+    @ManyToOne(optional = true)
     @JoinColumn(name = "id_user", foreignKey = @ForeignKey(name = "FK_1_ID_usiarios"))
 
     private Usuarios usuarios;
 
 
-    @ManyToOne(optional = true, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+    @ManyToOne(optional = true)
     @JoinColumn(name = "Id_serv", foreignKey = @ForeignKey(name = "FK_1_Id_serv"))
-    private Servicios Servicios;
+    private Servicios servicios;
 
-    @ManyToOne(optional = true, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+    @ManyToOne(optional = true)
     @JoinColumn(name = "id_cliente", foreignKey = @ForeignKey(name = "FK_1_Id_cliente"))
     private Cliente cliente;
 
-    @ManyToOne(optional = true, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+    @ManyToOne(optional = true)
     @JoinColumn(name = "id_status_ticket", foreignKey = @ForeignKey(name = "FK_1_id_status_ticket"))
     private Status_Ticket status_Ticket;
 
@@ -83,54 +83,56 @@ public class Ticket implements Serializable {
     @Column(name = "Sla_status")
     private String sla_status;
 
+    @Column(name = "No_serie")
+    private String no_serie;
     @Column(name = "fecha_creacion", nullable = false)
     private Date register_date;
 
     @Column(name = "fecha_modificacion")
     private Date last_update_date;
 
+     public Ticket() {
+		// TODO Auto-generated constructor stub
+	} 
     
-    
-    
-    
-    
-    
-    public Ticket(Long id_ticket, String des_error, EstadosRepu estadosrepu, Usuarios usuarios,
-			com.ipn.Helpdesk.modelo.entidad.Servicios servicios, Cliente cliente, Status_Ticket status_Ticket,
-			Set<HisTicket> histicket, Set<Sol_Alm> sol_Alms, String sla_status, Date register_date,
-			Date last_update_date) {
+
+public Ticket(Long id_ticket, String des_error, EstadosRepu estadosrepu, Usuarios usuarios, Servicios servicios,
+			Cliente cliente, Status_Ticket status_Ticket, Set<HisTicket> histicket, Set<Sol_Alm> sol_Alms,
+			String sla_status, String no_serie, Date register_date, Date last_update_date) {
 		super();
-		Id_ticket = id_ticket;
+		this.id_ticket = id_ticket;
 		this.des_error = des_error;
 		this.estadosrepu = estadosrepu;
 		this.usuarios = usuarios;
-		Servicios = servicios;
+		this.servicios = servicios;
 		this.cliente = cliente;
 		this.status_Ticket = status_Ticket;
 		this.histicket = histicket;
 		this.sol_Alms = sol_Alms;
 		this.sla_status = sla_status;
+		this.no_serie = no_serie;
 		this.register_date = register_date;
 		this.last_update_date = last_update_date;
 	}
 
-    
-    
-    @Override
-    public int hashCode() {
-      return Objects.hash(Id_ticket);
-    }
-  
-    @Override
-    public boolean equals(Object obj) {
-      if (this == obj)
-        return true;
-      if (!(obj instanceof Ticket))
-        return false;
-      Ticket other = (Ticket) obj;
-      return Objects.equals(Id_ticket, other.Id_ticket);
-    }
-    
+	public String getNo_serie() {
+	return no_serie;
+}
+
+public void setNo_serie(String no_serie) {
+	this.no_serie = no_serie;
+}
+
+	public Long getId_ticket() {
+	return id_ticket;
+}
+
+
+public void setId_ticket(Long id_ticket) {
+	this.id_ticket = id_ticket;
+}
+
+
 	@PrePersist
     private void antesPersistir() {
         this.register_date = new Date();
@@ -142,16 +144,6 @@ public class Ticket implements Serializable {
     }
 
 
-
-	public Long getId_ticket() {
-		return Id_ticket;
-	}
-
-
-
-	public void setId_ticket(Long id_ticket) {
-		Id_ticket = id_ticket;
-	}
 
 
 
@@ -191,15 +183,21 @@ public class Ticket implements Serializable {
 
 
 
+	
+
 	public Servicios getServicios() {
-		return Servicios;
+		return servicios;
 	}
+
+
 
 
 
 	public void setServicios(Servicios servicios) {
-		Servicios = servicios;
+		this.servicios = servicios;
 	}
+
+
 
 
 

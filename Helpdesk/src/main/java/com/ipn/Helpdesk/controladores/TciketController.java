@@ -16,7 +16,7 @@ import com.ipn.Helpdesk.Servicios.TicketService;
 import com.ipn.Helpdesk.modelo.entidad.Ticket;
 
 @RestController
-@RequestMapping("/IPN/helpdesk/Ticket")
+@RequestMapping("/IPN/helpdesk/Ticket/")
 @CrossOrigin("*")
 public class TciketController {
 

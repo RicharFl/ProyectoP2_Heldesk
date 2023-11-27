@@ -73,11 +73,11 @@ public class Usuarios implements Serializable {
 	private String staus_user;
 
 
-	@ManyToOne(optional = true, cascade = { CascadeType.MERGE })
+	@ManyToOne(optional = true)
 	@JoinColumn(name = "id_zona", foreignKey = @ForeignKey(name = "FK_1_ZONA_ID"))
 	private ZonaEstados zonaestados;
 
-	@OneToMany(mappedBy = "usuarios", cascade = { CascadeType.MERGE }, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "usuarios", fetch = FetchType.LAZY)
 	@JsonIgnore
 	private Set<Ticket> ticket;
 
@@ -88,7 +88,7 @@ public class Usuarios implements Serializable {
 	private Date last_update_date;
 	
 	
-	@ManyToOne(optional = true, cascade = { CascadeType.MERGE })
+	@ManyToOne(optional = true )
 	@JoinColumn(name = "Id_per", foreignKey = @ForeignKey(name = "FK_4_PERFIL_ID"))
 	private Perfil perfil ;
 

@@ -34,7 +34,7 @@ public class PerfilController {
 	}
 
 	// Este metodo buscara perfil por id perfil
-
+		
 	@GetMapping(value = "/{id_perfil}")
 
 	public Perfil PerfilporId(@PathVariable("id_perfil") Long id_perfil) {

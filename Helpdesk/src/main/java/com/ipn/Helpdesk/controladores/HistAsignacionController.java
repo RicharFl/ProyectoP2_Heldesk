@@ -17,7 +17,7 @@ import com.ipn.Helpdesk.Servicios.HistAginacionService;
 import com.ipn.Helpdesk.modelo.entidad.His_asignacion;
 
 @RestController
-@RequestMapping("/IPN/helpdesk/HistAsignacion")
+@RequestMapping("/IPN/helpdesk/HistAsignacion/")
 @CrossOrigin("*")
 public class HistAsignacionController {
 

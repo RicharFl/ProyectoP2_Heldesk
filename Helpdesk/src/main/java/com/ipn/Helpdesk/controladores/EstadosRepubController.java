@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ipn.Helpdesk.Servicios.EstadosRepuService;
 import com.ipn.Helpdesk.modelo.entidad.EstadosRepu;
 
-@RequestMapping("/IPN/helpdesk/EstadosRepublica")
+@RequestMapping("/IPN/helpdesk/EstadosRepublica/")
 @RestController
 @CrossOrigin("*")
 public class EstadosRepubController {

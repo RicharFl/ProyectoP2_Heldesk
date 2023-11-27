@@ -16,7 +16,7 @@ import com.ipn.Helpdesk.Servicios.SlaTicketService;
 import com.ipn.Helpdesk.modelo.entidad.Sla_ticket;
 
 @RestController
-@RequestMapping("/IPN/helpdesk/SLATicket")
+@RequestMapping("/IPN/helpdesk/SLATicket/")
 @CrossOrigin("*")
 public class SlaTicketServiceController {
 

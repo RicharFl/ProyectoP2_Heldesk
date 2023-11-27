@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ipn.Helpdesk.Servicios.UsuarioService;
-import com.ipn.Helpdesk.Servicios.ZonaEstadosService;
-import com.ipn.Helpdesk.modelo.entidad.Perfil;
+
+
 
 import com.ipn.Helpdesk.modelo.entidad.Usuarios;
-import com.ipn.Helpdesk.modelo.entidad.ZonaEstados;
+
 import com.ipn.Helpdesk.repositorios.UsuarioRepository;
 
 import lombok.extern.slf4j.Slf4j;
@@ -24,8 +24,7 @@ import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.HashSet;
-import java.util.Set;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -43,14 +42,11 @@ public class UsuarioController {
 	@Autowired
 	private UsuarioService usuarioService;
 
-	@Autowired
-	private ZonaEstadosService estadosService;
 
 	@PostMapping("/")
 	public Usuarios CrearUsaurio(@RequestBody Usuarios usuarios) throws Exception {
 
-		ZonaEstados zonaEstados = new ZonaEstados();
-		zonaEstados = estadosService.ListarZonaEstadoUnica(usuarios.getZonaestados().getId_zon());
+	
 		String PasswordSHA256;
 		PasswordSHA256 = sha256(usuarios.getPassword());
 		//System.out.println("Este es el  Password " + usuarios.getPassword() + "Este es el HAS 256 = " + PasswordSHA256);
@@ -93,6 +89,7 @@ public class UsuarioController {
 		
 			//System.out.println("Paswword de usuarios es=" + pss1 + "*\n");
 			//System.out.println("Paswword de usuarioshast es=" + pss2 + "*\n");
+		System.out.println("Estoy en el Login");
 
 			if (pss1.equals(pss2)) {
 				System.out.println(" La autentificacion del Usario fue correcta");

@@ -16,7 +16,7 @@ import com.ipn.Helpdesk.Servicios.CuentaService;
 import com.ipn.Helpdesk.modelo.entidad.Cuenta;
 
 @RestController
-@RequestMapping("/IPN/helpdesk/Cuenta")
+@RequestMapping("/IPN/helpdesk/Cuenta/")
 @CrossOrigin("*")
 public class CuentaController {
 

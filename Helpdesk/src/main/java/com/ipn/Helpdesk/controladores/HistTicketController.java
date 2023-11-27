@@ -16,7 +16,7 @@ import com.ipn.Helpdesk.Servicios.HisTicketService;
 import com.ipn.Helpdesk.modelo.entidad.HisTicket;
 
 @RestController
-@RequestMapping("/IPN/helpdesk/HistTicket")
+@RequestMapping("/IPN/helpdesk/HistTicket/")
 @CrossOrigin("*")
 public class HistTicketController {
 

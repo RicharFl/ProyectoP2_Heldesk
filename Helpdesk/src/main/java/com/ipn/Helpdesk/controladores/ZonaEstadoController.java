@@ -16,7 +16,7 @@ import com.ipn.Helpdesk.Servicios.ZonaEstadosService;
 import com.ipn.Helpdesk.modelo.entidad.ZonaEstados;
 
 @RestController
-@RequestMapping("/IPN/helpdesk/ZonaEstado")
+@RequestMapping("/IPN/helpdesk/ZonaEstado/")
 @CrossOrigin("*")
 public class ZonaEstadoController {
 	

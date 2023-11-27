@@ -28,6 +28,21 @@ import { DashboarAdminComponent } from './pages/admin/dashboar-admin/dashboar-ad
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { DdashboarGerenteGeneralComponent } from './pages/Gerente_general/dashboar-gerente_general/ddashboar-gerente-general/ddashboar-gerente-general.component';
+import { CordinadorZonaComponent } from './pages/Cordinador_zona/dashboar-cordinador_zona/cordinador-zona/cordinador-zona.component';
+import { AgenteZonaComponent } from './pages/Agente_mesa/dashboar-Agente_mesa/agente-zona/agente-zona.component';
+import { TecnicoEspecComponent } from './pages/Tecnico_Espec/dashboar-tecnico_espec/tecnico-espec/tecnico-espec.component';
+import { AlmacenComponent } from './pages/almacen/dashboar-almacen/almacen/almacen.component';
+import {MatDividerModule} from '@angular/material/divider';
+import { SiderAdminComponent } from './pages/admin/sidebar-admin/sider-admin/sider-admin.component';
+import {MatListModule} from '@angular/material/list';
+import { DatosPerfilComponent } from './pages/admin/datos_perfil/datos-perfil/datos-perfil.component';
+import { ListaEmpleadosAdminComponent } from './pages/admin/lista-empleados-admin/lista-empleados-admin/lista-empleados-admin.component';
+import { ActualizaEmpleadoAdminComponent } from './pages/admin/actuliza-empleado-admin/actualiza-empleado-admin/actualiza-empleado-admin.component';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { AgregarUserAdminComponent } from './pages/admin/agregar-user-admin/agregar-user-admin/agregar-user-admin.component';
+import { TicketAdminComponent } from './pages/admin/ticket-admin/ticket-admin.component';
+import {MatTableModule} from '@angular/material/table';
 
 
 
@@ -38,7 +53,19 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     SignupComponent,
     LoginComponent,
     HomeComponent,
-    DashboarAdminComponent
+    DashboarAdminComponent,
+    DdashboarGerenteGeneralComponent,
+    CordinadorZonaComponent,
+    AgenteZonaComponent,
+    TecnicoEspecComponent,
+    AlmacenComponent,
+    SiderAdminComponent,
+    DatosPerfilComponent,
+    ListaEmpleadosAdminComponent,
+    ActualizaEmpleadoAdminComponent,
+    AgregarUserAdminComponent,
+    TicketAdminComponent
+    
     
   ],
   imports: [
@@ -55,8 +82,13 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatSnackBarModule,
     MatToolbarModule,
     MatIconModule,
-    MatSidenavModule
-     
+    MatSidenavModule,
+    MatDividerModule,
+    MatListModule,
+    NgxPaginationModule,
+    MatTableModule
+    
+    
   ],
   providers: [{
     provide: LOCALE_ID,

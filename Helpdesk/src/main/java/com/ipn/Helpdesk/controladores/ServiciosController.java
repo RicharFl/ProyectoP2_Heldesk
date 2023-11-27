@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ipn.Helpdesk.Servicios.ServiciosService;
 import com.ipn.Helpdesk.modelo.entidad.Servicios;
 
-@RequestMapping("/IPN/helpdesk/Servicios")
+@RequestMapping("/IPN/helpdesk/Servicios/")
 @RestController
 @CrossOrigin("*")
 public class ServiciosController {

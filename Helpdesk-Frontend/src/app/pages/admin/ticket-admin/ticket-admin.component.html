@@ -1,0 +1,37 @@
+<h2 class="text-center ">Lista Ticket</h2>
+<table class="table table-striped">
+  <thead class="table-dark text-center ">
+    <tr>
+      <th>ID Tikcet</th>
+      <th>Dependencia</th>
+      <th>No. Serie </th>
+      <th>Servicio</th>
+      <th> Estado</th>
+      <th> Zona Asignada</th>
+      <th> Accion</th>
+    </tr>
+  </thead>
+  <tbody class="text-center ">
+    <tr *ngFor="let e of ticket |  paginate: { itemsPerPage: 6, currentPage: pagina }">
+      <td>{{e.id_ticket}}</td>
+      <td>{{e.cliente.cuenta.nombre_cuen}}</td>
+      <td>{{e.no_serie}}</td>
+      <td>{{e.servicios.nom_service}}</td>
+      <td>{{e.estadosrepu.nombre_esatdo}}</td>
+      <td>{{e.estadosrepu.zona.nombree}}</td>
+      <td class="text-center">
+        <button class="btn btn-info">Editar</button>
+        <button  class="btn btn-primary"
+          style="margin-left : 10px;">Detalles</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div>
+<div class="text-center" >
+<pagination-controls (pageChange)="pagina = $event"  previousLabel="anterior" nextLabel="siguiente" 
+  screenReaderPageLabel="page" screenReaderCurrentLabel="You're on page">></pagination-controls>
+</div>
+<div class="container text-center mt20">
+  <button routerLink="/admin/agregar-user" mat-raised-button color="primary">Agregar empleado</button>
+</div>

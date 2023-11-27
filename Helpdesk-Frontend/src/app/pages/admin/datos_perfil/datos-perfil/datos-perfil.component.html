@@ -1,0 +1,65 @@
+<mat-card style="margin-left: 10px;">
+    <h1 class="text-center">Detalles del perfil</h1>
+    <mat-card-content>
+        <div class="bootstrap-wrapper">
+            <div class="container">
+                <div class="text-center">
+                    <img src="../../../assets/User3.png" alt="" class="profile-image">
+
+                    <h1 class="mt20">{{ user.nombre_user }} {{ user.apellidop_user }} {{ user.apellidom_user }}</h1>
+                </div>
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <table class="table text-center">
+                            <tr>
+                                <td>Nombre de usuario</td>
+                                <td>{{ user.username }}</td>
+                            </tr>
+                            <tr>
+                                <td>ID Empleado</td>
+                                <td>{{ user.id_user }}</td>
+                            </tr>
+                            <tr>
+                                <td>Correo</td>
+                                <td>{{ user.correo }}</td>
+                            </tr>
+                            <tr>
+                                <td>Teléfono</td>
+                                <td>{{ user.tel_user }}</td>
+                            </tr>
+                            <tr>
+                                <td>Extencion</td>
+                                <td>{{ user.ext_user }}</td>
+                            </tr>
+                            <tr>
+                            <tr>
+                                <td>Region Asignada</td>
+                                <td>{{ user.zonaestados.nombree }}</td>
+                            </tr>
+                            <tr>
+                                <td>Fecha de Alta</td>
+                                <td>{{ user.register_date }}</td>
+                            </tr>
+                            <tr>
+                                <td>Rol</td>
+                                <td>{{ user.perfil.nom_per}}</td>
+                            </tr>
+                            <tr>
+                                <td>Estado</td>
+                                <td>{{ user.staus_user }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container text-center">
+            <button (click)= "EditarDelEmpleado(user.username)" mat-raised-button color="primary">Actualizar</button>
+
+        </div>
+    </mat-card-content>
+</mat-card>
+
+<div class = "col-md-9">
+    <router-outlet></router-outlet>
+  </div>

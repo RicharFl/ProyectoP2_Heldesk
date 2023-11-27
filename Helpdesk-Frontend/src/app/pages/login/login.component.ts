@@ -55,19 +55,49 @@ export class LoginComponent implements OnInit {
               if (data.staus_user == "Pendiente")
               {
                 console.log("Empleado no ha sido autorizado cotactar con ADMIN");
-                Swal.fire('PENDIENTE', 'Usuario no Autentificado, comunicarce con ADMIN', 'warning');
+                Swal.fire('PENDIENTE', 'Usuario en espera de aprobacion, comunicarce con ADMIN', 'warning');
 
               }
               else{
                 this.loginService.SAVE_LOCAL_STORAGE_USER(this.loginData) 
-                console.log(this.loginService.getUser());
+              //  console.log(this.loginService.getUser());
+                console.log("pase save_local_storage");
+                
                 if(this.loginService.getUserRole()==1){
                   console.log("Mandar a HOME DE USUARIO");
                   this.router.navigate(['admin'])
+                 this.loginService.loginStatusSubjec.next(true);
+                }
+                else if (this.loginService.getUserRole()==2)
+                {
+                  this.router.navigate(['gerente_general'])
                   this.loginService.loginStatusSubjec.next(true);
                 }
-                
-                
+                else if (this.loginService.getUserRole()==3)
+                {
+                  this.router.navigate(['cordinador_zona'])
+                  this.loginService.loginStatusSubjec.next(true);
+                }
+                else if (this.loginService.getUserRole()==4)
+                {
+                  this.router.navigate(['agente-mesa'])
+                  this.loginService.loginStatusSubjec.next(true);
+                } 
+                else if (this.loginService.getUserRole()==5)
+                {
+                  this.router.navigate(['tecnico_especialista'])
+                  this.loginService.loginStatusSubjec.next(true);
+                }
+                else if (this.loginService.getUserRole()==6)
+                {
+                  this.router.navigate(['almacen'])
+                  this.loginService.loginStatusSubjec.next(true);
+                }
+                else {
+                  this.router.navigate(['login'])
+                  this.loginService.loginStatusSubjec.next(true);
+
+                }
               
               }
               console.log(data);
