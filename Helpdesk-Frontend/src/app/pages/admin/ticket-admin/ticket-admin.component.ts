@@ -47,4 +47,11 @@ ngOnInit(): void {
   )
 
 }
+
+EditarTiclet (id_ticket:string)
+{
+  this.router.navigate(['admin/detalle_ticket',id_ticket]);
+}
+
+
 }
