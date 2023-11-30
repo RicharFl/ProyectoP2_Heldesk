@@ -43,6 +43,9 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { AgregarUserAdminComponent } from './pages/admin/agregar-user-admin/agregar-user-admin/agregar-user-admin.component';
 import { TicketAdminComponent } from './pages/admin/ticket-admin/ticket-admin.component';
 import {MatTableModule} from '@angular/material/table';
+import { FilterPipe } from './pipes/filter.pipe';
+import { FiltroRolPipe } from './pipes/filtro-rol.pipe';
+import { DetalleTicketComponent } from './pages/admin/detaller-ticket/detalle-ticket/detalle-ticket.component';
 
 
 
@@ -64,7 +67,10 @@ import {MatTableModule} from '@angular/material/table';
     ListaEmpleadosAdminComponent,
     ActualizaEmpleadoAdminComponent,
     AgregarUserAdminComponent,
-    TicketAdminComponent
+    TicketAdminComponent,
+    FilterPipe,
+    FiltroRolPipe,
+    DetalleTicketComponent
     
     
   ],

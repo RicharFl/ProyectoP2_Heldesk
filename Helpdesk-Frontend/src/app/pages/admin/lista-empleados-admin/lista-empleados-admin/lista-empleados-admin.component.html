@@ -1,11 +1,22 @@
 <h2 class="text-center ">Lista empleados</h2>
+<div class="row">
+  <div class="col">
+    <div class="form-group">
+      <mat-form-field class="full-widthh" appearance="outline">
+        <mat-label>Ingrese Busqueda</mat-label>
+        <input required [(ngModel)]="filterPost" name="filterPost" matInput placeholder="Buscar....">
+      </mat-form-field>
 
-<table class="table table-striped"  >
-  <thead class="table-dark text-center ">   
+    </div>
+  </div>
+</div>
+
+<table class="table table-striped">
+  <thead class="table-dark text-center ">
     <tr>
       <th>Nombre</th>
       <th>Apellido Paterno</th>
-      <th>Apellido p</th>
+      <th>Apellido Metarno</th>
       <th>Estatus</th>
       <th>Rol</th>
       <th>Zona Asignada</th>
@@ -13,7 +24,7 @@
     </tr>
   </thead>
   <tbody class="text-center ">
-    <tr *ngFor="let e of usuarios |  paginate: { itemsPerPage: 6, currentPage: pagina }">
+    <tr *ngFor="let e of usuarios | filter:filterPost |  paginate: { itemsPerPage: 6, currentPage: pagina }">
       <td>{{e.nombre_user}}</td>
       <td>{{e.apellidom_user}}</td>
       <td>{{e.apellidop_user}}</td>
@@ -29,11 +40,14 @@
   </tbody>
 </table>
 <div>
-<div class="text-center" >
-<pagination-controls (pageChange)="pagina = $event"  previousLabel="anterior" nextLabel="siguiente" 
-  screenReaderPageLabel="page" screenReaderCurrentLabel="You're on page">></pagination-controls>
-</div>
-<div class="container text-center mt20">
-  <button  mat-raised-button color="primary" >Descargar EXCEL</button>
-  <button routerLink="/admin/agregar-user" mat-raised-button color="primary">Agregar empleado</button>
+  <div class="text-center">
+    <pagination-controls (pageChange)="pagina = $event" previousLabel="anterior" nextLabel="siguiente"
+      screenReaderPageLabel="page" screenReaderCurrentLabel="You're on page">></pagination-controls>
+  </div>
+  <div class="container text-center mt20">
+    <button mat-raised-button color="primary" style="margin-left: 70px; " (click)="exportarExcel()">Descargar
+      EXCEL</button>
+    <button routerLink="/admin/agregar-user" mat-raised-button color="accent" style="margin-left: 70px; ">Agregar
+      empleado</button>
+  </div>
 </div>
