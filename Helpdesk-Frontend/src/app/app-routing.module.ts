@@ -22,6 +22,7 @@ import { ChildrenOutletContexts, RouterModule, Routes } from '@angular/router';
 import { DashboarAdminComponent } from './pages/admin/dashboar-admin/dashboar-admin.component';
 import { AdminGuard } from './services/admin.guard';
 import { AgenteMesaGuard } from './services/agente-mesa.guard';
+import { DetalleTicketComponent } from './pages/admin/detaller-ticket/detalle-ticket/detalle-ticket.component';
 
 const routes: Routes = [
   {
@@ -62,8 +63,11 @@ const routes: Routes = [
         path: 'ticket_admin',
         component: TicketAdminComponent,
         //title: 'hola perfil',
-        children: [
-          ]
+      },
+      {
+        path: 'deetalle_ticket/:idticket',
+        component: DetalleTicketComponent,
+        //title: 'hola perfil',
       },
       {
         path: 'datos_perfil/:username',

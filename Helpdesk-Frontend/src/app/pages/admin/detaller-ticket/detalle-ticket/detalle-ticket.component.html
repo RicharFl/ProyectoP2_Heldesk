@@ -13,40 +13,44 @@
                         <table class="table text-center">
                             <tr>
                                 <td>No. Ticket</td>
-                                <td></td>
+                                <td>{{ticket.id_ticket}}</td>
                             </tr>
                             <tr>
                                 <td>Detalles de Error</td>
-                                <td></td>
+                                <td>{{ticket.des_error}}</td>
                             </tr>
                             <tr>
-                                <td>Entidad Federetatica</td>
-                                <td></td>
+                                <td>serie de Equipo</td>
+                                <td>{{ticket.no_serie}}</td>
                             </tr>
                             <tr>
-                                <td>Teléfono</td>
-                                <td></td>
+                                <td>Entidad Federerativa</td>
+                                <td>{{ticket.estadosrepu.nombre_esatdo}}</td>
                             </tr>
                             <tr>
-                                <td>Extencion</td>
-                                <td></td>
+                                <td>Servicio</td>
+                                <td>{{ticket.servicios.nom_service}}</td>
+                            </tr>
+                            <tr>
+                                <td>Nombre de Usuario que Reporta</td>
+                                <td>{{ticket.cliente.nombre_cli}} {{ticket.cliente.apellidoP_cli}} {{ticket.cliente.apellidoM_cli}} </td>
                             </tr>
                             <tr>
                             <tr>
-                                <td>Region Asignada</td>
-                                <td></td>
+                                <td>Telefono de Cliente</td>
+                                <td>{{ticket.cliente.tel_cli}} </td>
                             </tr>
                             <tr>
-                                <td>Fecha de Alta</td>
-                                <td></td>
+                                <td>Extension de Cliente</td>
+                                <td>{{ticket.cliente.ext_cli}} </td>
                             </tr>
                             <tr>
-                                <td>Rol</td>
-                                <td></td>
+                                <td>Estatus Ticket</td>
+                                <td>{{ticket.status_Ticket.nom_status}}</td>
                             </tr>
                             <tr>
-                                <td>Estado</td>
-                                <td></td>
+                                <td>Estatus de SLA</td>
+                                <td>{{ticket.sla_status}}</td>
                             </tr>
                         </table>
                     </div>

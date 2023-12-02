@@ -20,4 +20,9 @@ export class TicketService {
     return this.httpClient.put(`${baseUrl}/IPN/helpdesk/Ticket/`,ticket)
   }
 
+  public BuscaPorId_Ticket (ticket:any){
+    console.log ("este es el id:ticket en el endpond "+ticket.id_ticket);
+    return this.httpClient.get(`${baseUrl}/IPN/helpdesk/Ticket/${ticket.id_ticket}`,ticket.id_ticket)
+  }
+
 }

@@ -48,9 +48,12 @@ ngOnInit(): void {
 
 }
 
-EditarTiclet (id_ticket:string)
+DetalleTicket (idticket:string)
 {
-  this.router.navigate(['admin/detalle_ticket',id_ticket]);
+  //console.log("esto es lo que mando desde admin_ticket");
+console.log("esto es lo que mando desde admin_ticket "+idticket);
+
+  this.router.navigate(['admin/deetalle_ticket',idticket]);
 }
 
 
