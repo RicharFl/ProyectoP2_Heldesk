@@ -46,25 +46,25 @@ export class LoginComponent implements OnInit {
       //REVISO QUE TRAE LA EVALUAVION DE LOGIN UN FALSO O UN VERDADERO
         console.log(data);
         if (data == true) {
-          console.log("Mandar a inicio")
-          console.log(this.loginService.BuscaUsario(this.loginData).subscribe((data: any) => { console.log(data); }));
+         // console.log("Mandar a inicio")
+          //console.log(this.loginService.BuscaUsario(this.loginData).subscribe((data: any) => { console.log(data); }));
           this.loginService.BuscaUsario(this.loginData).subscribe(
             (data: any) => 
             { 
               console.log ("este es el perfil de usurio "+ data.perfil.id_per);
               if (data.staus_user == "Pendiente")
               {
-                console.log("Empleado no ha sido autorizado cotactar con ADMIN");
+                //console.log("Empleado no ha sido autorizado cotactar con ADMIN");
                 Swal.fire('PENDIENTE', 'Usuario en espera de aprobacion, comunicarce con ADMIN', 'warning');
 
               }
               else{
                 this.loginService.SAVE_LOCAL_STORAGE_USER(this.loginData) 
               //  console.log(this.loginService.getUser());
-                console.log("pase save_local_storage");
+               // console.log("pase save_local_storage");
                 
                 if(this.loginService.getUserRole()==1){
-                  console.log("Mandar a HOME DE USUARIO");
+                 // console.log("Mandar a HOME DE USUARIO");
                   this.router.navigate(['admin'])
                  this.loginService.loginStatusSubjec.next(true);
                 }

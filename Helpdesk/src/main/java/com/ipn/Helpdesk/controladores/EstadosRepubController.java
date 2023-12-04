@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ipn.Helpdesk.Servicios.EstadosRepuService;
 import com.ipn.Helpdesk.modelo.entidad.EstadosRepu;
+import com.ipn.Helpdesk.repositorios.EstadosRepuRepository;
 
 @RequestMapping("/IPN/helpdesk/EstadosRepublica/")
 @RestController
@@ -23,6 +24,8 @@ public class EstadosRepubController {
 
 	@Autowired
 	private EstadosRepuService estadosRepuService;
+	@Autowired
+	private EstadosRepuRepository estadosRepuRepository;
 
 	@PostMapping("/")
 	public ResponseEntity<EstadosRepu> GuardarNuevoEstadoRepublica(@RequestBody EstadosRepu estadosRepu) {
@@ -31,7 +34,7 @@ public class EstadosRepubController {
 
 	}
 
-	@GetMapping("/{Id_estadoRepublica}")
+	@GetMapping("/{id_estadoRepublica}")
 	public EstadosRepu ListaUnicoEstado(@PathVariable("id_estadoRepublica") Long Id_estadoRepublica) {
 		return estadosRepuService.listaEstadoRepublicaUnico(Id_estadoRepublica);
 
@@ -52,6 +55,13 @@ public class EstadosRepubController {
 
 	public void EliminarEstadoRepublica(@PathVariable("Id_estadoRepublica") Long Id_estadoRepublica) {
 		estadosRepuService.EliminaEstadosRepublica(Id_estadoRepublica);
+	}
+	
+	@GetMapping("/zonas/{zona}")
+	public ResponseEntity<?> ListaEstadoPorZona(@PathVariable ("zona") Long zona) {
+	
+		return ResponseEntity.ok(estadosRepuRepository.ListaEstadosPorZonaEconomica(zona));
+
 	}
 
 }

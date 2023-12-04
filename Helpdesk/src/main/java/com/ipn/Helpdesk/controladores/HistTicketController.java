@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ipn.Helpdesk.Servicios.HisTicketService;
 import com.ipn.Helpdesk.modelo.entidad.HisTicket;
+import com.ipn.Helpdesk.repositorios.HisTicketRepository;
 
 @RestController
 @RequestMapping("/IPN/helpdesk/HistTicket/")
@@ -22,6 +23,9 @@ public class HistTicketController {
 
 	@Autowired
 	private HisTicketService hisTicketService;
+	
+	@Autowired
+	private HisTicketRepository hisTicketRepository;
 
 	@PostMapping("/")
 
@@ -40,6 +44,12 @@ public class HistTicketController {
 	public ResponseEntity<?> ListaHistorialesdeTickets(){
 		return ResponseEntity.ok(hisTicketService.ListarHistorialesTickes());
 	}
+	
+	@GetMapping("/id_ticket/{id_ticket}")
+	public ResponseEntity<?> ListaHistorialdeTikcet(@PathVariable ("id_ticket") Long id_ticket){
+		return ResponseEntity.ok(hisTicketRepository.ListaHistorialdeTikcetporIdTiket(id_ticket));
+	}
+	
 	
 	@DeleteMapping ("/{id_historialTicket}")
 	public void eliminarHistialTicketporID(@PathVariable ("id_historialTicket") Long id_historialTicket )

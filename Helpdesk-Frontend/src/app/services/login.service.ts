@@ -34,9 +34,11 @@ public SAVE_LOCAL_STORAGE_USER (loginData:any){
   this.http.get(`${baseUrl}/IPN/helpdesk/Usuario/userName/${loginData.username}`,loginData.usarname).subscribe(
     (data:any)=> {
      // console.log("guarde en local store informacion");
-      localStorage.setItem('id_user_front',JSON.stringify(data.id_user));
+    
       localStorage.setItem('username_front',JSON.stringify(data.username));
       localStorage.setItem('perfil_front',JSON.stringify(data.perfil.id_per));
+      localStorage.setItem('zonaEconomica',JSON.stringify(data.zonaestados.id_zon));
+      localStorage.setItem('id_user_front',JSON.stringify(data.id_user));
 
       return true;
     }
@@ -55,16 +57,21 @@ public esta_concectado(){
 
  //obtenemos usuario 
  public getusarname_storage(){
-  return localStorage.getItem('id_user_front');
+  return  localStorage.getItem('id_user_front');
+ 
+}
+
+public getzonaEconomica_storage(){
+  return JSON.parse(localStorage.getItem('zonaEconomica'));
  
 }
 public getperfil_storage(){
-  return localStorage.getItem('perfil_front');
+  return JSON.parse(localStorage.getItem('perfil_front'));
 }
 
 //obtenemos id_user
 public getiduser_storage(){
-  return localStorage.getItem('username_front');
+  return JSON.parse(localStorage.getItem('username_front'));
 }
 
 //cerranis sesion y eliminamos el token del localStorage

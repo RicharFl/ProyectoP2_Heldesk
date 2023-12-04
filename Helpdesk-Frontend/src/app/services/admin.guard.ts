@@ -15,9 +15,10 @@ export class AdminGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       if(this.loginService.esta_concectado() && this.loginService.getUserRole() == '1'){
+        console.log("PASE EL GUARD ADMIN");
         return true;
       }
-  
+     // console.log("ME BOTO  GUARD ADMIN");
       this.router.navigate(['login']);
       return false;
   }

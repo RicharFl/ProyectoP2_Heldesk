@@ -60,7 +60,7 @@ public class ZonaEstados implements Serializable {
 */
     
 public ZonaEstados () {
-	System.out.println("estoy en el constructor de zona estados");
+	//System.out.println("estoy en el constructor de zona estados");
 }
   
   public ZonaEstados(Long id_zon,Date last_update_date, String nombree, Date register_date) {

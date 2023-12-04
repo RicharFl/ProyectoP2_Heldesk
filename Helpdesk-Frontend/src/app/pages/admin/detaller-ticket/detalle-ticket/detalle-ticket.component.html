@@ -4,13 +4,13 @@
         <div class="bootstrap-wrapper">
             <div class="container">
                 <div class="text-center">
-                    <img src="../../../assets/User3.png" alt="" class="profile-image">
+                    <img src="../../../assets/ticket.png" alt="" class="profile-image">
 
                     <h1 class="mt20"></h1>
                 </div>
                 <div class="row">
                     <div class="col-md-10 offset-md-1">
-                        <table class="table text-center">
+                        <table class="table2 text-center">
                             <tr>
                                 <td>No. Ticket</td>
                                 <td>{{ticket.id_ticket}}</td>
@@ -52,13 +52,46 @@
                                 <td>Estatus de SLA</td>
                                 <td>{{ticket.sla_status}}</td>
                             </tr>
+                            <tr>
+                                <td>Usuario creador del Ticket </td>
+                                <td>{{ticket.usuarios.nombre_user}} {{ticket.usuarios.apellidop_user}} {{ticket.usuarios.apellidom_user}}</td>
+                            </tr>
                         </table>
                     </div>
                 </div>
+
+                <table class="table table-striped" style="margin-top: 40px">
+                    <thead class="table-dark text-center ">
+                      <tr>
+                        <th>ID Tikcet</th>
+                        <th>Documenta</th>
+                        <th>Comentario </th>
+                        <th>Fecha de Doc.</th>
+                        <th> Tiempo Restante SLA</th>
+                    
+                        <th> SLA Ticket</th>
+                      
+                        
+                      </tr>
+                    </thead>
+                    <tbody class="text-center ">
+                      <tr *ngFor="let e of histrial_tiket |  paginate: { itemsPerPage: 6, currentPage: pagina }">
+                        <td   > {{ticket.id_ticket}}</td>
+                        <td  >{{e.username}}</td>
+                        <td  >{{e.comentario}}</td>
+                        <td  >{{e.last_update_date}}</td>
+                        <td >{{e.sla_status_hist}}</td>
+                        <td  >{{e.sla_ticket.descripcion}} : {{e.sla_ticket.tiempo_sla}} HRS</td>
+                       
+                    
+                      </tr>
+                    </tbody>
+                  </table>
             </div>
         </div>
-        <div class="container text-center">
-            <button mat-raised-button color="primary">Actualizar</button>
+       
+        <div class="container text-center" >
+            <button (click)="editarTicket(ticket.id_ticket)" mat-raised-button color="primary">Actualizar</button>
 
         </div>
     </mat-card-content>

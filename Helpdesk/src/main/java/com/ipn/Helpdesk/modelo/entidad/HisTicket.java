@@ -22,6 +22,7 @@ import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
 
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -48,9 +49,9 @@ public class HisTicket implements Serializable  {
     @JoinColumn(name = "Id_ticket", foreignKey = @ForeignKey(name = "FK_1_Id_ticket"), nullable=false)
     private Ticket ticket;
 
-    @Column(name = "Id_user")
-    private Long id_user;
-    @Column(name = "Comentario")
+    @Column(name = "Username")
+    private String username;
+    @Column(name = "Comentario", columnDefinition = "text")
     private String  comentario;
     
     @Column(name = "Fec_inicio", nullable = false)
@@ -75,16 +76,13 @@ public HisTicket()
 {
 	}
 
-   
-  
 
-
-	public HisTicket(Long id_histori, Ticket ticket, Long id_user, String comentario, Date fec_inicio, Long sla_status_hist,
-		Date register_date, Date last_update_date, Sla_ticket sla_ticket) {
+	public HisTicket(Long id_histori, Ticket ticket, String username, String comentario, Date fec_inicio,
+		Long sla_status_hist, Date register_date, Date last_update_date, Sla_ticket sla_ticket) {
 	super();
 	this.id_histori = id_histori;
 	this.ticket = ticket;
-	this.id_user = id_user;
+	this.username = username;
 	this.comentario = comentario;
 	this.fec_inicio = fec_inicio;
 	this.sla_status_hist = sla_status_hist;
@@ -94,12 +92,9 @@ public HisTicket()
 }
 
 
-
-
-
 	@Override
     public int hashCode() {
-        return Objects.hash(id_histori, id_user);
+        return Objects.hash(id_histori, username);
     }
 
     @Override
@@ -109,7 +104,7 @@ public HisTicket()
         if (!(obj instanceof HisTicket))
             return false;
         HisTicket other = (HisTicket) obj;
-        return Objects.equals(id_histori, other.id_histori) && Objects.equals(id_user, other.id_user);
+        return Objects.equals(id_histori, other.id_histori) && Objects.equals(username, other.username);
     }
 
     
@@ -162,85 +157,44 @@ public HisTicket()
 	public void setLast_update_date(Date last_update_date) {
 		this.last_update_date = last_update_date;
 	}
-
-
-
-
-
-	public Long getId_user() {
-		return id_user;
-	}
-
-
-
-
-
-	public void setId_user(Long id_user) {
-		this.id_user = id_user;
-	}
-
-
-
-
-
 	public String getComentario() {
 		return comentario;
 	}
-
-
-
-
 
 	public void setComentario(String comentario) {
 		this.comentario = comentario;
 	}
 
-
-
-
-
 	public Date getFec_inicio() {
 		return fec_inicio;
 	}
-
-
-
-
 
 	public void setFec_inicio(Date fec_inicio) {
 		this.fec_inicio = fec_inicio;
 	}
 
-
-
-
-
 	public Long getSla_status_hist() {
 		return sla_status_hist;
 	}
-
-
-
-
 
 	public void setSla_status_hist(Long sla_status_hist) {
 		this.sla_status_hist = sla_status_hist;
 	}
 
-
-
-
-
 	public Sla_ticket getSla_ticket() {
 		return sla_ticket;
 	}
 
-
-
-
-
 	public void setSla_ticket(Sla_ticket sla_ticket) {
 		this.sla_ticket = sla_ticket;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 

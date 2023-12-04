@@ -8,21 +8,25 @@
       <th>Servicio</th>
       <th> Estado</th>
       <th> Zona Asignada</th>
+      <th> Est. Ticket</th>
       <th> Accion</th>
+      
     </tr>
   </thead>
   <tbody class="text-center ">
     <tr *ngFor="let e of ticket |  paginate: { itemsPerPage: 6, currentPage: pagina }">
-      <td>{{e.id_ticket}}</td>
-      <td>{{e.cliente.cuenta.nombre_cuen}}</td>
-      <td>{{e.no_serie}}</td>
-      <td>{{e.servicios.nom_service}}</td>
-      <td>{{e.estadosrepu.nombre_esatdo}}</td>
-      <td>{{e.estadosrepu.zona.nombree}}</td>
+      <td   (click)="DetalleTicket(e.id_ticket)"> {{e.id_ticket}}</td>
+      <td  (click)="DetalleTicket(e.id_ticket)">{{e.cliente.cuenta.nombre_cuen}}</td>
+      <td  (click)="DetalleTicket(e.id_ticket)">{{e.no_serie}}</td>
+      <td  (click)="DetalleTicket(e.id_ticket)">{{e.servicios.nom_service}}</td>
+      <td  (click)="DetalleTicket(e.id_ticket)">{{e.estadosrepu.nombre_esatdo}}</td>
+      <td (click)="DetalleTicket(e.id_ticket)" >{{e.estadosrepu.zona.nombree}}</td>
+      <td>{{e.status_Ticket.nom_status}}</td>
       <td class="text-center">
-        <button  class="btn btn-info">Editar</button>
-        <button  (click)="DetalleTicket(e.id_ticket)" class="btn btn-primary"
-          style="margin-left : 10px;">Detalles</button>
+        <button  (click)="DetalleTicket(e.id_ticket)" class="btn btn-success" >Asignar</button>
+        <button  (click)="editarTicket(e.id_ticket)" class="btn btn-info"  style="margin-left : 10px;">Editar</button>
+        <button  (click)="DetalleTicket(e.id_ticket)" class="btn btn-warning"  style="margin-left : 10px;">Doc.</button>
+        <!-- <button  (click)="DetalleTicket(e.id_ticket)" class="btn btn-primary" style="margin-left : 10px;">Detalles</button> -->
       </td>
     </tr>
   </tbody>
@@ -33,5 +37,5 @@
   screenReaderPageLabel="page" screenReaderCurrentLabel="You're on page">></pagination-controls>
 </div>
 <div class="container text-center mt20">
-  <button routerLink="/admin/agregar-user" mat-raised-button color="primary">Agregar empleado</button>
+  <button routerLink="/admin/crear_ticket" mat-raised-button color="accent">Crear Ticket</button>
 </div>

@@ -5,13 +5,13 @@
     border-radius: 50%;
   }
   
-  .table{
+  .table2{
     width: 100%;
     border-collapse: collapse;
     font-size: 20px;
   }
   
-  .table tr td{
+  .table2 tr td{
     padding: 15px 10px;
     border: 0.5px solid rgb(220, 220, 220);
   }

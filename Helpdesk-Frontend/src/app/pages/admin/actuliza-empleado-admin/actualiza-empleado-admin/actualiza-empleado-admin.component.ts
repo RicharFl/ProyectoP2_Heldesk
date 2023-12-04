@@ -17,12 +17,12 @@ export class ActualizaEmpleadoAdminComponent implements OnInit {
     "username": '',
     "password": '10',
   }
-
+ 
   username!: string;
   user: any = null;
   ngOnInit(): void {
 
-    console.log(this.route.snapshot.params['username']);
+    //console.log(this.route.snapshot.params['username']);
     if (this.route.snapshot.params['username'] != undefined) {
       this.loginData_nuevi.username = this.route.snapshot.params['username'];
     }

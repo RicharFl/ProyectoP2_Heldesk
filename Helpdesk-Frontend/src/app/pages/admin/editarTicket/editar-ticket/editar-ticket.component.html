@@ -1,0 +1,134 @@
+<mat-card style="margin-left: 10px; margin-top : 20px;">
+    <h1 class="text-center">Detalles del perfil</h1>
+    <mat-card-content>
+        <div class="bootstrap-wrapper">
+            <div class="container">
+                <div class="text-center">
+                    <img src="../../../assets/ticket.png" alt="" class="profile-image">
+
+                    <h1 class="mt20"> Estas editando un ticket de: {{ ticket.cliente.cuenta.nombre_cuen}} </h1>
+                </div>
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <table class="table container text-center ">
+                            <tr>
+                                <td>Id de Ticket</td>
+                                <td>{{ ticket.id_ticket }}</td>
+                            </tr>
+                            <!-- <h1 class="mt20"> Datos de Usuario que Reporta Ticket </h1> -->
+
+                            <tr>
+                                <td>Numero de Cliente</td>
+                                <td>
+
+                                    <div class="input-group mb-3 " appearance="outline">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" for="inputGroupSelect03"> Cliente</label>
+                                        </div>
+                                        <select required [(ngModel)]="ticket.cliente.id_cliente" name="inputGroupSelect03" id="inputGroupSelect03">
+                                        
+                                            <option *ngFor="let cli of Cliente" [value]="cli.id_cliente">{{cli.id_cliente }} - {{ cli.nombre_cli}} {{ cli.apellidoP_cli}} {{ cli.apellidoM_cli}} -{{ cli.cuenta.nombre_cuen}} 
+
+                                                
+                                            </option>
+                      
+                                        </select>
+                                    
+                                    </div>
+
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Nombre</td>
+                                <td>{{ ticket.cliente.nombre_cli}} </td>
+                            </tr>
+
+                            <tr>
+                                <td>Apellido Parterno</td>
+                                <td>{{ ticket.cliente.apellidoP_cli}}</td>
+                            </tr>
+
+                            <tr>
+                                <td>Apellido Materno</td>
+                                <td> {{ ticket.cliente.apellidoM_cli}}</td>
+                            </tr>
+
+                            <tr>
+                                <td>Dependencia</td>
+                                <td> {{ ticket.cliente.cuenta.nombre_cuen}} </td>
+                            </tr>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+   
+    <form (ngSubmit)="onSubmit()" #empleadoForm="ngForm" class="container text-center">
+        <div class="form-group">
+
+
+            <mat-form-field class="full-widthh" appearance="outline">
+                <mat-label>Descripcion del Error</mat-label>
+                <input required [(ngModel)]="ticket.des_error" name="nombre_user" matInput
+                    placeholder="Digite su nombre de usuario">
+            </mat-form-field>
+
+            <mat-form-field class="full-widthh" appearance="outline">
+                <mat-label>Numero de Serie</mat-label>
+                <input required [(ngModel)]="ticket.no_serie" name="apellidop_user" matInput
+                    placeholder="Digite su Apellido Paterno">
+            </mat-form-field>
+
+
+
+            <div class="full-widthh2 container text-center">
+                <div class="input-group mb-3 " appearance="outline">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect03"> Ent. Federativa</label>
+                    </div>
+                    <select required [(ngModel)]="ticket.estadosrepu.id_est_repu" name="inputGroupSelect03" id="inputGroupSelect03">
+                    
+                        <option *ngFor="let Estado of EstadosRepublicas" [value]="Estado.id_est_repu">{{Estado.nombre_esatdo }}</option>
+  
+                    </select>
+                </div>
+
+                <div class="input-group mb-3 " appearance="outline">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect01"> Servicio</label>
+                    </div>
+                    <select required [(ngModel)]="ticket.servicios.id_serv" name="inputGroupSelect01" id="inputGroupSelect01">
+                     
+                        <option *ngFor="let ser of Servicio" [value]="ser.id_serv">{{ser.nom_service }} - {{ser.impa_ser }}</option>
+  
+                    </select>
+                </div>
+                <div class="input-group mb-3 " appearance="outline">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect02"> Estatus </label>
+                    </div>
+                    <select required [(ngModel)]="ticket.status_Ticket.id_status_ticket" name="inputGroupSelect02" id="inputGroupSelect02">
+                        <option selected>Estatus de Ticket..</option>
+                        <option *ngFor="let estTickes of EstatusTicket" [value]="estTickes.id_status_ticket">{{estTickes.nom_status }}</option>
+  
+                    </select>
+                </div>
+
+
+           
+            </div>
+
+        </div>
+        <div class="container text-center">
+            <button mat-raised-button color="warn">Actualizar</button>
+            <button type="reset" style="margin-left: 60px;" mat-raised-button
+            color="accent">Limpiar</button>
+            <button routerLink = "/admin/ticket_admin" style="margin-left: 60px;" mat-raised-button
+            color="primary">Salir</button>
+        </div>
+    </form>
+</mat-card-content>
+</mat-card >

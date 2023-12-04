@@ -51,9 +51,17 @@ ngOnInit(): void {
 DetalleTicket (idticket:string)
 {
   //console.log("esto es lo que mando desde admin_ticket");
-console.log("esto es lo que mando desde admin_ticket "+idticket);
+//console.log("esto es lo que mando desde admin_ticket "+idticket);
 
   this.router.navigate(['admin/deetalle_ticket',idticket]);
+}
+
+editarTicket (idticket:string)
+{
+  //console.log("esto es lo que mando desde admin_ticket");
+//console.log("esto es lo que mando desde admin_ticket "+idticket);
+
+  this.router.navigate(['admin/editar_ticket',idticket]);
 }
 
 

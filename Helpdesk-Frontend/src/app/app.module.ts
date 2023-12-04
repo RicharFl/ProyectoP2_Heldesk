@@ -46,6 +46,8 @@ import {MatTableModule} from '@angular/material/table';
 import { FilterPipe } from './pipes/filter.pipe';
 import { FiltroRolPipe } from './pipes/filtro-rol.pipe';
 import { DetalleTicketComponent } from './pages/admin/detaller-ticket/detalle-ticket/detalle-ticket.component';
+import { EditarTicketComponent } from './pages/admin/editarTicket/editar-ticket/editar-ticket.component';
+import { CrearticketComponent } from './pages/admin/crearticket/crearticket/crearticket.component';
 
 
 
@@ -70,7 +72,9 @@ import { DetalleTicketComponent } from './pages/admin/detaller-ticket/detalle-ti
     TicketAdminComponent,
     FilterPipe,
     FiltroRolPipe,
-    DetalleTicketComponent
+    DetalleTicketComponent,
+    EditarTicketComponent,
+    CrearticketComponent
     
     
   ],

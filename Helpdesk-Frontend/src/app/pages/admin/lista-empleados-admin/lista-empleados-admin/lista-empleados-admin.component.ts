@@ -12,9 +12,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListaEmpleadosAdminComponent implements OnInit {
 
-  usuarios: any = [
-
-  ]
+  usuarios: any = null;
 
 
   pagina!: number;
