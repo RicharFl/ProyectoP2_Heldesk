@@ -45,7 +45,7 @@ public class HisTicket implements Serializable  {
     private Long id_histori;
 
 
-    @ManyToOne(optional = true, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+    @ManyToOne(optional = true)
     @JoinColumn(name = "Id_ticket", foreignKey = @ForeignKey(name = "FK_1_Id_ticket"), nullable=false)
     private Ticket ticket;
 
@@ -67,7 +67,7 @@ public class HisTicket implements Serializable  {
     private Date last_update_date;
     
     
-    @ManyToOne(optional = true, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+    @ManyToOne(optional = true)
     @JoinColumn(name = "id_sla", foreignKey = @ForeignKey(name = "FK_1_Id_sla_ticket"), nullable=false)
     private Sla_ticket sla_ticket;
 

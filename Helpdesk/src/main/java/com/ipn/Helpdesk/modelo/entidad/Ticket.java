@@ -5,7 +5,7 @@ import java.util.Date;
 
 import java.util.Set;
 
-
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -74,7 +74,7 @@ public class Ticket implements Serializable {
     private Set<HisTicket> histicket;
 
 
-    @OneToMany (mappedBy = "ticket", fetch = FetchType.LAZY)
+    @OneToMany (mappedBy = "ticket", fetch = FetchType.LAZY, cascade=CascadeType.ALL)
     @JsonIgnore
     private Set<Sol_Alm> sol_Alms;
 

@@ -58,7 +58,7 @@ export class AgregarUserAdminComponent {
     }
     this.userService.añadirUsuario(this.user).subscribe(
       (data) => {
-        console.log(data);
+       // console.log(data);
         Swal.fire('Usuario guardado', 'Usuario registrado con exito en el sistema', 'success');
         this.router.navigate(['admin/lista_usuarios']);
      
