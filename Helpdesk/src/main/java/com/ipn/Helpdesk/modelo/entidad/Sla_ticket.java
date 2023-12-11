@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.Objects;
 import java.util.Set;
 
-
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -51,7 +51,7 @@ public class Sla_ticket implements Serializable  {
     @Column(name = "Descripcion")
     private String  descripcion;
     
-    @OneToMany(mappedBy = "sla_ticket", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "sla_ticket", fetch = FetchType.LAZY, cascade=CascadeType.ALL)
     @JsonIgnore
     private Set<HisTicket> hisTickets;
 

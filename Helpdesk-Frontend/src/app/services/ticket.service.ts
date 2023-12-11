@@ -21,7 +21,7 @@ export class TicketService {
   }
 
   public BuscaPorId_Ticket (ticket:any){
-    console.log ("este es el id "+ticket.id_ticket + " enpoind BuscaPorId_Ticket del ticketservice");
+   // console.log ("este es el id "+ticket.id_ticket + " enpoind BuscaPorId_Ticket del ticketservice");
     return this.httpClient.get(`${baseUrl}/IPN/helpdesk/Ticket/${ticket.id_ticket}`,ticket.id_ticket)
   }
 

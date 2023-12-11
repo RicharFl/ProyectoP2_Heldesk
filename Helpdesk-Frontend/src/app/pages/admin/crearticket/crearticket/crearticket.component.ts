@@ -44,7 +44,7 @@ export class CrearticketComponent implements OnInit {
     sla_status_hist: 0,
     register_date: Date.now(),
     last_update_date: Date.now(),
-    sla_ticket: { id_sla: 1 }
+    sla_ticket: { id_sla: '' }
   }
 
 
@@ -110,6 +110,19 @@ export class CrearticketComponent implements OnInit {
       }
 
     )
+
+
+    this.dataHistorialTicket = {
+
+      ticket: { id_ticket: '' },
+      username: '',
+      comentario: '',
+      fec_inicio: Date.now(),
+      sla_status_hist: 0,
+      register_date: Date.now(),
+      last_update_date: Date.now(),
+      sla_ticket: { id_sla: '' }
+    }
   }
 
 
@@ -118,7 +131,11 @@ export class CrearticketComponent implements OnInit {
 
 
   formSubmit() {
-    // console.log(this.user);
+
+
+
+    
+    console.log(this.dataTicket);
     if (this.dataTicket.des_error == '' || this.dataTicket.des_error == null) {
       this.snack.open('La descripcion del Error es Necesario !!', 'Aceptar', {
         duration: 3000,
@@ -143,7 +160,7 @@ export class CrearticketComponent implements OnInit {
     this.ticketService.agrgarTicket(this.dataTicket).subscribe(
       (data1) => {
 
-        localStorage.setItem('idTicketLocalestorage', JSON.stringify(data1));
+       // localStorage.setItem('idTicketLocalestorage', JSON.stringify(data1));
 
         this.ticketService.BuscaPorId_Ticket(data1).subscribe(
           (data2: any) => {
@@ -153,25 +170,32 @@ export class CrearticketComponent implements OnInit {
             //console.log("Este es el ID del ticket "+(data2.id_ticket));
             //  console.log(this.data2);
             this.dataHistorialTicket.comentario = 'Ticket Creado por: ' + this.loginService.getiduser_storage();
-            this.dataHistorialTicket.ticket.id_ticket = data2.id_ticket;
+            this.dataHistorialTicket.ticket.id_ticket = JSON.stringify(data2.id_ticket);
             this.dataHistorialTicket.username = this.loginService.getiduser_storage();
 
             if (this.data2.servicios.impa_ser == 'Alto') {
               this.dataHistorialTicket.sla_status_hist = 18;
-              this.dataHistorialTicket.sla_ticket.id_sla = 1;
+              this.dataHistorialTicket.sla_ticket.id_sla = '1';
 
             }
             else if (this.data2.servicios.impa_ser == 'Medio') {
               this.dataHistorialTicket.sla_status_hist = 52;
-              this.dataHistorialTicket.sla_ticket.id_sla = 2;
+              this.dataHistorialTicket.sla_ticket.id_sla = '2';
             }
             else {
               this.dataHistorialTicket.sla_status_hist = 168;
-              this.dataHistorialTicket.sla_ticket.id_sla = 3;
+              this.dataHistorialTicket.sla_ticket.id_sla = '3';
             }
 
           }
         )
+
+        Swal.fire('Ticket Creado', 'Ticket registrado con exito en el sistema', 'success');
+        this.router.navigate(['admin/ticket_admin']);
+
+       //localStorage.setItem('dataHistorialTicket',JSON.stringify(this.dataHistorialTicket));
+
+       
 
         ///   console.log("este es el JSON PARA HISTORIAL");
         ///  console.log (this.dataHistorialTicket);
@@ -188,6 +212,9 @@ export class CrearticketComponent implements OnInit {
       }
     )
 
+
+   /*
+console.log(this.dataHistorialTicket);
     this.histTicket.AgregarAlHistorial(this.dataHistorialTicket).subscribe(
       (data5) => {
         Swal.fire('Ticket Creado', 'Ticket registrado con exito en el sistema', 'success');
@@ -201,7 +228,7 @@ export class CrearticketComponent implements OnInit {
       }
     )
 
-
+*/
 
 
 

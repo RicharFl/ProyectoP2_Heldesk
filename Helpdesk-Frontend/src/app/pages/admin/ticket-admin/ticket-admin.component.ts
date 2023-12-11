@@ -2,6 +2,7 @@ import  Swal  from 'sweetalert2';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TicketService } from 'src/app/services/ticket.service';
+import { HistorialticketService } from 'src/app/services/historialticket.service';
 
  
 @Component({
@@ -31,9 +32,29 @@ public ticket_AGuardar ={
 
 
 
-constructor(private tickets: TicketService, private router:Router) { }
+constructor(private tickets: TicketService, private router:Router, private histTicketService: HistorialticketService) { }
 ngOnInit(): void {
+/*
+  let dataclienteee = JSON.parse(localStorage.getItem ('dataHistorialTicket'));
+ if ( dataclienteee == null   ){
+  console.log("No hay inforacion");
 
+ }
+ else {
+this.histTicketService.AgregarAlHistorial(dataclienteee).subscribe(
+  (dato1:any) => {
+        console.log("se guardo correctamente el registro");
+        localStorage.removeItem('dataHistorialTicket')
+  },
+  (error)=>{
+    console.log("EEROR EN GGUARDAR EL HISTORIA DE CREACCION");
+    localStorage.removeItem('dataHistorialTicket')
+  }
+
+)
+console.log(dataclienteee);
+
+ }*/
 
   this.tickets.listaTodosLosTickets().subscribe(
     (dato:any) => {
@@ -54,6 +75,16 @@ DetalleTicket (idticket:string)
 //console.log("esto es lo que mando desde admin_ticket "+idticket);
 
   this.router.navigate(['admin/deetalle_ticket',idticket]);
+}
+
+
+
+DocTicket (idticket:string)
+{
+  //console.log("esto es lo que mando desde admin_ticket");
+//console.log("esto es lo que mando desde admin_ticket "+idticket);
+
+  this.router.navigate(['admin/documentar_ticket',idticket]);
 }
 
 editarTicket (idticket:string)

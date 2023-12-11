@@ -1,3 +1,4 @@
+import { DocTicketComponent } from './pages/admin/doc-ticket/doc-ticket/doc-ticket.component';
 import { CrearticketComponent } from './pages/admin/crearticket/crearticket/crearticket.component';
 import { EditarTicketComponent } from './pages/admin/editarTicket/editar-ticket/editar-ticket.component';
 import { TicketAdminComponent } from './pages/admin/ticket-admin/ticket-admin.component';
@@ -79,6 +80,11 @@ const routes: Routes = [
       {
         path: 'editar_ticket/:idticket',
         component: EditarTicketComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'documentar_ticket/:idticket',
+        component: DocTicketComponent,
         //title: 'hola perfil',
       },
       {

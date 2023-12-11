@@ -1,0 +1,106 @@
+<mat-card style="margin-left: 10px;">
+    <h1 class="text-center">Documentando Ticket</h1>
+    <mat-card-content>
+        <div class="bootstrap-wrapper">
+            <div class="container">
+                <div class="text-center">
+                    <img src="../../../assets/ducumentar.png" alt="" class="profile-image">
+
+                    <h1 class="mt20"></h1>
+                </div>
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <table class="table2 text-center">
+                            <tr>
+                                <td>No. Ticket</td>
+                                <td>{{ticket.id_ticket}}</td>
+                            </tr>
+                            <tr>
+                                <td>Detalles de Error</td>
+                                <td>{{ticket.des_error}}</td>
+                            </tr>
+                            <tr>
+                                <td>serie de Equipo</td>
+                                <td>{{ticket.no_serie}}</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Servicio</td>
+                                <td>{{ticket.servicios.nom_service}}</td>
+                            </tr>
+                            <tr>
+                                <td>Nombre de Usuario que Reporta</td>
+                                <td>{{ticket.cliente.nombre_cli}} {{ticket.cliente.apellidoP_cli}} {{ticket.cliente.apellidoM_cli}} </td>
+                            </tr>
+                            <tr>
+                            
+                            <tr>
+                                <td>Estatus Ticket</td>
+                                <td>{{ticket.status_Ticket.nom_status}}</td>
+                            </tr>
+                            <tr>
+                                <td>Estatus de SLA</td>
+                                <td>{{ticket.sla_status}}</td>
+                            </tr>
+                           
+                        </table>
+                    </div>
+                </div>
+
+                <table class="table table-striped" style="margin-top: 40px">
+                    <thead class="table-dark text-center ">
+                      <tr>
+                        <th>ID Tikcet</th>
+                        <th>Documenta</th>
+                        <th>Comentario </th>
+                        <th>Fecha de Doc.</th>
+                        <th> Tiempo Restante SLA</th>
+                        <th> SLA Ticket</th>
+                      
+                        
+                      </tr>
+                    </thead>
+                    <tbody class="text-center ">
+                      <tr *ngFor="let e of histrial_tiket |  paginate: { itemsPerPage: 6, currentPage: pagina }">
+                        <td   > {{ticket.id_ticket}}</td>
+                        <td  >{{e.username}}</td>
+                        <td  >{{e.comentario}}</td>
+                        <td  >{{e.last_update_date}}</td>
+                        <td >{{e.sla_status_hist}}</td>
+                        <td  >{{e.sla_ticket.descripcion}} : {{e.sla_ticket.tiempo_sla}} HRS</td>
+                       
+                    
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+       
+        <form  (formGroup)= "form"  (ngSubmit)="formSubmit()" class ="text-center" >
+            <mat-form-field class="full-width container text-center">
+                <mat-label>Documenta el Ticket</mat-label>
+                <input  equired [(ngModel)]="dataHistorialTicket.comentario" name="username" type="email" matInput
+                    placeholder="Describa Brevemente el Error">
+            </mat-form-field>
+
+            <div class="container text-center" >
+                <button mat-raised-button color="warn" type="submit" (click)="DocumentarTick()" >Documentar </button>
+
+                <button mat-stroked-button color="accent" style="margin-left: 60px;" (click)="CerrarTicket()"  >Cerrar Ticket </button>
+        
+                <button (click)="editarTicket(ticket.id_ticket)" mat-raised-button color="primary" style="margin-left: 60px;">Actualizar</button>
+    
+                <button routerLink = "/admin/ticket_admin" style="margin-left: 60px;" mat-raised-button
+                color="accent">Salir</button>
+            </div>
+        </form>
+        
+
+
+
+    </mat-card-content>
+</mat-card>
+
+<div class = "col-md-9">
+    <router-outlet></router-outlet>
+  </div>
