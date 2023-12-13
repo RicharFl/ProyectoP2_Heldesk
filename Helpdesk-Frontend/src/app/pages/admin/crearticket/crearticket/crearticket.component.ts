@@ -43,8 +43,8 @@ export class CrearticketComponent implements OnInit {
     fec_inicio: Date.now(),
     sla_status_hist: 0,
     register_date: Date.now(),
-    last_update_date: Date.now(),
-    sla_ticket: { id_sla: '' }
+    last_update_date: Date.now()
+  
   }
 
 
@@ -112,17 +112,6 @@ export class CrearticketComponent implements OnInit {
     )
 
 
-    this.dataHistorialTicket = {
-
-      ticket: { id_ticket: '' },
-      username: '',
-      comentario: '',
-      fec_inicio: Date.now(),
-      sla_status_hist: 0,
-      register_date: Date.now(),
-      last_update_date: Date.now(),
-      sla_ticket: { id_sla: '' }
-    }
   }
 
 
@@ -173,19 +162,7 @@ export class CrearticketComponent implements OnInit {
             this.dataHistorialTicket.ticket.id_ticket = JSON.stringify(data2.id_ticket);
             this.dataHistorialTicket.username = this.loginService.getiduser_storage();
 
-            if (this.data2.servicios.impa_ser == 'Alto') {
-              this.dataHistorialTicket.sla_status_hist = 18;
-              this.dataHistorialTicket.sla_ticket.id_sla = '1';
-
-            }
-            else if (this.data2.servicios.impa_ser == 'Medio') {
-              this.dataHistorialTicket.sla_status_hist = 52;
-              this.dataHistorialTicket.sla_ticket.id_sla = '2';
-            }
-            else {
-              this.dataHistorialTicket.sla_status_hist = 168;
-              this.dataHistorialTicket.sla_ticket.id_sla = '3';
-            }
+            
 
           }
         )

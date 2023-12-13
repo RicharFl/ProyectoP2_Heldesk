@@ -3,24 +3,23 @@ package com.ipn.Helpdesk.modelo.entidad;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
-import java.util.Set;
 
-import javax.persistence.CascadeType;
+
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+
 
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -33,10 +32,7 @@ import lombok.Setter;
 @Table(name = "Sla_ticket", schema = "helpdesk_qa_prep")
 public class Sla_ticket implements Serializable  {
 	
-	
-	 /**
-		 * 
-		 */
+
 		private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -51,9 +47,7 @@ public class Sla_ticket implements Serializable  {
     @Column(name = "Descripcion")
     private String  descripcion;
     
-    @OneToMany(mappedBy = "sla_ticket", fetch = FetchType.LAZY, cascade=CascadeType.ALL)
-    @JsonIgnore
-    private Set<HisTicket> hisTickets;
+
 
 
     @Column(name = "fecha_creacion", nullable = false)
@@ -69,14 +63,14 @@ public class Sla_ticket implements Serializable  {
  }
 
 
-    public Sla_ticket(Long id_sla, String nivel, float tiempo_sla, String descripcion, Set<HisTicket> hisTickets,
+    public Sla_ticket(Long id_sla, String nivel, float tiempo_sla, String descripcion,
 			Date register_date, Date last_update_date) {
 		super();
 		this.id_sla = id_sla;
 		this.nivel = nivel;
 		this.tiempo_sla = tiempo_sla;
 		this.descripcion = descripcion;
-		this.hisTickets = hisTickets;
+
 		this.register_date = register_date;
 		this.last_update_date = last_update_date;
 	}
@@ -150,14 +144,6 @@ public class Sla_ticket implements Serializable  {
 	}
 
 
-	public Set<HisTicket> getHisTickets() {
-		return hisTickets;
-	}
-
-
-	public void setHisTickets(Set<HisTicket> hisTickets) {
-		this.hisTickets = hisTickets;
-	}
 
 
 	public Date getRegister_date() {

@@ -52,8 +52,8 @@ export class LoginComponent implements OnInit {
             (data: any) => 
             { 
               console.log ("este es el perfil de usurio "+ data.perfil.id_per);
-              if (data.staus_user == "Pendiente")
-              {
+              if (data.staus_user == "Pendiente" || data.staus_user == "Bloqueado" )
+              { 
                 //console.log("Empleado no ha sido autorizado cotactar con ADMIN");
                 Swal.fire('PENDIENTE', 'Usuario en espera de aprobacion, comunicarce con ADMIN', 'warning');
 

@@ -33,8 +33,8 @@ export class DocTicketComponent implements OnInit{
     fec_inicio: Date.now(),
     sla_status_hist: 0,
     register_date: Date.now(),
-    last_update_date: Date.now(),
-    sla_ticket: { id_sla: 1 }
+    last_update_date: Date.now()
+   
   }
   form : FormGroup;
   nextClicked = false;
@@ -99,7 +99,7 @@ export class DocTicketComponent implements OnInit{
 
 formSubmit() {
 
-/*
+
   if (this.dataHistorialTicket.comentario == '' || this.dataHistorialTicket.comentario == null) {
     this.snack.open('El comentario es Necesario !!', 'Aceptar', {
       duration: 3000,
@@ -126,10 +126,10 @@ formSubmit() {
         alert("Errror al Insertar en el Historial");
       }
   )
-*/
+
 }
 
-
+/*
 public CerrarTicket(){
   if (this.dataHistorialTicket.comentario == '' || this.dataHistorialTicket.comentario == null) {
     this.snack.open('El comentario es Necesario !!', 'Aceptar', {
@@ -173,6 +173,6 @@ public DocumentarTick()
       }
   )
   
-}
+}*/
 
 }

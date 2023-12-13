@@ -77,8 +77,9 @@ public class Sol_Alm implements Serializable {
     private Date last_update_date;
 
 
-  
-
+  public Sol_Alm () {
+	  
+  }
     
     public Sol_Alm(Long id_solalm, Ticket ticket, String id_user, Almacen almacen, String comeString, Integer cantidad,
 			String guia, Date fec_inicio, Long sla_status_hist, Date register_date, Date last_update_date) {

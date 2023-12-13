@@ -53,7 +53,6 @@ public class UsuarioController {
 		usuarios.setPassword(PasswordSHA256);
 
 		System.out.println("Id_zonas Inyectado = " + usuarios.getZonaestados().getId_zon());
-		
 
 		return usuarioService.CrearUsuario(usuarios);
 	}

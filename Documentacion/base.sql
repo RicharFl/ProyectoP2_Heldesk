@@ -1,4 +1,4 @@
-use Helpdesk_QA_preP;
+ use Helpdesk_QA_preP;
 /*
 delimiter //
 create  TRIGGER insertaZonaEstadoInicial
@@ -13,7 +13,7 @@ delete FROM  zonaestados;
 select *from zonaestados;
 */
 SELECT *fROM zonaestados;
-delete From zonaestados;
+/*delete From zonaestados;*/
 insert into zonaestados (id_zon,nombree,register_date,last_update_date) values
 (1,'Noroeste','2022/01/01','2022/01/01'),
 (2,'Noreste','2022/01/01','2022/01/01'),
@@ -62,7 +62,7 @@ insert into estadosrepu (id_est_repu,nombre_esatdo,descripcion,register_date,las
 
 
 select *from perfil;
-delete from perfil ;
+/*delete from perfil ;*/
 insert into perfil values 
 (1,'Admistrador General del sistema','2022/01/01','Administrador','Administrdor General','2022/01/01'),
 (2,'Gerente general','2022/01/01','Gerente','Gerente','2022/01/01'),
@@ -1297,5 +1297,5 @@ values (1,"asignado a juan perez para su atencion a las 10", 2,1,'2022/02/01','2
 SELECT *from his_ticket;
 select *from his_ticket where id_ticket = 1;
 
-insert into his_ticket (id_histori, comentario, fec_inicio, username, fecha_modificacion, fecha_creacion, sla_status_hist, id_sla, id_ticket)
- values  (1,"Se realizo la primer llamada con el  cliente",'2022/02/01','RicardoFL_admin','2022/02/01','2022/02/01',20,1,1);
+insert into his_ticket (id_histori, comentario, fec_inicio, username, fecha_modificacion, fecha_creacion, sla_status_hist,  id_ticket)
+ values  (1,"Se realizo la primer llamada con el  cliente",'2022/02/01','RicardoFL_admin','2022/02/01','2022/02/01',20,1);

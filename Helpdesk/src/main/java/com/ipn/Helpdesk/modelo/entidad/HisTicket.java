@@ -66,10 +66,7 @@ public class HisTicket implements Serializable  {
     @Column(name = "fecha_modificacion")
     private Date last_update_date;
     
-    
-    @ManyToOne(optional = true)
-    @JoinColumn(name = "id_sla", foreignKey = @ForeignKey(name = "FK_1_Id_sla_ticket"), nullable=false)
-    private Sla_ticket sla_ticket;
+
 
     
 public HisTicket()
@@ -78,7 +75,7 @@ public HisTicket()
 
 
 	public HisTicket(Long id_histori, Ticket ticket, String username, String comentario, Date fec_inicio,
-		Long sla_status_hist, Date register_date, Date last_update_date, Sla_ticket sla_ticket) {
+		Long sla_status_hist, Date register_date, Date last_update_date) {
 	super();
 	this.id_histori = id_histori;
 	this.ticket = ticket;
@@ -88,7 +85,7 @@ public HisTicket()
 	this.sla_status_hist = sla_status_hist;
 	this.register_date = register_date;
 	this.last_update_date = last_update_date;
-	this.sla_ticket = sla_ticket;
+
 }
 
 
@@ -181,13 +178,6 @@ public HisTicket()
 		this.sla_status_hist = sla_status_hist;
 	}
 
-	public Sla_ticket getSla_ticket() {
-		return sla_ticket;
-	}
-
-	public void setSla_ticket(Sla_ticket sla_ticket) {
-		this.sla_ticket = sla_ticket;
-	}
 
 	public String getUsername() {
 		return username;
