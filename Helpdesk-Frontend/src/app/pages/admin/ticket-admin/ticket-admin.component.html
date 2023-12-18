@@ -23,7 +23,7 @@
       <td (click)="DetalleTicket(e.id_ticket)" >{{e.estadosrepu.zona.nombree}}</td>
       <td>{{e.status_Ticket.nom_status}}</td>
       <td class="text-center">
-        <button  (click)="DetalleTicket(e.id_ticket)" class="btn btn-success" >Asignar</button>
+        <button  (click)="asignarTicket(e.id_ticket)" class="btn btn-success" >Asignar</button>
         <button  (click)="editarTicket(e.id_ticket)" class="btn btn-info"  style="margin-left : 10px;">Editar</button>
         <button  (click)="DocTicket(e.id_ticket)" class="btn btn-warning"  style="margin-left : 10px;">Doc.</button>
         <!-- <button  (click)="DetalleTicket(e.id_ticket)" class="btn btn-primary" style="margin-left : 10px;">Detalles</button> -->

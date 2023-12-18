@@ -95,5 +95,13 @@ editarTicket (idticket:string)
   this.router.navigate(['admin/editar_ticket',idticket]);
 }
 
+asignarTicket (idticket:string)
+{
+  //console.log("esto es lo que mando desde admin_ticket");
+//console.log("esto es lo que mando desde admin_ticket "+idticket);
+
+  this.router.navigate(['admin/asignar_ticket',idticket]);
+}
+
 
 }

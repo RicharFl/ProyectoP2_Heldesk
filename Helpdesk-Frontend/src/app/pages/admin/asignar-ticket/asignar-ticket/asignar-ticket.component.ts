@@ -1,20 +1,17 @@
-import { MatSnackBar } from '@angular/material/snack-bar';
 import  Swal  from 'sweetalert2';
-import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { LoginService } from './../../../../services/login.service';
+import { HistorialticketService } from './../../../../services/historialticket.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { HistorialticketService } from 'src/app/services/historialticket.service';
-import { LoginService } from 'src/app/services/login.service';
-import { TicketService } from 'src/app/services/ticket.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
-
-
+import { TicketService } from './../../../../services/ticket.service';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-doc-ticket',
-  templateUrl: './doc-ticket.component.html',
-  styleUrls: ['./doc-ticket.component.css']
+  selector: 'app-asignar-ticket',
+  templateUrl: './asignar-ticket.component.html',
+  styleUrls: ['./asignar-ticket.component.css']
 })
-export class DocTicketComponent implements OnInit{
+export class AsignarTicketComponent {
   ticket: any = null;
   histrial_tiket:any=null;
   pagina!:number;
@@ -54,7 +51,7 @@ export class DocTicketComponent implements OnInit{
     last_update_date: Date.now()
    
   }
-  form : FormGroup;
+
   nextClicked = false;
   constructor(private tickets: TicketService, private route: ActivatedRoute, private router: Router,private historialTikcet:HistorialticketService,
     private login:LoginService, private snack: MatSnackBar ) { }
@@ -158,50 +155,7 @@ formSubmit() {
 
 }
 
-/*
-public CerrarTicket(){
-  if (this.dataHistorialTicket.comentario == '' || this.dataHistorialTicket.comentario == null) {
-    this.snack.open('El comentario es Necesario !!', 'Aceptar', {
-      duration: 3000,
-      verticalPosition: 'top',
-      horizontalPosition: 'right'
-    });
-    return;
-  }
 
 
-  console.log("estoy en cerrar ticket");
-}
-public DocumentarTick()
-{
-
-  if (this.dataHistorialTicket.comentario == '' || this.dataHistorialTicket.comentario == null) {
-    this.snack.open('El comentario es Necesario !!', 'Aceptar', {
-      duration: 3000,
-      verticalPosition: 'top',
-      horizontalPosition: 'right'
-    });
-    return;
-  }
-
-
-
-
-
-  this.dataHistorialTicket.ticket.id_ticket = this.route.snapshot.params['idticket']
-  this.dataHistorialTicket.username=this.login.getUsername();
-
-  this.historialTikcet.AgregarAlHistorial(this.dataHistorialTicket).subscribe(
-    (data_histtiket: any) => {
-      Swal.fire('Ticket Documentado Correctamente', 'El ticket Fue documentado', 'success');
-        
-      this.router.navigate(['admin/ticket_admin']);
-    },
-      (error) => {
-        alert("Errror al Insertar en el Historial");
-      }
-  )
-  
-}*/
 
 }

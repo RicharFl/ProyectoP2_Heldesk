@@ -1,3 +1,4 @@
+import { AsignarTicketService } from './../../../../services/asignar-ticket.service';
 import { HistorialticketService } from './../../../../services/historialticket.service';
 import Swal from 'sweetalert2';
 import { LoginService } from './../../../../services/login.service';
@@ -19,7 +20,8 @@ export class CrearticketComponent implements OnInit {
 
   constructor(private ticketService: TicketService, private snack: MatSnackBar, private router: Router, private estadosRepublica: EstadosrepublicaService, private EstTicket: EstatustiketService,
     private servicios: ServiciosService,
-    private clientes: ClienteService, private loginService: LoginService, private histTicket: HistorialticketService) { };
+    private clientes: ClienteService, private loginService: LoginService, 
+    private histTicket: HistorialticketService, private asignacion : AsignarTicketService) { };
   public dataTicket = {
 
     des_error: '',
@@ -37,7 +39,7 @@ export class CrearticketComponent implements OnInit {
 
   public dataHistorialTicket = {
 
-    ticket: { id_ticket: '' },
+    ticket: { id_ticket: 0 },
     username: '',
     comentario: '',
     fec_inicio: Date.now(),
@@ -49,11 +51,11 @@ export class CrearticketComponent implements OnInit {
 
 
   public data2 = {
-    id_ticket: '',
+    id_ticket: 0,
     des_error: '',
     estadosrepu: { id_est_repu: '' },
     usuarios: { id_user: '' },
-    servicios: { id_serv: '', impa_ser: '' },
+    servicios: { id_serv: '', impa_ser: '',sla: 0 },
     cliente: { id_cliente: '' },
     status_Ticket: { id_status_ticket: '' },
     sla_status: '',
@@ -62,6 +64,19 @@ export class CrearticketComponent implements OnInit {
     last_update_date: ''
   }
 
+
+  public dataAsignacion = {
+    
+    
+      ticket: {id_ticket: 1},
+      id_user_inicio: 1,
+      id_user_final: 2,
+      comentarios: '',
+      register_date:Date.now(),
+      last_update_date: Date.now(),
+      status_sla: "0"
+  
+  }
 
   EstadosRepublicas: any = null;
   EstatusTicket: any = null;
@@ -147,40 +162,10 @@ export class CrearticketComponent implements OnInit {
     
     this.dataTicket.usuarios.id_user = this.loginService.getusarname_storage();
     this.ticketService.agrgarTicket(this.dataTicket).subscribe(
-      (data1) => {
+      (data2 : any) => {
 
-       // localStorage.setItem('idTicketLocalestorage', JSON.stringify(data1));
-
-        this.ticketService.BuscaPorId_Ticket(data1).subscribe(
-          (data2: any) => {
-            //console.log("estoy buscando informcion del ticket agregado");
-            //localStorage.setItem('username_front',JSON.stringify(data.username));
-            //console.log(data2);
-            //console.log("Este es el ID del ticket "+(data2.id_ticket));
-            //  console.log(this.data2);
-            this.dataHistorialTicket.comentario = 'Ticket Creado por: ' + this.loginService.getiduser_storage();
-            this.dataHistorialTicket.ticket.id_ticket = JSON.stringify(data2.id_ticket);
-            this.dataHistorialTicket.username = this.loginService.getiduser_storage();
-
-            
-
-          }
-        )
-
-        Swal.fire('Ticket Creado', 'Ticket registrado con exito en el sistema', 'success');
-        this.router.navigate(['admin/ticket_admin']);
-
-       //localStorage.setItem('dataHistorialTicket',JSON.stringify(this.dataHistorialTicket));
-
-       
-
-        ///   console.log("este es el JSON PARA HISTORIAL");
-        ///  console.log (this.dataHistorialTicket);
-
-
-        //console.log(data1);
-
-
+       // Swal.fire('Ticket Creado', 'Ticket registrado con exito en el sistema', 'success');
+      // this.router.navigate(['admin/ticket_admin']);
       }, (error) => {
         console.log(error);
         this.snack.open('Ha ocurrido un error en el sistema !!', 'Aceptar', {
@@ -190,12 +175,40 @@ export class CrearticketComponent implements OnInit {
     )
 
 
-   /*
+this.dataAsignacion.comentarios= 'Ticket Creado por: ' + this.loginService.getiduser_storage();
+this.dataAsignacion.ticket.id_ticket = this.data2.id_ticket;
+this.dataAsignacion.id_user_inicio=this.data2.id_ticket;
+this.dataAsignacion.id_user_final=this.data2.id_ticket;
+
+
+
+this.asignacion.añadirAsignacion(this.dataAsignacion).subscribe(
+  (data:any)=>{
+    Swal.fire('Ticket Creado asignacion', 'Ticket registrado con exito en el sistema', 'success');
+    this.router.navigate(['admin/ticket_admin']);
+  },(error) => {
+    console.log(error);
+    this.snack.open('Ha ocurrido un erroral ingresar al el historial asignacion !!', 'Aceptar', {
+      duration: 3000
+    });
+  }
+)
+/*
+        this.dataHistorialTicket.comentario = 'Ticket Creado por: ' + this.loginService.getiduser_storage();
+        this.dataHistorialTicket.ticket.id_ticket = (this.data2.id_ticket);
+        this.dataHistorialTicket.username = this.loginService.getiduser_storage();
+        this.dataHistorialTicket.last_update_date = this.data2.servicios.sla;
+
+        
+
+   
+
+   
 console.log(this.dataHistorialTicket);
     this.histTicket.AgregarAlHistorial(this.dataHistorialTicket).subscribe(
       (data5) => {
         Swal.fire('Ticket Creado', 'Ticket registrado con exito en el sistema', 'success');
-        this.router.navigate(['admin/ticket_admin']);
+        
 
       }, (error) => {
         console.log(error);
@@ -205,10 +218,9 @@ console.log(this.dataHistorialTicket);
       }
     )
 
+
+
 */
-
-
-
   }
 
 }

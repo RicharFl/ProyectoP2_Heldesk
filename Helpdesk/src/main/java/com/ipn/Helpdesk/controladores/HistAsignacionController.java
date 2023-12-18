@@ -16,6 +16,8 @@ import com.ipn.Helpdesk.Servicios.HistAginacionService;
 
 import com.ipn.Helpdesk.modelo.entidad.His_asignacion;
 
+import com.ipn.Helpdesk.repositorios.His_asignacionRepository;
+
 @RestController
 @RequestMapping("/IPN/helpdesk/HistAsignacion/")
 @CrossOrigin("*")
@@ -23,6 +25,9 @@ public class HistAsignacionController {
 
 	@Autowired
 	private HistAginacionService aginacionService;
+	
+	@Autowired
+	private His_asignacionRepository asignacionRepository;
 
 	@PostMapping("/")
 	public ResponseEntity<His_asignacion> GuardarNuavaAsiganacion(@RequestBody His_asignacion asignacion) {
@@ -55,6 +60,11 @@ public class HistAsignacionController {
 	}
 	
 	
+	@GetMapping ("/id_asignacion/{id_asignacion}")
+	public ResponseEntity<?> ListaHistrialdeAsignacionDelTikcet (@PathVariable ("id_asignacion") Long id_asignacion)
+	{
+		return ResponseEntity.ok(asignacionRepository.ListaAsignaciondeTikcetIdTicket(id_asignacion));
+	}
 	
 
 }

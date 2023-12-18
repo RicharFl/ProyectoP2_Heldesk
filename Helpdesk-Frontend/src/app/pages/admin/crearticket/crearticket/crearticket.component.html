@@ -53,7 +53,7 @@
                                 </div>
                                 <select required [(ngModel)]="dataTicket.servicios.id_serv" name="inputGroupSelect01" id="inputGroupSelect01">
                                  
-                                    <option *ngFor="let ser of Servicio" [value]="ser.id_serv">{{ser.nom_service }} - {{ser.impa_ser }}</option>
+                                    <option *ngFor="let ser of Servicio" [value]="ser.id_serv">{{ser.nom_service }} - {{ser.impa_ser }} - {{ser.sla }}:00 hrs.</option>
               
                                 </select>
                             </div>

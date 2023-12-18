@@ -49,6 +49,7 @@ import { DetalleTicketComponent } from './pages/admin/detaller-ticket/detalle-ti
 import { EditarTicketComponent } from './pages/admin/editarTicket/editar-ticket/editar-ticket.component';
 import { CrearticketComponent } from './pages/admin/crearticket/crearticket/crearticket.component';
 import { DocTicketComponent } from './pages/admin/doc-ticket/doc-ticket/doc-ticket.component';
+import { AsignarTicketComponent } from './pages/admin/asignar-ticket/asignar-ticket/asignar-ticket.component';
 
 
 
@@ -76,7 +77,8 @@ import { DocTicketComponent } from './pages/admin/doc-ticket/doc-ticket/doc-tick
     DetalleTicketComponent,
     EditarTicketComponent,
     CrearticketComponent,
-    DocTicketComponent
+    DocTicketComponent,
+    AsignarTicketComponent
     
     
   ],

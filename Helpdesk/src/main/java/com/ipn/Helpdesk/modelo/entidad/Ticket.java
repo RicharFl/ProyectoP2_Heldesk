@@ -74,11 +74,14 @@ public class Ticket implements Serializable {
     private Set<HisTicket> histicket;
 
 
-    @OneToMany (mappedBy = "ticket", fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+    @OneToMany (mappedBy = "ticket", fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     @JsonIgnore
     private Set<Sol_Alm> sol_Alms;
 
-    
+    @OneToMany (mappedBy = "ticket", fetch = FetchType.LAZY)
+    @JsonIgnore
+    private Set<His_asignacion> asignacions;
+
 
     @Column(name = "Sla_status")
     private String sla_status;
@@ -96,9 +99,12 @@ public class Ticket implements Serializable {
 	} 
     
 
-public Ticket(Long id_ticket, String des_error, EstadosRepu estadosrepu, Usuarios usuarios, Servicios servicios,
+
+
+	public Ticket(Long id_ticket, String des_error, EstadosRepu estadosrepu, Usuarios usuarios, Servicios servicios,
 			Cliente cliente, Status_Ticket status_Ticket, Set<HisTicket> histicket, Set<Sol_Alm> sol_Alms,
-			String sla_status, String no_serie, Date register_date, Date last_update_date) {
+			Set<His_asignacion> asignacions, String sla_status, String no_serie, Date register_date,
+			Date last_update_date) {
 		super();
 		this.id_ticket = id_ticket;
 		this.des_error = des_error;
@@ -109,11 +115,15 @@ public Ticket(Long id_ticket, String des_error, EstadosRepu estadosrepu, Usuario
 		this.status_Ticket = status_Ticket;
 		this.histicket = histicket;
 		this.sol_Alms = sol_Alms;
+		this.asignacions = asignacions;
 		this.sla_status = sla_status;
 		this.no_serie = no_serie;
 		this.register_date = register_date;
 		this.last_update_date = last_update_date;
 	}
+
+
+
 
 	public String getNo_serie() {
 	return no_serie;
@@ -281,6 +291,20 @@ public void setId_ticket(Long id_ticket) {
 
 	public void setLast_update_date(Date last_update_date) {
 		this.last_update_date = last_update_date;
+	}
+
+
+
+
+	public Set<His_asignacion> getAsignacions() {
+		return asignacions;
+	}
+
+
+
+
+	public void setAsignacions(Set<His_asignacion> asignacions) {
+		this.asignacions = asignacions;
 	}
 
     

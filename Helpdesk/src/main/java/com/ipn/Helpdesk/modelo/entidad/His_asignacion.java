@@ -40,7 +40,7 @@ public class His_asignacion implements Serializable  {
     private Long id_his_asignacion;
 
     
-    @ManyToOne(optional = true, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+    @ManyToOne(optional = true )
     @JoinColumn(name = "id_ticket", foreignKey = @ForeignKey(name = "FK_1_ticket"))
     private Ticket ticket;
 
@@ -64,7 +64,7 @@ public class His_asignacion implements Serializable  {
   
     
     @Column(name = "status_sla")
-    private String status_sla;
+    private float status_sla;
 
     public His_asignacion()
     {
@@ -74,7 +74,7 @@ public class His_asignacion implements Serializable  {
 
 
     public His_asignacion(Long id_his_asignacion, Ticket ticket, Long id_user_inicio, Long id_user_final,
-			String comentarios, Date register_date, Date last_update_date, String status_sla) {
+			String comentarios, Date register_date, Date last_update_date, float status_sla) {
 		super();
 		this.id_his_asignacion = id_his_asignacion;
 		this.ticket = ticket;
@@ -169,11 +169,15 @@ public class His_asignacion implements Serializable  {
 		this.last_update_date = last_update_date;
 	}
 
-	public String getStatus_sla() {
+
+
+	public float getStatus_sla() {
 		return status_sla;
 	}
 
-	public void setStatus_sla(String status_sla) {
+
+
+	public void setStatus_sla(float status_sla) {
 		this.status_sla = status_sla;
 	}
 

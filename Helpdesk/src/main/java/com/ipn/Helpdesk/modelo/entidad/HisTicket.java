@@ -58,7 +58,7 @@ public class HisTicket implements Serializable  {
     private Date fec_inicio;
 
     @Column(name = "Sla_status_hist")
-    private Long sla_status_hist;
+    private float sla_status_hist;
 
     @Column(name = "fecha_creacion", nullable = false)
     private Date register_date;
@@ -75,7 +75,7 @@ public HisTicket()
 
 
 	public HisTicket(Long id_histori, Ticket ticket, String username, String comentario, Date fec_inicio,
-		Long sla_status_hist, Date register_date, Date last_update_date) {
+			float sla_status_hist, Date register_date, Date last_update_date) {
 	super();
 	this.id_histori = id_histori;
 	this.ticket = ticket;
@@ -170,9 +170,15 @@ public HisTicket()
 		this.fec_inicio = fec_inicio;
 	}
 
-	public Long getSla_status_hist() {
+	public float getSla_status_hist() {
 		return sla_status_hist;
 	}
+
+
+	public void setSla_status_hist(float sla_status_hist) {
+		this.sla_status_hist = sla_status_hist;
+	}
+
 
 	public void setSla_status_hist(Long sla_status_hist) {
 		this.sla_status_hist = sla_status_hist;
