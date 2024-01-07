@@ -44,12 +44,12 @@ export class ListaEmpleadosAdminComponent implements OnInit {
   filterPost2 = '';
 
   verDetallesDelEmpleado(username: string) {
-    console.log("enviare el detalle " + username);
+   // console.log("enviare el detalle " + username);
     this.router.navigate(['admin/datos_perfil', username]);
   }
 
   EditarDelEmpleado(username: string) {
-    console.log("enviare el detalle " + username);
+    //console.log("enviare el detalle " + username);
     this.router.navigate(['admin/actualiza_usuario', username]);
   }
 

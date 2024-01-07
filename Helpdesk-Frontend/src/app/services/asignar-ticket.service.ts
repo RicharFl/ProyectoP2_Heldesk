@@ -17,7 +17,7 @@ public ListaTodolosHistorialesDeAsigncion (){
 
 public ListaHistorialdeAsignacionPorTicketPorIdTicket (asignacion:any)
 {
-  return this.http.get(`${baseUrl}/IPN/helpdesk/HistAsignacion/`)
+  return this.http.get(`${baseUrl}/IPN/helpdesk/HistAsignacion/id_asignacion/${asignacion.id_ticket}`,asignacion.id_ticket)
 }
 
 

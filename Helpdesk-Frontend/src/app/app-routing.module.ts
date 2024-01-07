@@ -1,3 +1,13 @@
+import { ActulizaclienteComponent } from './pages/admin/clientes/actulizacliente/actulizacliente.component';
+import { CreaClienteComponent } from './pages/admin/clientes/crea-cliente/crea-cliente.component';
+import { ListaclientesComponent } from './pages/admin/clientes/listaclientes/listaclientes.component';
+import { CreaCuentaDependenciaComponent } from './pages/admin/cuentasDependencias/crea-cuenta-dependencia/crea-cuenta-dependencia.component';
+import { ListaCuentaDependenciaComponent } from './pages/admin/cuentasDependencias/lista-cuenta-dependencia/lista-cuenta-dependencia.component';
+import { ActilizaRolesComponent } from './pages/admin/roles/actiliza-roles/actiliza-roles.component';
+import { CreaRolesComponent } from './pages/admin/roles/crea-roles/crea-roles.component';
+import { ListaRolesComponent } from './pages/admin/roles/lista-roles/lista-roles.component';
+import { CreaEstadosRepubliComponent } from './pages/admin/Estodos-Republica/crea-estados-republi/crea-estados-republi.component';
+import { ListaEstadosRepubliComponent } from './pages/admin/Estodos-Republica/lista-estados-republi/lista-estados-republi.component';
 import { AsignarTicketComponent } from './pages/admin/asignar-ticket/asignar-ticket/asignar-ticket.component';
 import { DocTicketComponent } from './pages/admin/doc-ticket/doc-ticket/doc-ticket.component';
 import { CrearticketComponent } from './pages/admin/crearticket/crearticket/crearticket.component';
@@ -27,6 +37,13 @@ import { DashboarAdminComponent } from './pages/admin/dashboar-admin/dashboar-ad
 import { AdminGuard } from './services/admin.guard';
 import { AgenteMesaGuard } from './services/agente-mesa.guard';
 import { DetalleTicketComponent } from './pages/admin/detaller-ticket/detalle-ticket/detalle-ticket.component';
+import { ContrasenaGuard } from './services/contrasena.guard';
+import { CambioContrasenaComponent } from './pages/admin/cambio-contrasena/cambio-contrasena.component';
+import { ActualizaEstadosRepubliComponent } from './pages/admin/Estodos-Republica/actualiza-estados-republi/actualiza-estados-republi.component';
+import { ListaZonaEstadosComponent } from './pages/admin/ZonaRegion/lista-zona-estados/lista-zona-estados.component';
+import { CreaZonaEstadosComponent } from './pages/admin/ZonaRegion/crea-zona-estados/crea-zona-estados.component';
+import { ActulizaZonaEstadosComponent } from './pages/admin/ZonaRegion/actuliza-zona-estados/actuliza-zona-estados.component';
+import { ActualizaCuentaDependenciaComponent } from './pages/admin/cuentasDependencias/actualiza-cuenta-dependencia/actualiza-cuenta-dependencia.component';
 
 const routes: Routes = [
   {
@@ -50,6 +67,7 @@ const routes: Routes = [
     component:DatosPerfilComponent
  
   },*/
+  
   {
     path: 'admin',
     component: DashboarAdminComponent,
@@ -60,14 +78,99 @@ const routes: Routes = [
         path: 'datos_perfil',
         component: DatosPerfilComponent,
         //title: 'hola perfil',
-        children: [
-          ]
+      
+      },
+      {
+        path: 'actualizar-contrasena',
+        component: CambioContrasenaComponent,
+       
+    
       },
       {
         path: 'ticket_admin',
         component: TicketAdminComponent,
         //title: 'hola perfil',
       },
+      {
+        path: 'estados_republica',
+        component: ListaEstadosRepubliComponent,
+        //title: 'hola perfil',
+      },
+
+      
+      {
+        path: 'estados_republica/crear_estado',
+        component: CreaEstadosRepubliComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'estados_republica/edita/:idEdo',
+        component: ActualizaEstadosRepubliComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'zona_estados',
+        component: ListaZonaEstadosComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'zona_estados/crear_estado',
+        component: CreaZonaEstadosComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'zona_estados/edita/:idZonEdo',
+        component: ActulizaZonaEstadosComponent,
+        //title: 'hola perfil',
+      }, 
+
+      {
+        path: 'clientes',
+        component: ListaclientesComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'clientes/crear_cliente',
+        component: CreaClienteComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'clientes/edita/:idcliente',  
+        component: ActulizaclienteComponent,
+        //title: 'hola perfil',
+      }, 
+
+      
+      {
+        path: 'cuentas_dependencia',
+        component: ListaCuentaDependenciaComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'cuentas_dependencia/crear_cuenta',
+        component: CreaCuentaDependenciaComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'cuentas_dependencia/edita/:idcuenta',
+        component: ActualizaCuentaDependenciaComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'roles',
+        component: ListaRolesComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'roles/crea_rol',
+        component: CreaRolesComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'roles/edita/:idRol',
+        component: ActilizaRolesComponent,
+        //title: 'hola perfil',
+      }, 
       {
         path: 'asignar_ticket/:idticket',
         component: AsignarTicketComponent,

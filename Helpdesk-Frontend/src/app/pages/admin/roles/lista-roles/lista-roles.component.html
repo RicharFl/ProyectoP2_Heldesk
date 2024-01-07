@@ -1,0 +1,52 @@
+<h1 class="text-center " style="margin-top: 20px;">Roles de los Empleados</h1>
+<div class="row">
+  <div class="col">
+    <div class="form-group">
+      <mat-form-field class="full-widthh" appearance="outline">
+        <mat-label>Ingrese Busqueda</mat-label>
+        <input required [(ngModel)]="filterPost" name="filterPost" matInput placeholder="Buscar....">
+      </mat-form-field>
+    </div>
+  </div>
+</div>
+
+<table class="table table-striped">
+  <thead class="table-dark text-center ">
+    <tr>
+        <th>Id Rol</th>
+        <th>Nombre</th>
+        <th>Descripcion</th>
+        <th>NIvel de Permisos</th>
+        <th>Registrado</th>
+        <th>Actilizado</th>
+        <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody class="text-center ">
+    <tr *ngFor="let e of Roles | filterEstadoRepu:filterPost |  paginate: { itemsPerPage: 6, currentPage: pagina }">
+      <td>{{e.id_per}}</td>
+      <td>{{e.nom_per}}</td>
+      <td>{{e.desc_per}}</td>
+      <td>{{e.niv_perm_per}}</td>
+      <td>{{e.register_date.substr(0,10)}}</td>
+      <td>{{e.last_update_date.substr(0,10)}}</td>
+    
+      <td class="text-center">
+        <button (click)="EditarRol(e.id_per)" class="btn btn-info">Editar</button>
+
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div>
+  <div class="text-center">
+    <pagination-controls (pageChange)="pagina = $event" previousLabel="anterior" nextLabel="siguiente"
+      screenReaderPageLabel="page" screenReaderCurrentLabel="You're on page">></pagination-controls>
+  </div>
+  <div class="container text-center mt20">
+    <button mat-raised-button color="primary" style="margin-left: 70px; " (click)="exportarExcel()">Descargar
+      EXCEL</button>
+    <button routerLink="/admin/roles/crea_rol" mat-raised-button color="accent" style="margin-left: 70px; ">Agregar
+      Estado</button>
+  </div>
+</div>

@@ -1,10 +1,11 @@
+import { TicketService } from './../../../../services/ticket.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import  Swal  from 'sweetalert2';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HistorialticketService } from 'src/app/services/historialticket.service';
 import { LoginService } from 'src/app/services/login.service';
-import { TicketService } from 'src/app/services/ticket.service';
+
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 
@@ -144,6 +145,18 @@ formSubmit() {
   this.dataHistorialTicket.ticket.id_ticket = this.route.snapshot.params['idticket']
   this.dataHistorialTicket.username=this.login.getUsername();
   this.dataHistorialTicket.sla_status_hist =this.resultad_fechas;
+  if (this.resultad_fechas < 0){
+    this.dataHistorialTicket.sla_status_hist = 0 ;
+    this.dataTicket.sla_status ="Fuera de tiempo";
+this.tickets.actualizaTicket(this.dataTicket).subscribe(
+  (data2:any) => {alert("Ticket Fuera de Tiempo");} ,(error) => {
+    alert("Errror al actulkizar el ticket");
+  }
+
+)
+    
+  }
+
 
   this.historialTikcet.AgregarAlHistorial(this.dataHistorialTicket).subscribe(
     (data_histtiket: any) => {
@@ -157,6 +170,11 @@ formSubmit() {
   )
 
 }
+
+
+
+
+
 
 /*
 public CerrarTicket(){

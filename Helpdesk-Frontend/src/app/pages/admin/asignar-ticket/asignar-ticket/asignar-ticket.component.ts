@@ -5,6 +5,8 @@ import { HistorialticketService } from './../../../../services/historialticket.s
 import { ActivatedRoute, Router } from '@angular/router';
 import { TicketService } from './../../../../services/ticket.service';
 import { Component } from '@angular/core';
+import { AsignarTicketService } from 'src/app/services/asignar-ticket.service';
+import { UsuariosAdminService } from 'src/app/services/usuarios-admin.service';
 
 @Component({
   selector: 'app-asignar-ticket',
@@ -13,7 +15,7 @@ import { Component } from '@angular/core';
 })
 export class AsignarTicketComponent {
   ticket: any = null;
-  histrial_tiket:any=null;
+  histrial_asignacion_tiket:any=null;
   pagina!:number;
   ticket_data={
 "id_ticket":'',
@@ -40,21 +42,24 @@ export class AsignarTicketComponent {
   fechainicio: any=null;
   fechafin: any=null;
 
-  public dataHistorialTicket = {
+  public dataAsignacionTikcet = {
 
     ticket: { id_ticket: '' },
     username: '',
-    comentario: '',
-    fec_inicio: Date.now(),
-    sla_status_hist: 0,
+    nameuser_inicio: '',
+    nameuser_final: '',
+    comentarios: '',
+    status_sla: 0,
     register_date: Date.now(),
     last_update_date: Date.now()
    
   }
+  user_f : any=null;
 
   nextClicked = false;
-  constructor(private tickets: TicketService, private route: ActivatedRoute, private router: Router,private historialTikcet:HistorialticketService,
-    private login:LoginService, private snack: MatSnackBar ) { }
+  constructor(private tickets: TicketService, private route: ActivatedRoute, private router: Router,
+    private HistAsigancionService : AsignarTicketService, private login:LoginService, private snack: MatSnackBar ,
+    private User_service :UsuariosAdminService) { }
   
   
   ngOnInit(): void {
@@ -63,7 +68,7 @@ export class AsignarTicketComponent {
 
     if (this.route.snapshot.params['idticket'] != undefined) {
       this.ticket_data.id_ticket = this.route.snapshot.params['idticket'];     
-      this.dataHistorialTicket.ticket.id_ticket = this.route.snapshot.params['idticket']
+      this.dataAsignacionTikcet.ticket.id_ticket = this.route.snapshot.params['idticket']
     }
     else {
       this.router.navigate(['admin/ticket_admin']);
@@ -78,10 +83,16 @@ export class AsignarTicketComponent {
       }
     )
 
-    this.historialTikcet.ListaTodoselHistorialDeUnTicket(this.ticket_data).subscribe(
+    this.User_service.listaTodosLosEmpleados().subscribe(
+      (dataf:any)=>{
+this.user_f = dataf;
+      }
+    )
+
+    this.HistAsigancionService.ListaHistorialdeAsignacionPorTicketPorIdTicket(this.ticket_data).subscribe(
       (datahistorial: any) => {
-        this.histrial_tiket = datahistorial;
-        console.log(this.histrial_tiket.id_user);
+        this.histrial_asignacion_tiket = datahistorial;
+        //console.log(this.histrial_asignacion_tiket.id_user);
       },
       (error) => {
         alert("error");
@@ -90,7 +101,7 @@ export class AsignarTicketComponent {
 
    // console.log("Usuario con datos de Ticket");
  
-    this.login.BuscaUsario(this.histrial_tiket.id_user).subscribe(
+    this.login.BuscaUsario(this.histrial_asignacion_tiket.id_user).subscribe(
       (datauser: any) => {
      
         
@@ -116,7 +127,7 @@ export class AsignarTicketComponent {
 formSubmit() {
 
 
-  if (this.dataHistorialTicket.comentario == '' || this.dataHistorialTicket.comentario == null) {
+  if (this.dataAsignacionTikcet.comentarios == '' || this.dataAsignacionTikcet.comentarios == null) {
     this.snack.open('El comentario es Necesario !!', 'Aceptar', {
       duration: 3000,
       verticalPosition: 'top',
@@ -131,20 +142,32 @@ formSubmit() {
   this.fechainicio = new Date (this.dataTicket.register_date);
   this.fechafin=Date.now();
   
-  console.log("la diferencia entre fechas es de :" );
+  //console.log("la diferencia entre fechas es de :" );
   console.log((this.fechafin- this.fechainicio)/3600000);
 
   this.resultad_fechas = this.dataTicket.servicios.sla - ((this.fechafin- this.fechainicio)/3600000);
   this.resultad_fechas=Number(this.resultad_fechas.toFixed(2));
   console.log(this.resultad_fechas);
 
-  this.dataHistorialTicket.ticket.id_ticket = this.route.snapshot.params['idticket']
-  this.dataHistorialTicket.username=this.login.getUsername();
-  this.dataHistorialTicket.sla_status_hist =this.resultad_fechas;
+  this.dataAsignacionTikcet.ticket.id_ticket = this.route.snapshot.params['idticket']
+  this.dataAsignacionTikcet.username=this.login.getUsername();
+  this.dataAsignacionTikcet.nameuser_inicio=this.login.getUsername();
+  this.dataAsignacionTikcet.status_sla =this.resultad_fechas;
+  if (this.resultad_fechas < 0){
+    this.dataAsignacionTikcet.status_sla = 0 ;
+    this.dataTicket.sla_status ="Fuera de tiempo";
+this.tickets.actualizaTicket(this.dataTicket).subscribe(
+  (data2:any) => {alert("Ticket Fuera de Tiempo");} ,(error) => {
+    alert("Errror al actulkizar el ticket");
+  }
 
-  this.historialTikcet.AgregarAlHistorial(this.dataHistorialTicket).subscribe(
+)
+    
+  }
+
+  this.HistAsigancionService.añadirAsignacion(this.dataAsignacionTikcet).subscribe(
     (data_histtiket: any) => {
-      Swal.fire('Ticket Documentado Correctamente', 'El ticket Fue documentado', 'success');
+      Swal.fire('Ticket Asigando a: '+ this.dataAsignacionTikcet.nameuser_final,  'El ticket Fue documentado', 'success');
         
       this.router.navigate(['admin/ticket_admin']);
     },

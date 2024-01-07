@@ -1,0 +1,39 @@
+
+<div class = "bootstrap-wrapper">
+    <div class = "container">
+      <div class = "row mt20">
+        
+        <div class = "col-md-6 offset-md-3">
+          
+          <mat-card>
+            <div class = "container text-center" style="margin-top: 10px;">
+              
+              <img src="../../../assets/contrasena.png" alt="" class="profile-image">
+            </div >
+  
+            <h1 class = "text-center" >Actualiza Contraseña</h1>
+            <form (ngSubmit) = "formSubmit()">
+              <mat-form-field class = "full-width container text-center"  appearance = "outline">
+                <mat-label> Contraseña</mat-label>
+                <input [(ngModel)] = "password.password" name = "password"   type="password" required  matInput placeholder="Digite su contraseña">
+                <mat-hint>Contraseña</mat-hint>
+              </mat-form-field>
+              <mat-form-field class="full-width container text-center"  appearance = "outline">
+                <mat-label>Confirmar Contraseña</mat-label>
+                <input [(ngModel)] = "password.passwordConfirmacion" name = "passwordConfirmacion" required  type="password" matInput placeholder="Confirmar contraseña">
+                <mat-hint>Confirme su Contraseña</mat-hint>
+              </mat-form-field>
+  
+              <br><br>
+  
+              <div class = "container text-center" >
+                <button type = "submit" mat-raised-button color="primary" style = "margin-bottom: 20px;" >Actulizar Contraseña</button>
+                <button type="reset" style = "margin-left: 20px; margin-bottom: 20px;" mat-raised-button color="accent">Limpiar</button>
+              </div>
+            </form>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+  

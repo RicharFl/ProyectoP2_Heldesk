@@ -1,0 +1,64 @@
+<mat-card style="margin-left: 10px; margin-top : 20px;">
+    <h1 class="text-center">Editando Rol de Empleados</h1>
+    <mat-card-content>
+        <div class="bootstrap-wrapper">
+            <div class="container">
+                <div class="text-center">
+                    <img src="../../../assets/roles.png" alt="" class="profile-image">
+
+                    <h1 class="mt20"> Estas editando la Zona : {{ Roles.nom_per }} </h1>
+                </div>
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <table class="table container text-center ">
+                            <tr>
+                                <td>Nombre de Rol</td>
+                                <td>{{  Roles.nom_per }}</td>
+                            </tr>
+                            <tr>
+                                <td>ID Zona</td>
+                                <td>{{ Roles.id_per }}</td>
+                            </tr>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+   
+    <form (ngSubmit)="onSubmit()" #empleadoForm="ngForm" class="container text-center">
+        <div class="form-group">
+
+
+            <mat-form-field class="full-widthh" appearance="outline">
+                <mat-label>Nombre del Estado</mat-label>
+                <input required [(ngModel)]="Roles.nom_per" name="nom_per" matInput
+                    placeholder="Digite el nombre del Rol">
+            </mat-form-field>
+
+            <mat-form-field class="full-widthh" appearance="outline">
+                <mat-label>Descripcion</mat-label>
+                <input required [(ngModel)]="Roles.desc_per" name="desc_per" matInput
+                    placeholder="Digite la descripcion del Rol">
+            </mat-form-field>
+
+            <mat-form-field class="full-widthh" appearance="outline">
+                <mat-label>Nivel de Permisos</mat-label>
+                <input required [(ngModel)]="Roles.niv_perm_per" name="niv_perm_per" matInput
+                    placeholder="Digite el nivel de Permisos">
+            </mat-form-field>
+
+
+        
+        </div>
+        <div class="container text-center">
+            <button mat-raised-button color="warn">Actualizar</button>
+            <button type="reset" style="margin-left: 60px;" mat-raised-button
+            color="accent">Limpiar</button>
+            <button routerLink = "/admin" style="margin-left: 60px;" mat-raised-button
+            color="primary">Salir</button>
+        </div>
+    </form>
+</mat-card-content>
+</mat-card >

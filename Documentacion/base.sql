@@ -1292,7 +1292,7 @@ VALUES (1,1,'2022/02/01',"206143645AH",30,"Todo esta bien","2",'2022/02/01','202
 select *from his_asigancion;
 
 insert into his_asigancion (id_his_asignacion, comentarios, id_user_final, id_user_inicio, fecha_modificacion, fecha_creacion, status_sla, id_ticket)
-values (1,"asignado a juan perez para su atencion a las 10", 2,1,'2022/02/01','2022/02/01',36,1);
+values (1,"asignado a juan perez para su atencion a las 10", "RicardoFL_admin","RicardoFL_admin",'2022/02/01','2022/02/01',36,1);
 
 SELECT *from his_ticket;
 select *from his_ticket where id_ticket = 1;

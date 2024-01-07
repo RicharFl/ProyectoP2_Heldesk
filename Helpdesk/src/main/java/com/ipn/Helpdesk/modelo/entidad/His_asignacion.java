@@ -44,11 +44,11 @@ public class His_asignacion implements Serializable  {
     @JoinColumn(name = "id_ticket", foreignKey = @ForeignKey(name = "FK_1_ticket"))
     private Ticket ticket;
 
-    @Column (name = "id_user_inicio")
-    private Long id_user_inicio;
+    @Column (name = "nameuser_inicio")
+    private String nameuser_inicio;
 
-    @Column (name = "id_user_final")
-    private Long id_user_final;
+    @Column (name = "nameuser_final")
+    private String nameuser_final;
 
     @Column (name = "comentarios")
     private String  comentarios;
@@ -73,18 +73,24 @@ public class His_asignacion implements Serializable  {
 
 
 
-    public His_asignacion(Long id_his_asignacion, Ticket ticket, Long id_user_inicio, Long id_user_final,
+
+
+
+	public His_asignacion(Long id_his_asignacion, Ticket ticket, String nameuser_inicio, String nameuser_final,
 			String comentarios, Date register_date, Date last_update_date, float status_sla) {
 		super();
 		this.id_his_asignacion = id_his_asignacion;
 		this.ticket = ticket;
-		this.id_user_inicio = id_user_inicio;
-		this.id_user_final = id_user_final;
+		this.nameuser_inicio = nameuser_inicio;
+		this.nameuser_final = nameuser_final;
 		this.comentarios = comentarios;
 		this.register_date = register_date;
 		this.last_update_date = last_update_date;
 		this.status_sla = status_sla;
 	}
+
+
+
 
 
 
@@ -129,20 +135,21 @@ public class His_asignacion implements Serializable  {
 		this.ticket = ticket;
 	}
 
-	public Long getId_user_inicio() {
-		return id_user_inicio;
+
+	public String getNameuser_inicio() {
+		return nameuser_inicio;
 	}
 
-	public void setId_user_inicio(Long id_user_inicio) {
-		this.id_user_inicio = id_user_inicio;
+	public void setNameuser_inicio(String nameuser_inicio) {
+		this.nameuser_inicio = nameuser_inicio;
 	}
 
-	public Long getId_user_final() {
-		return id_user_final;
+	public String getNameuser_final() {
+		return nameuser_final;
 	}
 
-	public void setId_user_final(Long id_user_final) {
-		this.id_user_final = id_user_final;
+	public void setNameuser_final(String nameuser_final) {
+		this.nameuser_final = nameuser_final;
 	}
 
 	public String getComentarios() {

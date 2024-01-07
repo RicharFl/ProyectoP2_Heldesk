@@ -19,4 +19,12 @@ export class ClienteService {
   public ActualizaElCliente(cliente: any) {
     return this.http.put(`${baseUrl}/IPN/helpdesk/Cliente/`, cliente)
   }
+
+  public CrearElCliente(cliente: any) {
+    return this.http.post(`${baseUrl}/IPN/helpdesk/Cliente/`, cliente)
+  }
+  
+  public ListaClientesId(cliente: any) {
+    return this.http.get(`${baseUrl}/IPN/helpdesk/Cliente/${cliente.id_cliente}`, cliente.id_cliente)
+  }
 }

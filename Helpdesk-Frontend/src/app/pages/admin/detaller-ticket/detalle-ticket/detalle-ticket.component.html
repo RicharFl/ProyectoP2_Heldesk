@@ -79,8 +79,8 @@
                         <td   > {{ticket.id_ticket}}</td>
                         <td  >{{e.username}}</td>
                         <td  >{{e.comentario}}</td>
-                        <td  >{{e.last_update_date}}</td>
-                        <td >{{e.sla_status_hist}}</td>
+                        <td  >{{e.last_update_date.substr(0,10)}}   <br>{{e.last_update_date.substr(11,8)}} hrs</td>
+                        <td >{{e.sla_status_hist}} hrs </td>
                         
                        
                     

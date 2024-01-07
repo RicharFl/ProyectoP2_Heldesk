@@ -1,0 +1,14 @@
+.clearfix {
+    width: 40%;  
+    font-size: 18px;
+    background: red;
+  }
+
+  .full-widthh {
+    width: 30%;
+    font-size: 18px;
+    margin-left: 20px; 
+    margin-top : 5px;
+  /* border: 2px solid rgb(187, 27, 27);*/
+   
+  }

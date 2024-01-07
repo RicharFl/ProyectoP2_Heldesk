@@ -14,7 +14,7 @@ export class FilterPipe implements PipeTransform {
     for ( const post of value) {
      // console.log(post);
       //console.log("hola"+arg.toLowerCase());
-      if (((post.nombre_user+" "+post.apellidom_user+" "+post.apellidop_user).toLowerCase().indexOf(arg.toLowerCase()) > -1)||(post.perfil.nom_per.toLowerCase().indexOf(arg.toLowerCase()) > -1) ||(post.staus_user.toLowerCase().indexOf(arg.toLowerCase()) > -1)  ) {
+      if (((post.nombre_user+" "+post.apellidom_user+" "+post.apellidop_user ).toLowerCase().indexOf(arg.toLowerCase()) > -1)||(post.perfil.nom_per.toLowerCase().indexOf(arg.toLowerCase()) > -1) ||(post.staus_user.toLowerCase().indexOf(arg.toLowerCase()) > -1)  ) {
         resultPosts.push(post);
       };
     };

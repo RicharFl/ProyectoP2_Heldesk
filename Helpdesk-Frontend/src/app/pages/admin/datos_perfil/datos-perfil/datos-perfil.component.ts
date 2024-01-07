@@ -13,7 +13,7 @@ import { LoginService } from 'src/app/services/login.service';
 
 
 export class DatosPerfilComponent implements OnInit {
-  user: any = null;
+  user: any = [];
 
 
   constructor(private loginService: LoginService, private route: ActivatedRoute, private router: Router) { }

@@ -1,4 +1,14 @@
 <h2 class="text-center ">Lista Ticket</h2>
+<div class="row">
+  <div class="col">
+    <div class="form-group">
+      <mat-form-field class="full-widthh" appearance="outline">
+        <mat-label>Ingrese Busqueda</mat-label>
+        <input required [(ngModel)]="filterPost" name="filterPost" matInput placeholder="Buscar....">
+      </mat-form-field>
+    </div>
+  </div>
+</div>
 <table class="table table-striped">
   <thead class="table-dark text-center ">
     <tr>
@@ -14,7 +24,7 @@
     </tr>
   </thead>
   <tbody class="text-center ">
-    <tr *ngFor="let e of ticket |  paginate: { itemsPerPage: 6, currentPage: pagina }">
+    <tr *ngFor="let e of ticket |  filterTicket: filterPost |   paginate: { itemsPerPage: 6, currentPage: pagina }">
       <td   (click)="DetalleTicket(e.id_ticket)"> {{e.id_ticket}}</td>
       <td  (click)="DetalleTicket(e.id_ticket)">{{e.cliente.cuenta.nombre_cuen}}</td>
       <td  (click)="DetalleTicket(e.id_ticket)">{{e.no_serie}}</td>
@@ -37,5 +47,7 @@
   screenReaderPageLabel="page" screenReaderCurrentLabel="You're on page">></pagination-controls>
 </div>
 <div class="container text-center mt20">
-  <button routerLink="/admin/crear_ticket" mat-raised-button color="accent">Crear Ticket</button>
+  <button mat-raised-button color="primary" style="margin-left: 70px; " (click)="exportarExcel()">Descargar
+    EXCEL</button>
+  <button routerLink="/admin/crear_ticket" mat-raised-button color="accent"  style="margin-left: 70px;">Crear Ticket</button>
 </div>

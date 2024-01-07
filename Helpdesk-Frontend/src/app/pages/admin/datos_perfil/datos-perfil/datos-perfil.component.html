@@ -1,5 +1,5 @@
 <mat-card style="margin-left: 10px;">
-    <h1 class="text-center">Detalles del perfil</h1>
+    <h1 class="text-center" style="margin-top: 20px;">Información de Usuario</h1>
     <mat-card-content>
         <div class="bootstrap-wrapper">
             <div class="container">
@@ -12,7 +12,7 @@
                     <div class="col-md-10 offset-md-1">
                         <table class="table text-center">
                             <tr>
-                                <td>Nombre de usuario</td>
+                                <td>Username</td>
                                 <td>{{ user.username }}</td>
                             </tr>
                             <tr>
@@ -28,24 +28,24 @@
                                 <td>{{ user.tel_user }}</td>
                             </tr>
                             <tr>
-                                <td>Extencion</td>
+                                <td>Extensión</td>
                                 <td>{{ user.ext_user }}</td>
                             </tr>
                             <tr>
                             <tr>
-                                <td>Region Asignada</td>
+                                <td>Región Asignada</td>
                                 <td>{{ user.zonaestados.nombree }}</td>
                             </tr>
                             <tr>
                                 <td>Fecha de Alta</td>
-                                <td>{{ user.register_date }}</td>
+                                <td>{{ user.register_date.substr(0,10) }}</td>
                             </tr>
                             <tr>
                                 <td>Rol</td>
                                 <td>{{ user.perfil.nom_per}}</td>
                             </tr>
                             <tr>
-                                <td>Estado</td>
+                                <td>Estatus</td>
                                 <td>{{ user.staus_user }}</td>
                             </tr>
                         </table>

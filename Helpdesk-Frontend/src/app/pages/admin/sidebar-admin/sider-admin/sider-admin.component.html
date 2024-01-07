@@ -1,33 +1,48 @@
-<mat-card style="length: 90%;">
+<mat-card >
     <mat-action-list >
       <div mat-subheader>Menu</div>
       <button routerLink = "/admin" mat-list-item>
         <mat-icon mat-list-icon>home</mat-icon> Inicio
       </button>
       <button mat-list-item routerLink = "/admin/datos_perfil">
-        <mat-icon mat-list-icon>account_circle</mat-icon>Perfil
+        <mat-icon mat-list-icon>account_circle</mat-icon> Perfil
       </button>
       <button mat-list-item routerLink = "/admin/lista_usuarios">
-        <mat-icon mat-list-icon>list</mat-icon>Usuarios
+        <mat-icon mat-list-icon>supervisor_account</mat-icon> Usuarios
       </button>
       <button mat-list-item routerLink = "/admin/ticket_admin">
-        <mat-icon mat-list-icon>assignment</mat-icon>Tikcet 
+        <mat-icon mat-list-icon>assignment</mat-icon> Ticket 
       </button>
       <button mat-list-item routerLink = "/admin/agregar-user">
-        <mat-icon mat-list-icon>add_circle_outline</mat-icon>Agregar Usuario 
+        <mat-icon mat-list-icon>add_circle_outline</mat-icon> Agregar Usuario 
       </button>
       <button mat-list-item routerLink="/admin/crear_ticket">
-        <mat-icon mat-list-icon>add_circle_outline</mat-icon>Agregar Ticket  
+        <mat-icon mat-list-icon>add_circle_outline</mat-icon> Agregar Ticket  
       </button>
       
-      <button mat-list-item routerLink = "/admin/examenes">
-        <mat-icon mat-list-icon>quiz</mat-icon>Cuestionarios
+      <button mat-list-item routerLink = "/admin/estados_republica">
+        <mat-icon mat-list-icon>explore</mat-icon> Estado de la Republica
       </button>
-      <button mat-list-item routerLink = "/admin/add-examen">
-        <mat-icon mat-list-icon>add</mat-icon>Agregar cuestionario
+      <button mat-list-item routerLink = "/admin/zona_estados">
+        <mat-icon mat-list-icon>flight_land</mat-icon> Regiones
+      </button>
+      <button mat-list-item routerLink = "/admin/roles">
+        <mat-icon mat-list-icon>perm_contact_calendar</mat-icon> Roles Empleados
+      </button>
+      <button mat-list-item routerLink = "/admin/cuentas_dependencia">
+        <mat-icon mat-list-icon>account_balance</mat-icon> Cuentas - Dependencias
+      </button>
+      <button mat-list-item routerLink = "/admin/clientes">
+        <mat-icon mat-list-icon>perm_identity</mat-icon> Clientes 
+      </button>
+      <button mat-list-item routerLink = "/admin/examenes">
+        <mat-icon mat-list-icon>assessment</mat-icon> Servicios 
+      </button>
+      <button mat-list-item routerLink = "/admin/actualizar-contrasena/">
+        <mat-icon mat-list-icon>cached</mat-icon> Cambiar Contraseña
       </button>
       <button mat-list-item (click) = "logout()">
-        <mat-icon mat-list-icon>logout</mat-icon>Salir
+        <mat-icon mat-list-icon>logout</mat-icon> Salir
       </button>
     </mat-action-list>
   </mat-card>

@@ -41,7 +41,15 @@ public class UsuarioController {
 
 	@Autowired
 	private UsuarioService usuarioService;
-
+	
+	@PutMapping("/actulizar-Password/")
+	public Usuarios ActulizarUsuario_PASSWORD(@RequestBody Usuarios usuarios) throws Exception {
+		String PasswordSHA256;
+		PasswordSHA256 = sha256(usuarios.getPassword());
+		//System.out.println("Este es el  Password " + usuarios.getPassword() + "Este es el HAS 256 = " + PasswordSHA256);
+		usuarios.setPassword(PasswordSHA256);
+		return usuarioService.ActulizarUsurio(usuarios);
+	}
 
 	@PostMapping("/")
 	public Usuarios CrearUsaurio(@RequestBody Usuarios usuarios) throws Exception {
@@ -52,7 +60,7 @@ public class UsuarioController {
 		//System.out.println("Este es el  Password " + usuarios.getPassword() + "Este es el HAS 256 = " + PasswordSHA256);
 		usuarios.setPassword(PasswordSHA256);
 
-		System.out.println("Id_zonas Inyectado = " + usuarios.getZonaestados().getId_zon());
+		//System.out.println("Id_zonas Inyectado = " + usuarios.getZonaestados().getId_zon());
 
 		return usuarioService.CrearUsuario(usuarios);
 	}
@@ -135,6 +143,9 @@ public class UsuarioController {
 	public Usuarios ActulizarUsuario(@RequestBody Usuarios usuarios) {
 		return usuarioService.ActulizarUsurio(usuarios);
 	}
+
+
+
 
 	@GetMapping("/")
 	public ResponseEntity<?> ListarTodosLosUsuarios() {

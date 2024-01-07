@@ -47,7 +47,8 @@
                     <thead class="table-dark text-center ">
                       <tr>
                         <th>ID Tikcet</th>
-                        <th>Documenta</th>
+                        <th>Asigna</th>
+                        <th>Asignado a</th>
                         <th>Comentario </th>
                         <th>Fecha de Doc.</th>
                         <th> Tiempo Restante SLA</th>
@@ -57,12 +58,13 @@
                       </tr>
                     </thead>
                     <tbody class="text-center ">
-                      <tr *ngFor="let e of histrial_tiket |  paginate: { itemsPerPage: 6, currentPage: pagina }">
+                      <tr *ngFor="let e of histrial_asignacion_tiket |  paginate: { itemsPerPage: 6, currentPage: pagina }">
                         <td   > {{ticket.id_ticket}}</td>
-                        <td  >{{e.username}}</td>
-                        <td  >{{e.comentario}}</td>
+                        <td  >{{e.nameuser_inicio}}</td>
+                        <td  >{{e.nameuser_final}}</td>
+                        <td  >{{e.comentarios}}</td>
                         <td  >{{e.last_update_date}}</td>
-                        <td >{{e.sla_status_hist}} hrs</td>
+                        <td >{{e.status_sla}} hrs</td>
               
                        
                     
@@ -80,17 +82,27 @@
         <form  (ngSubmit)="formSubmit()" class ="text-center" >
             <mat-form-field class="full-width container text-center">
                 <mat-label>Documenta el Ticket</mat-label>
-                <input  equired [(ngModel)]="dataHistorialTicket.comentario" name="username" type="email" matInput
+                <input  equired [(ngModel)]="dataAsignacionTikcet.comentarios" name="username" type="email" matInput
                     placeholder="Describa Brevemente el Error">
             </mat-form-field>
+            <div class="input-group mb-3 text-center" style="margin-left: 40%;" appearance="outline">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01"> Asignar a </label>
+                </div>
+                <select required [(ngModel)]="dataAsignacionTikcet.nameuser_final" name="inputGroupSelect01" id="inputGroupSelect01">
+                 
+                    <option *ngFor="let ser of user_f" [value]="ser.username">{{ser.username }} </option>
+
+                </select>
+            </div>
 
             <div class="container text-center" >
                 <!-- <button mat-raised-button color="warn" type="submit" (click)="DocumentarTick()" >Documentar </button> -->
-                <button mat-raised-button color="warn"  >Documentar </button>
+                <button mat-raised-button color="warn"  >Asignar </button>
 
                 <!-- <button mat-stroked-button color="accent" style="margin-left: 60px;" (click)="CerrarTicket()"  >Cerrar Ticket </button> -->
         
-                <button (click)="editarTicket(ticket.id_ticket)" mat-raised-button color="primary" style="margin-left: 60px;">Actualizar</button>
+                <button (click)="editarTicket(ticket.id_ticket)" mat-raised-button color="primary" style="margin-left: 60px;">Editar</button>
     
                 <button routerLink = "/admin/ticket_admin" style="margin-left: 60px;" mat-raised-button
                 color="accent">Salir</button>

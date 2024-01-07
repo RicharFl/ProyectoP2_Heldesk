@@ -1,0 +1,51 @@
+<h2 class="text-center ">Estados de Republica</h2>
+<div class="row">
+  <div class="col">
+    <div class="form-group">
+      <mat-form-field class="full-widthh" appearance="outline">
+        <mat-label>Ingrese Busqueda</mat-label>
+        <input required [(ngModel)]="filterPost" name="filterPost" matInput placeholder="Buscar....">
+      </mat-form-field>
+    </div>
+  </div>
+</div>
+
+<table class="table table-striped">
+  <thead class="table-secondary text-center ">
+    <tr>
+        <th>Id Estado</th>
+        <th>Nombre</th>
+        <th>Descripcion</th>
+        <th>Registro</th>
+        <th>Actilizado</th>
+        <th>Zona Asignada</th>
+        <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody class="text-center ">
+    <tr *ngFor="let e of EstadoRepu | filterEstadoRepu:filterPost |  paginate: { itemsPerPage: 6, currentPage: pagina }">
+      <td>{{e.id_est_repu}}</td>
+      <td>{{e.nombre_esatdo}}</td>
+      <td>{{e.descripcion}}</td>
+      <td>{{e.register_date.substr(0,10)}}</td>
+      <td>{{e.last_update_date.substr(0,10)}}</td>
+      <td>{{e.zona.nombree}}</td>
+      <td class="text-center">
+        <button (click)="EditarEstadoRepublica(e.id_est_repu)" class="btn btn-info">Editar</button>
+
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div>
+  <div class="text-center">
+    <pagination-controls (pageChange)="pagina = $event" previousLabel="anterior" nextLabel="siguiente"
+      screenReaderPageLabel="page" screenReaderCurrentLabel="You're on page">></pagination-controls>
+  </div>
+  <div class="container text-center mt20">
+    <button mat-raised-button color="primary" style="margin-left: 70px; " (click)="exportarExcel()">Descargar
+      EXCEL</button>
+    <button routerLink="/admin/estados_republica/crear_estado" mat-raised-button color="accent" style="margin-left: 70px; ">Agregar
+      Estado</button>
+  </div>
+</div>

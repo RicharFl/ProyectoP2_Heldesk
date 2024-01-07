@@ -39,6 +39,9 @@ public class ZonaEstados implements Serializable {
 
   @Column(name = "nombreE")
   private String nombree;
+  
+  @Column(name = "Descripcion")
+  private String descripcion;
   @Column(name = "register_date", nullable = false)
   private Date register_date;
 
@@ -63,16 +66,25 @@ public ZonaEstados () {
 	//System.out.println("estoy en el constructor de zona estados");
 }
   
-  public ZonaEstados(Long id_zon,Date last_update_date, String nombree, Date register_date) {
+
+
+
+  public ZonaEstados(Long id_zon, String nombree, String descripcion, Date register_date, Date last_update_date,
+		Set<Usuarios> usuarios, Set<EstadosRepu> estadosrepu) {
 	super();
 	Id_zon = id_zon;
 	this.nombree = nombree;
+	this.descripcion = descripcion;
 	this.register_date = register_date;
 	this.last_update_date = last_update_date;
+	this.usuarios = usuarios;
+	this.estadosrepu = estadosrepu;
 }
 
 
-  @Override
+
+
+@Override
   public int hashCode() {
     return Objects.hash(Id_zon, nombree);
   }
@@ -110,8 +122,30 @@ public String getNombree() {
 	return nombree;
 }
 
+public Set<EstadosRepu> getEstadosrepu() {
+	return estadosrepu;
+}
+
+
+
+
+public void setEstadosrepu(Set<EstadosRepu> estadosrepu) {
+	this.estadosrepu = estadosrepu;
+}
+
+
+
+
 public void setNombree(String nombree) {
 	this.nombree = nombree;
+}
+
+public String getDescripcion() {
+	return descripcion;
+}
+
+public void setDescripcion(String descripcion) {
+	this.descripcion = descripcion;
 }
 
 public Date getRegister_date() {

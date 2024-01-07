@@ -1,0 +1,50 @@
+<div class="bootstrap-wrapper">
+    <div class="container-lg" style="width: 100%;">
+        <div class="row" style="margin-top : 30px;">
+            <div class="col-md-6 offset-md-3">
+                <mat-card>
+                    <div class="container text-center" style="margin-top : 30px;">
+                        <img src="../../../assets/gobierno.png" width="200" height="150">
+                    </div>
+
+                    <h1 class="text-center">Crear nuevo Cuenta</h1>
+
+                    <form (ngSubmit)="formSubmit()">
+
+                        <mat-form-field class="full-width container text-center" appearance="outline">
+                            <mat-label>Nombre de la Cuenta</mat-label>
+                            <input required [(ngModel)]="Cuenta.nombre_cuen" name="nombre_cuen"  matInput
+                                placeholder="Nombre de la Cuenta">
+                        </mat-form-field>
+
+                        <mat-form-field class="full-width container text-center" appearance="outline">
+                            <mat-label>Descripcion</mat-label>
+                            <input required [(ngModel)]="Cuenta.desc_cuenta" name="desc_cuenta" matInput
+                                placeholder="Descripcion de la Cuenta">
+                        </mat-form-field>
+                        <mat-form-field class="full-width container text-center" appearance="outline">
+                            <mat-label>Alcance Territorial</mat-label>
+                            <input required [(ngModel)]="Cuenta.alcan_cuen" name="nombre_user" matInput
+                                placeholder="Alcance Territorial">
+                        </mat-form-field>
+
+                        <mat-form-field class="full-width container text-center" appearance="outline">
+                            <mat-label>Representante de Cuenta</mat-label>
+                            <input required [(ngModel)]="Cuenta.repre_cuen" name="repre_cuen" matInput
+                                placeholder="Representante de Cuenta">
+                        </mat-form-field>
+                        <div class="container text-center">
+                            <button mat-raised-button color="primary" style=" margin-bottom: 20px;">Registrar</button>
+
+                            <button type="reset" style="margin-left: 60px; margin-bottom: 20px;" mat-raised-button
+                                color="accent">Limpiar</button>
+
+                              
+                        </div>
+                    </form>
+                </mat-card>
+                <br><br><br>
+            </div>
+        </div>
+    </div>
+</div>

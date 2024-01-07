@@ -26,6 +26,9 @@ public ActulizaDatosDeEmpleado (User:any)
   return this.http.put(`${baseUrl}/IPN/helpdesk/Usuario/`,User)
 }
 
+public ActulizaContrasena(User:any){
+  return this.http.put(`${baseUrl}/IPN/helpdesk/Usuario/actulizar-Password/`,User)
+}
 
 
 }

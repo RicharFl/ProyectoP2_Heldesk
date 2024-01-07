@@ -139,7 +139,7 @@ export class CrearticketComponent implements OnInit {
 
 
     
-    console.log(this.dataTicket);
+    //console.log(this.dataTicket);
     if (this.dataTicket.des_error == '' || this.dataTicket.des_error == null) {
       this.snack.open('La descripcion del Error es Necesario !!', 'Aceptar', {
         duration: 3000,
@@ -164,8 +164,8 @@ export class CrearticketComponent implements OnInit {
     this.ticketService.agrgarTicket(this.dataTicket).subscribe(
       (data2 : any) => {
 
-       // Swal.fire('Ticket Creado', 'Ticket registrado con exito en el sistema', 'success');
-      // this.router.navigate(['admin/ticket_admin']);
+       Swal.fire('Ticket Creado', 'Ticket registrado con exito en el sistema', 'success');
+       this.router.navigate(['admin/ticket_admin']);
       }, (error) => {
         console.log(error);
         this.snack.open('Ha ocurrido un error en el sistema !!', 'Aceptar', {
@@ -173,7 +173,7 @@ export class CrearticketComponent implements OnInit {
         });
       }
     )
-
+/*
 
 this.dataAsignacion.comentarios= 'Ticket Creado por: ' + this.loginService.getiduser_storage();
 this.dataAsignacion.ticket.id_ticket = this.data2.id_ticket;
@@ -192,7 +192,7 @@ this.asignacion.añadirAsignacion(this.dataAsignacion).subscribe(
       duration: 3000
     });
   }
-)
+)*/
 /*
         this.dataHistorialTicket.comentario = 'Ticket Creado por: ' + this.loginService.getiduser_storage();
         this.dataHistorialTicket.ticket.id_ticket = (this.data2.id_ticket);

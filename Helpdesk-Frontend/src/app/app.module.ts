@@ -50,6 +50,33 @@ import { EditarTicketComponent } from './pages/admin/editarTicket/editar-ticket/
 import { CrearticketComponent } from './pages/admin/crearticket/crearticket/crearticket.component';
 import { DocTicketComponent } from './pages/admin/doc-ticket/doc-ticket/doc-ticket.component';
 import { AsignarTicketComponent } from './pages/admin/asignar-ticket/asignar-ticket/asignar-ticket.component';
+import { AsignadosAmiComponent } from './pages/admin/ticket_asignados_ami/asignados-ami/asignados-ami.component';
+import { FilterTicketPipe } from './pipes/filter-ticket.pipe';
+import { CambioContrasenaComponent } from './pages/admin/cambio-contrasena/cambio-contrasena.component';
+import { ListaEstadosRepubliComponent } from './pages/admin/Estodos-Republica/lista-estados-republi/lista-estados-republi.component';
+import { ActualizaEstadosRepubliComponent } from './pages/admin/Estodos-Republica/actualiza-estados-republi/actualiza-estados-republi.component';
+import { CreaEstadosRepubliComponent } from './pages/admin/Estodos-Republica/crea-estados-republi/crea-estados-republi.component';
+import { FilterEstadoRepuPipe } from './pipes/filter-estado-repu.pipe';
+import { ListaZonaEstadosComponent } from './pages/admin/ZonaRegion/lista-zona-estados/lista-zona-estados.component';
+import { CreaZonaEstadosComponent } from './pages/admin/ZonaRegion/crea-zona-estados/crea-zona-estados.component';
+import { ActulizaZonaEstadosComponent } from './pages/admin/ZonaRegion/actuliza-zona-estados/actuliza-zona-estados.component';
+import { FilterZonaEstadoPipe } from './pipes/filter-zona-estado.pipe';
+import { ListaRolesComponent } from './pages/admin/roles/lista-roles/lista-roles.component';
+import { ActilizaRolesComponent } from './pages/admin/roles/actiliza-roles/actiliza-roles.component';
+import { CreaRolesComponent } from './pages/admin/roles/crea-roles/crea-roles.component';
+import { CreaCuentaDependenciaComponent } from './pages/admin/cuentasDependencias/crea-cuenta-dependencia/crea-cuenta-dependencia.component';
+import { ActualizaCuentaDependenciaComponent } from './pages/admin/cuentasDependencias/actualiza-cuenta-dependencia/actualiza-cuenta-dependencia.component';
+import { ListaCuentaDependenciaComponent } from './pages/admin/cuentasDependencias/lista-cuenta-dependencia/lista-cuenta-dependencia.component';
+import { FilterCuentaPipe } from './pipes/filter-cuenta.pipe';
+import { FilterClientesPipe } from './pipes/filter-clientes.pipe';
+import { FilterServiciosPipe } from './pipes/filter-servicios.pipe';
+import { ListaclientesComponent } from './pages/admin/clientes/listaclientes/listaclientes.component';
+import { ActulizaclienteComponent } from './pages/admin/clientes/actulizacliente/actulizacliente.component';
+import { CreaClienteComponent } from './pages/admin/clientes/crea-cliente/crea-cliente.component';
+import { ListaServiciosComponent } from './pages/admin/servicios/lista-servicios/lista-servicios.component';
+import { CreaServicioComponent } from './pages/admin/servicios/crea-servicio/crea-servicio.component';
+import { ActualizaServicioComponent } from './pages/admin/servicios/actualiza-servicio/actualiza-servicio.component';
+
 
 
 
@@ -78,7 +105,34 @@ import { AsignarTicketComponent } from './pages/admin/asignar-ticket/asignar-tic
     EditarTicketComponent,
     CrearticketComponent,
     DocTicketComponent,
-    AsignarTicketComponent
+    AsignarTicketComponent,
+    AsignadosAmiComponent,
+    FilterTicketPipe,
+    CambioContrasenaComponent,
+    ListaEstadosRepubliComponent,
+    ActualizaEstadosRepubliComponent,
+    CreaEstadosRepubliComponent,
+    FilterEstadoRepuPipe,
+    ListaZonaEstadosComponent,
+    CreaZonaEstadosComponent,
+    ActulizaZonaEstadosComponent,
+    FilterZonaEstadoPipe,
+    ListaRolesComponent,
+    ActilizaRolesComponent,
+    CreaRolesComponent,
+    CreaCuentaDependenciaComponent,
+    ActualizaCuentaDependenciaComponent,
+    ListaCuentaDependenciaComponent,
+    FilterCuentaPipe,
+    FilterClientesPipe,
+    FilterServiciosPipe,
+    ListaclientesComponent,
+    ActulizaclienteComponent,
+    CreaClienteComponent,
+    ListaServiciosComponent,
+    CreaServicioComponent,
+    ActualizaServicioComponent
+   
     
     
   ],

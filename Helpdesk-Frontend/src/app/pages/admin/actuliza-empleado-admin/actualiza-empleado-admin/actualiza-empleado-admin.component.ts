@@ -45,7 +45,7 @@ export class ActualizaEmpleadoAdminComponent implements OnInit {
   onSubmit(): void {
     
     this.user.last_update_date = Date.now();
-    console.log(this.user);
+   // console.log(this.user);
     this.usuariosAdminServi.ActulizaDatosDeEmpleado(this.user).subscribe(
       (data) => {
         //console.log(data);

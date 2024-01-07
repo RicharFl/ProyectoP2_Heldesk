@@ -1,0 +1,72 @@
+<mat-card style="margin-left: 10px; margin-top : 20px;">
+    <h1 class="text-center">Editando Estado De La Republica</h1>
+    <mat-card-content>
+        <div class="bootstrap-wrapper">
+            <div class="container">
+                <div class="text-center">
+                    <img src="../../../assets/estadosMex.png" alt="" class="profile-image">
+
+                    <h1 class="mt20"> Estas editando el Estado : {{ EstadoRepu.nombre_esatdo }} </h1>
+                </div>
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <table class="table container text-center ">
+                            <tr>
+                                <td>Nombre de Estado</td>
+                                <td>{{ EstadoRepu.nombre_esatdo }}</td>
+                            </tr>
+                            <tr>
+                                <td>ID Estado</td>
+                                <td>{{ EstadoRepu.id_est_repu }}</td>
+                            </tr>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+   
+    <form (ngSubmit)="onSubmit()" #empleadoForm="ngForm" class="container text-center">
+        <div class="form-group">
+
+
+            <mat-form-field class="full-widthh" appearance="outline">
+                <mat-label>Nombre del Estado</mat-label>
+                <input required [(ngModel)]="EstadoRepu.nombre_esatdo" name="nombre_user" matInput
+                    placeholder="Digite su nombre de usuario">
+            </mat-form-field>
+
+            <mat-form-field class="full-widthh" appearance="outline">
+                <mat-label>Descripcion</mat-label>
+                <input required [(ngModel)]="EstadoRepu.descripcion" name="apellidop_user" matInput
+                    placeholder="Digite su Apellido Paterno">
+            </mat-form-field>
+
+
+            <div class="full-widthh2 container text-center">
+
+
+                <div class="input-group mb-3 " appearance="outline">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect03"> Ent. Federativa</label>
+                    </div>
+                    <select required [(ngModel)]="EstadoRepu.zona.id_zon" name="inputGroupSelect03" id="inputGroupSelect03">
+                    
+                        <option *ngFor="let Estado of ZonaEstado" [value]="Estado.id_zon">{{Estado.nombree }}</option>
+  
+                    </select>
+                </div>
+            </div>
+
+        </div>
+        <div class="container text-center">
+            <button mat-raised-button color="warn">Actualizar</button>
+            <button type="reset" style="margin-left: 60px;" mat-raised-button
+            color="accent">Limpiar</button>
+            <button routerLink = "/admin" style="margin-left: 60px;" mat-raised-button
+            color="primary">Salir</button>
+        </div>
+    </form>
+</mat-card-content>
+</mat-card >

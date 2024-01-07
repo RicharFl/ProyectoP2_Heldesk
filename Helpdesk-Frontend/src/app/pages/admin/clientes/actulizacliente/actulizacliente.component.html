@@ -1,0 +1,102 @@
+<mat-card style="margin-left: 10px; margin-top : 20px;">
+    <h1 class="text-center">Editando Cliente</h1>
+    <mat-card-content>
+        <div class="bootstrap-wrapper">
+            <div class="container">
+                <div class="text-center">
+                    <img src="../../../assets/estadosMex.png" alt="" class="profile-image">
+
+                    <h1 class="mt20"> Estas editando al Cliente : {{ Cliente.nombre_cli }}  {{ Cliente.apellidoP_cli }} {{ Cliente.apellidoM_cli }} </h1>
+                </div>
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <table class="table container text-center ">
+                            <tr>
+                                <td>Nombre del Cliente</td>
+                                <td>{{ Cliente.nombre_cli }}  {{ Cliente.apellidoP_cli }} {{ Cliente.apellidoM_cli }} </td>
+                            </tr>
+                            <tr>
+                                <td>ID Cliente</td>
+                                <td>{{ Cliente.id_cliente }}</td>
+                            </tr>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+   
+    <form (ngSubmit)="onSubmit()" #empleadoForm="ngForm" class="container text-center">
+        <div class="form-group">
+
+
+            <mat-form-field class="full-widthh" appearance="outline">
+                <mat-label>Nombre</mat-label>
+                <input required [(ngModel)]="Cliente.nombre_esatdo" name="nombre_user" matInput
+                    placeholder="Digite Nombre">
+            </mat-form-field>
+            <mat-form-field class="full-widthh" appearance="outline">
+                <mat-label>Apellido Paterno</mat-label>
+                <input required [(ngModel)]="Cliente.apellidoP_cli" name="apellidoP_cli" matInput
+                    placeholder="Digite Apellido Paterno">
+            </mat-form-field>
+            <mat-form-field class="full-widthh" appearance="outline">
+                <mat-label>Apellido Materno</mat-label>
+                <input required [(ngModel)]="Cliente.apellidoM_cli" name="apellidoM_cli" matInput
+                    placeholder="Digite Apellido Materno">
+            </mat-form-field>
+
+            <mat-form-field class="full-widthh" appearance="outline">
+                <mat-label>Correo</mat-label>
+                <input required [(ngModel)]="Cliente.correo_cli" name="correo_cli" matInput
+                    placeholder="Digite correo">
+            </mat-form-field>
+            <mat-form-field class="full-widthh" appearance="outline">
+                <mat-label>Telefono</mat-label>
+                <input required [(ngModel)]="Cliente.tel_cli" name="tel_cli" matInput
+                    placeholder="Digite Telefono">
+            </mat-form-field>
+            <mat-form-field class="full-widthh" appearance="outline">
+                <mat-label>Extension</mat-label>
+                <input required [(ngModel)]="Cliente.ext_cli" name="ext_cli" matInput
+                    placeholder="Digite Extension">
+            </mat-form-field>
+
+            <mat-form-field class="full-widthh" appearance="outline">
+                <mat-label>Area de Adscripcion</mat-label>
+                <input required [(ngModel)]="Cliente.area_cli" name="area_cli" matInput
+                    placeholder="Digite Area de Adscripcion">
+            </mat-form-field>
+            <mat-form-field class="full-widthh" appearance="outline">
+                <mat-label>Departamento de Adscripcion</mat-label>
+                <input required [(ngModel)]="Cliente.adscrp_cli" name="adscrp_cli" matInput
+                    placeholder="Digite Area de Adscripcion">
+            </mat-form-field>
+
+
+            <div class="full-widthh2 container text-center">
+
+                <div class="input-group mb-3 " appearance="outline">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect03"> Ent. Federativa</label>
+                    </div>
+                    <select required [(ngModel)]="Cliente.cuenta.id_cuen" name="inputGroupSelect03" id="inputGroupSelect03">
+                    
+                        <option *ngFor="let c of Cuenta" [value]="c.id_cuen">{{c.nombre_cuen }}</option>
+  
+                    </select>
+                </div>
+            </div>
+
+        </div>
+        <div class="container text-center">
+            <button mat-raised-button color="warn">Actualizar</button>
+            <button type="reset" style="margin-left: 60px;" mat-raised-button
+            color="accent">Limpiar</button>
+            <button routerLink = "/admin" style="margin-left: 60px;" mat-raised-button
+            color="primary">Salir</button>
+        </div>
+    </form>
+</mat-card-content>
+</mat-card >

@@ -50,8 +50,8 @@ public class EstadosRepu implements Serializable {
     @Column(name = "last_update_date")
     private Date last_update_date;
 
-    @ManyToOne(optional = true, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-    @JoinColumn(name = "Id_zon", foreignKey = @ForeignKey(name = "FK_1_ZonaEstado_ID"), nullable=false)
+    @ManyToOne(optional = true)
+    @JoinColumn(name = "Id_zon", foreignKey = @ForeignKey(name = "FK_1_ZonaEstado_ID"))
     private ZonaEstados zonaestados;
 
     public  EstadosRepu() {
