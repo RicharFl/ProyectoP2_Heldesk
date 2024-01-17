@@ -27,7 +27,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@NoArgsConstructor
+
 @Getter
 @Setter
 @Entity
@@ -44,7 +44,7 @@ public class Cliente implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_cliente;
 //cascade = { CascadeType.PERSIST, CascadeType.MERGE }
-    @ManyToOne(optional = true,  cascade = { CascadeType.MERGE })
+    @ManyToOne(optional = true)
     @JoinColumn(name = "id_cuen", foreignKey = @ForeignKey(name = "FK_1_id_cuen"))
     private Cuenta cuenta;
 

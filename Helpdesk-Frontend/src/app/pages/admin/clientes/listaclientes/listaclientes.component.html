@@ -1,4 +1,4 @@
-<h2 class="text-center ">Clientes</h2>
+<h2 class="text-center "  style="margin-top: 20px; font-size: 35px;" >CLIENTES</h2>
 <div class="row">
   <div class="col">
     <div class="form-group">
@@ -53,7 +53,8 @@
   <div class="container text-center mt20">
     <button mat-raised-button color="primary" style="margin-left: 70px; " (click)="exportarExcel()">Descargar
       EXCEL</button>
-    <button routerLink="/admin/estados_republica/crear_estado" mat-raised-button color="accent" style="margin-left: 70px; ">Agregar
-      Estado</button>
+    <button 
+    (click)="crearclientes()" mat-raised-button color="accent" style="margin-left: 70px; ">Agregar
+      Cliente</button>
   </div>
 </div>

@@ -113,7 +113,18 @@ export class DocTicketComponent implements OnInit{
   //console.log("esto es lo que mando desde admin_ticket");
 //console.log("esto es lo que mando desde admin_ticket "+idticket);
 
-  this.router.navigate(['admin/editar_ticket',idticket]);
+if (this.login.getUser()=='1')
+{this.router.navigate(['admin/editar_ticket',idticket]);}
+else if (this.login.getUser()=='2')
+{this.router.navigate(['gerente_general/editar_ticket',idticket]);}
+else if (this.login.getUser()=='3')
+{this.router.navigate(['cordinador_zona/editar_ticket',idticket]);}
+else if (this.login.getUser()=='4')
+{this.router.navigate(['agente-mesa/editar_ticket',idticket]);}
+else if (this.login.getUser()=='5')
+{Swal.fire('Restricción de Accion', ' No tiene los permisos Necesarios, solicita actulizacion de permisos al Administrador', 'warning');}
+else if (this.login.getUser()=='6')
+{Swal.fire('Restricción de Accion', ' No tiene los permisos Necesarios, solicita actulizacion de permisos al Administrador', 'warning');}
 }
 
 
@@ -162,17 +173,49 @@ this.tickets.actualizaTicket(this.dataTicket).subscribe(
     (data_histtiket: any) => {
       Swal.fire('Ticket Documentado Correctamente', 'El ticket Fue documentado', 'success');
         
-      this.router.navigate(['admin/ticket_admin']);
+      if (this.login.getUser()=='1')
+      {this.router.navigate(['admin/ticket_admin']);}
+      else if (this.login.getUser()=='2')
+      { //Swal.fire('Restricción de Accion', ' No tiene los permisos Necesarios, solicita actulizacion de permisos al Administrador', 'warning');
+        this.router.navigate(['gerente_general/ticket_admin']);
+      }
+      else if (this.login.getUser()=='3')
+      {this.router.navigate(['cordinador_zona/ticket_admin']);}
+      else if (this.login.getUser()=='4')
+      {this.router.navigate(['agente-mesa/ticket_admin']);}
+      else if (this.login.getUser()=='5')
+      {this.router.navigate(['tecnico_especialista/ticket_admin']);}
+      else if (this.login.getUser()=='6')
+      {this.router.navigate(['almacen/ticket_admin']);}
     },
       (error) => {
         alert("Errror al Insertar en el Historial");
       }
   )
 
+
+
 }
 
 
+salir()
+{
+  if (this.login.getUser()=='1')
+  {this.router.navigate(['admin/ticket_admin']);}
+  else if (this.login.getUser()=='2')
+  { //Swal.fire('Restricción de Accion', ' No tiene los permisos Necesarios, solicita actulizacion de permisos al Administrador', 'warning');
+    this.router.navigate(['gerente_general/ticket_admin']);
+  }
+  else if (this.login.getUser()=='3')
+  {this.router.navigate(['cordinador_zona/ticket_admin']);}
+  else if (this.login.getUser()=='4')
+  {this.router.navigate(['agente-mesa/ticket_admin']);}
+  else if (this.login.getUser()=='5')
+  {this.router.navigate(['tecnico_especialista/ticket_admin']);}
+  else if (this.login.getUser()=='6')
+  {this.router.navigate(['almacen/ticket_admin']);}
 
+}
 
 
 

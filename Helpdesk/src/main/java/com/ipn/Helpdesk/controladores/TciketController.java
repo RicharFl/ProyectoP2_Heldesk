@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ipn.Helpdesk.Servicios.TicketService;
 import com.ipn.Helpdesk.modelo.entidad.Ticket;
+import com.ipn.Helpdesk.repositorios.TicketRepository;
+
+import lombok.experimental.PackagePrivate;
 
 @RestController
 @RequestMapping("/IPN/helpdesk/Ticket/")
@@ -22,6 +25,9 @@ public class TciketController {
 
 	@Autowired
 	private TicketService ticketService;
+	
+	@Autowired
+	private TicketRepository repository;
 	
 	@PostMapping ("/")
 	public ResponseEntity<Ticket> GuardarNuevoTicket(@RequestBody Ticket ticket)
@@ -47,6 +53,27 @@ public class TciketController {
 		return ticketService.ListaTicketUnico(id_ticket);
 	}
 	
+	@GetMapping("/tickeActivos/{iduser}")
+	public ResponseEntity<?>  ListaMisTicketsAsignados( @PathVariable ("iduser") Long iduser)
+	{
+		return ResponseEntity.ok(repository.ListaMisTicketsAsigandosActivos(iduser));
+	}
+	
+	
+	
+	@GetMapping("/tickeCerrados/{iduser}")
+	public ResponseEntity<?>  ListaMisTicketsCerrados( @PathVariable ("iduser") Long iduser)
+	{
+		return ResponseEntity.ok(repository.ListaMisTicketsCerradosYCancelados(iduser));
+	}
+	 
+	
+
+	@GetMapping("/tickeZona/{iduser}")
+	public ResponseEntity<?>  ListaTickestPorZonaAsignada( @PathVariable ("iduser") Long iduser)
+	{
+		return ResponseEntity.ok(repository.ListaTicketsPorZona(iduser));
+	}
 	@DeleteMapping("/{id_ticket}")
 	public void EliminarTicketPorId( @PathVariable ("id_ticket") Long id_ticket)
 	{

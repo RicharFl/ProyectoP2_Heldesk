@@ -14,6 +14,10 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/helpdesk-frontend",
+            "allowedCommonJsDependencies": [
+              "rfdc",
+              "sweetalert2"
+            ],
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -37,8 +41,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "5mb",
+                  "maximumError": "5mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -80,10 +84,12 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
+           
             "polyfills": [
               "zone.js",
               "zone.js/testing"
             ],
+            
             "tsConfig": "tsconfig.spec.json",
             "assets": [
               "src/favicon.ico",

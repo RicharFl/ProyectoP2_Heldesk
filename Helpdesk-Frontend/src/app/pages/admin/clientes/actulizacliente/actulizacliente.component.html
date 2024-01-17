@@ -1,10 +1,10 @@
 <mat-card style="margin-left: 10px; margin-top : 20px;">
-    <h1 class="text-center">Editando Cliente</h1>
+    <h1 class="text-center" style="margin-top: 40px; font-size: 35px; ">EDITANDO CLIENTE</h1>
     <mat-card-content>
         <div class="bootstrap-wrapper">
             <div class="container">
                 <div class="text-center">
-                    <img src="../../../assets/estadosMex.png" alt="" class="profile-image">
+                    <img src="../../../../../assets/gobierno.png" alt="" class="profile-image">
 
                     <h1 class="mt20"> Estas editando al Cliente : {{ Cliente.nombre_cli }}  {{ Cliente.apellidoP_cli }} {{ Cliente.apellidoM_cli }} </h1>
                 </div>
@@ -33,7 +33,7 @@
 
             <mat-form-field class="full-widthh" appearance="outline">
                 <mat-label>Nombre</mat-label>
-                <input required [(ngModel)]="Cliente.nombre_esatdo" name="nombre_user" matInput
+                <input required [(ngModel)]="Cliente.nombre_cli" name="nombre_cli" matInput
                     placeholder="Digite Nombre">
             </mat-form-field>
             <mat-form-field class="full-widthh" appearance="outline">
@@ -94,7 +94,7 @@
             <button mat-raised-button color="warn">Actualizar</button>
             <button type="reset" style="margin-left: 60px;" mat-raised-button
             color="accent">Limpiar</button>
-            <button routerLink = "/admin" style="margin-left: 60px;" mat-raised-button
+            <button (click)="salir()" style="margin-left: 60px;" mat-raised-button
             color="primary">Salir</button>
         </div>
     </form>

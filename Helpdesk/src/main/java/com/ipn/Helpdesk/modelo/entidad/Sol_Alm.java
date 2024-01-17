@@ -27,7 +27,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@NoArgsConstructor
+
 @Table(name = "Sol_Alm", schema = "helpdesk_qa_prep")
 
 public class Sol_Alm implements Serializable {

@@ -1,1 +1,87 @@
-<p>crea-cliente works!</p>
+<div class="bootstrap-wrapper">
+    <div class="container-lg" style="width: 160%;">
+        <div class="row" style="margin-top : 30px;">
+            <div class="col-md-6 offset-md-3 text-center">
+                <mat-card>
+                    <div class="container text-center" style="margin-top : 30px;">
+                        <img src="../../../assets/gobierno.png" width="200" height="150">
+                    </div>
+
+                    <h1 class="text-center">Crear Cliente </h1>
+
+                    <form (ngSubmit)="formSubmit()">
+
+                        <mat-form-field class="full-widthh" style="margin-left: 10px;" appearance="outline">
+                            <mat-label>Nombre</mat-label>
+                            <input required [(ngModel)]="Cliente_save.nombre_cli" name="nombre_cli" matInput
+                                placeholder="Digite Nombre">
+                        </mat-form-field>
+                        <mat-form-field class="full-widthh" style="margin-left: 10px;" appearance="outline">
+                            <mat-label>Apellido Paterno</mat-label>
+                            <input required [(ngModel)]="Cliente_save.apellidoP_cli" name="apellidoP_cli" matInput
+                                placeholder="Digite Apellido Paterno">
+                        </mat-form-field>
+                        <mat-form-field class="full-widthh" style="margin-left: 10px;" appearance="outline">
+                            <mat-label>Apellido Materno</mat-label>
+                            <input required [(ngModel)]="Cliente_save.apellidoM_cli" name="apellidoM_cli" matInput
+                                placeholder="Digite Apellido Materno">
+                        </mat-form-field>
+            
+                        <mat-form-field class="full-widthh" style="margin-left: 10px;" appearance="outline">
+                            <mat-label>Correo</mat-label>
+                            <input required [(ngModel)]="Cliente_save.correo_cli" type="email" name="correo_cli" matInput
+                                placeholder="Digite correo">
+                        </mat-form-field>
+                        <mat-form-field class="full-widthh" style="margin-left: 10px;" appearance="outline">
+                            <mat-label>Telefono</mat-label>
+                            <input required [(ngModel)]="Cliente_save.tel_cli" name="tel_cli" matInput
+                                placeholder="Digite Telefono">
+                        </mat-form-field>
+                        <mat-form-field class="full-widthh" style="margin-left: 10px;" appearance="outline">
+                            <mat-label>Extension</mat-label>
+                            <input required [(ngModel)]="Cliente_save.ext_cli" name="ext_cli" matInput
+                                placeholder="Digite Extension">
+                        </mat-form-field>
+            
+                        <mat-form-field class="full-widthh" style="margin-left: 10px;" appearance="outline">
+                            <mat-label>Area de Adscripcion</mat-label>
+                            <input required [(ngModel)]="Cliente_save.area_cli" name="area_cli" matInput
+                                placeholder="Digite Area de Adscripcion">
+                        </mat-form-field>
+                        <mat-form-field class="full-widthh" style="margin-left: 10px;" appearance="outline">
+                            <mat-label>Departamento de Adscripcion</mat-label>
+                            <input required [(ngModel)]="Cliente_save.adscrp_cli" name="adscrp_cli" matInput
+                                placeholder="Digite Area de Adscripcion">
+                        </mat-form-field>
+                    
+
+                            <div class="input-group mb-3 text-center" style=" margin-left:30% ;" appearance="outline">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text" for="inputGroupSelect03"> Ent. Federativa</label>
+                                </div>
+                                <select required [(ngModel)]="Cliente_save.cuenta.id_cuen" name="inputGroupSelect03" id="inputGroupSelect03">
+                                
+                                    <option *ngFor="let c of cuentadata" [value]="c.id_cuen">{{c.nombre_cuen }}</option>
+              
+                                </select>
+                            </div>
+            
+            
+                       
+                    
+
+                        <div class="container" >
+                            <button mat-raised-button color="primary" style=" margin-bottom: 20px;">Registrar</button>
+
+                            <button type="reset" style="margin-left: 60px; margin-bottom: 20px;" mat-raised-button
+                                color="accent">Limpiar</button>
+
+                              
+                        </div>
+                    </form>
+                </mat-card>
+                <br><br><br>
+            </div>
+        </div>
+    </div>
+</div>

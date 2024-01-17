@@ -30,7 +30,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@NoArgsConstructor
+
 
 @Table(name = "HisTicket", schema = "helpdesk_qa_prep")
 public class HisTicket implements Serializable  {

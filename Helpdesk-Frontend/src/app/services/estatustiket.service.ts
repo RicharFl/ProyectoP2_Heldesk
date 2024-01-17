@@ -13,6 +13,9 @@ public ListaTodosLosEstatusdeTicket (){
   return this.http.get(`${baseUrl}/IPN/helpdesk/StatusTicket/`)
 }
 
+
+
+
 public ActulizaEstatusdeTciket (EstatusTicket:any)
 {
   return this.http.put(`${baseUrl}/IPN/helpdesk/StatusTicket/`,EstatusTicket)

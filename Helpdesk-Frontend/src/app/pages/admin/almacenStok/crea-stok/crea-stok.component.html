@@ -1,0 +1,53 @@
+<div class="bootstrap-wrapper">
+    <div class="container-lg" style="width: 160%;">
+        <div class="row" style="margin-top : 30px;">
+            <div class="col-md-6 offset-md-3 text-center">
+                <mat-card>
+                    <div class="container text-center" style="margin-top : 30px;">
+                        <img src="../../../assets/gobierno.png" width="200" height="150">
+                    </div>
+
+                    <h1 class="text-center">Agrega Producto al Almacen </h1>
+
+                    <form (ngSubmit)="formSubmit()">
+
+                        <mat-form-field class="full-widthh" style="margin-left: 10px;" appearance="outline">
+                            <mat-label>Marca</mat-label>
+                            <input required [(ngModel)]="Almacen_save.marca" name="marca" matInput
+                                placeholder="Digite Marca">
+                        </mat-form-field>
+                        <mat-form-field class="full-widthh" style="margin-left: 10px;" appearance="outline">
+                            <mat-label>Modelo</mat-label>
+                            <input required [(ngModel)]="Almacen_save.moedelo" name="moedelo" matInput
+                                placeholder="Digite Modelo">
+                        </mat-form-field>
+                        <mat-form-field class="full-widthh" style="margin-left: 10px;" appearance="outline">
+                            <mat-label>Descripcion</mat-label>
+                            <input required [(ngModel)]="Almacen_save.descripcin" name="apellidoM_cli" matInput
+                                placeholder="Digite Descripcion">
+                        </mat-form-field>
+            
+                        <mat-form-field class="full-widthh" style="margin-left: 10px;" appearance="outline">
+                            <mat-label>Stock</mat-label>
+                            <input required [(ngModel)]="Almacen_save.stoc"  name="correo_cli" matInput
+                                placeholder="Digite Stock">
+                        </mat-form-field>
+                       
+                       
+                    
+
+                        <div class="container" >
+                            <button mat-raised-button color="primary" style=" margin-bottom: 20px;">Registrar</button>
+
+                            <button type="reset" style="margin-left: 60px; margin-bottom: 20px;" mat-raised-button
+                                color="accent">Limpiar</button>
+
+                              
+                        </div>
+                    </form>
+                </mat-card>
+                <br><br><br>
+            </div>
+        </div>
+    </div>
+</div>

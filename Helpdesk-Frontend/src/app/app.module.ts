@@ -50,7 +50,7 @@ import { EditarTicketComponent } from './pages/admin/editarTicket/editar-ticket/
 import { CrearticketComponent } from './pages/admin/crearticket/crearticket/crearticket.component';
 import { DocTicketComponent } from './pages/admin/doc-ticket/doc-ticket/doc-ticket.component';
 import { AsignarTicketComponent } from './pages/admin/asignar-ticket/asignar-ticket/asignar-ticket.component';
-import { AsignadosAmiComponent } from './pages/admin/ticket_asignados_ami/asignados-ami/asignados-ami.component';
+
 import { FilterTicketPipe } from './pipes/filter-ticket.pipe';
 import { CambioContrasenaComponent } from './pages/admin/cambio-contrasena/cambio-contrasena.component';
 import { ListaEstadosRepubliComponent } from './pages/admin/Estodos-Republica/lista-estados-republi/lista-estados-republi.component';
@@ -76,6 +76,18 @@ import { CreaClienteComponent } from './pages/admin/clientes/crea-cliente/crea-c
 import { ListaServiciosComponent } from './pages/admin/servicios/lista-servicios/lista-servicios.component';
 import { CreaServicioComponent } from './pages/admin/servicios/crea-servicio/crea-servicio.component';
 import { ActualizaServicioComponent } from './pages/admin/servicios/actualiza-servicio/actualiza-servicio.component';
+import { EstadisticasComponent } from './pages/admin/estadisticas/estadisticas/estadisticas.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { MisTicketAsigandosComponent } from './pages/admin/misTickets/mis-ticket-asigandos/mis-ticket-asigandos.component';
+import { MisTicketCerradosComponent } from './pages/admin/misTicketsCerrados/mis-ticket-cerrados/mis-ticket-cerrados.component';
+import { SidebarGereteComponent } from './pages/Gerente_general/sidebar-gerete/sidebar-gerete.component';
+import { EditaPerfilPersonalComponent } from './pages/admin/edita-perfil-personal/edita-perfil-personal.component';
+import { SidebarCordinadorComponent } from './pages/Cordinador_zona/sidebar-cordinador/sidebar-cordinador.component';
+import { SidebarAgenteMesaComponent } from './pages/Agente_mesa/sidebar-agente-mesa/sidebar-agente-mesa.component';
+import { SiderbarTecnicoComponent } from './pages/Tecnico_Espec/siderbar-tecnico/siderbar-tecnico.component';
+import { ListaStokComponent } from './pages/admin/almacenStok/lista-stok/lista-stok.component';
+import { ActulizaStokComponent } from './pages/admin/almacenStok/actuliza-stok/actuliza-stok.component';
+import { CreaStokComponent } from './pages/admin/almacenStok/crea-stok/crea-stok.component';
 
 
 
@@ -106,7 +118,7 @@ import { ActualizaServicioComponent } from './pages/admin/servicios/actualiza-se
     CrearticketComponent,
     DocTicketComponent,
     AsignarTicketComponent,
-    AsignadosAmiComponent,
+  
     FilterTicketPipe,
     CambioContrasenaComponent,
     ListaEstadosRepubliComponent,
@@ -131,7 +143,18 @@ import { ActualizaServicioComponent } from './pages/admin/servicios/actualiza-se
     CreaClienteComponent,
     ListaServiciosComponent,
     CreaServicioComponent,
-    ActualizaServicioComponent
+    ActualizaServicioComponent,
+    EstadisticasComponent,
+    MisTicketAsigandosComponent,
+    MisTicketCerradosComponent,
+    SidebarGereteComponent,
+    EditaPerfilPersonalComponent,
+    SidebarCordinadorComponent,
+    SidebarAgenteMesaComponent,
+    SiderbarTecnicoComponent,
+    ListaStokComponent,
+    ActulizaStokComponent,
+    CreaStokComponent
    
     
     
@@ -154,7 +177,8 @@ import { ActualizaServicioComponent } from './pages/admin/servicios/actualiza-se
     MatDividerModule,
     MatListModule,
     NgxPaginationModule,
-    MatTableModule
+    MatTableModule,
+    NgxChartsModule
     
     
   ],

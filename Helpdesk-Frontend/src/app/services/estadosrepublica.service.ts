@@ -16,6 +16,9 @@ export class EstadosrepublicaService {
 public ListaTodosLosEstadosDelaRepublica (){
   return this.http.get(`${baseUrl}/IPN/helpdesk/EstadosRepublica/`)
 }
+public ListaTodosLosEstadosDelaRepublicaPOrZona (zona:any){
+  return this.http.get(`${baseUrl}/IPN/helpdesk/EstadosRepublica/zonas/${zona.id_zona}`,zona.id_zona)
+}
 
 public ActulizaEstadoRepublica (EstadoRepublicaca:any)
 {

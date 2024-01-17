@@ -15,8 +15,14 @@ export class ServiciosService {
   public ListaTodosLosServicios() {
     return this.http.get(`${baseUrl}/IPN/helpdesk/Servicios/`)
   }
-
+  public ListaServiciosID(servicios: any) {
+    return this.http.get(`${baseUrl}/IPN/helpdesk/Servicios/${servicios.id_serv}`,servicios.id_serv)
+  }
   public ActualizaElServicios(servicios: any) {
     return this.http.put(`${baseUrl}/IPN/helpdesk/Servicios/`, servicios)
   }
+  public creaServicios(servicios: any) {
+    return this.http.post(`${baseUrl}/IPN/helpdesk/Servicios/`, servicios)
+  }
+
 }

@@ -1,3 +1,12 @@
+import { ActulizaStokComponent } from './pages/admin/almacenStok/actuliza-stok/actuliza-stok.component';
+import { CreaStokComponent } from './pages/admin/almacenStok/crea-stok/crea-stok.component';
+import { ListaStokComponent } from './pages/admin/almacenStok/lista-stok/lista-stok.component';
+import { MisTicketCerradosComponent } from './pages/admin/misTicketsCerrados/mis-ticket-cerrados/mis-ticket-cerrados.component';
+import { MisTicketAsigandosComponent } from './pages/admin/misTickets/mis-ticket-asigandos/mis-ticket-asigandos.component';
+import { EstadisticasComponent } from './pages/admin/estadisticas/estadisticas/estadisticas.component';
+import { ActualizaServicioComponent } from './pages/admin/servicios/actualiza-servicio/actualiza-servicio.component';
+import { CreaServicioComponent } from './pages/admin/servicios/crea-servicio/crea-servicio.component';
+import { ListaServiciosComponent } from './pages/admin/servicios/lista-servicios/lista-servicios.component';
 import { ActulizaclienteComponent } from './pages/admin/clientes/actulizacliente/actulizacliente.component';
 import { CreaClienteComponent } from './pages/admin/clientes/crea-cliente/crea-cliente.component';
 import { ListaclientesComponent } from './pages/admin/clientes/listaclientes/listaclientes.component';
@@ -44,6 +53,7 @@ import { ListaZonaEstadosComponent } from './pages/admin/ZonaRegion/lista-zona-e
 import { CreaZonaEstadosComponent } from './pages/admin/ZonaRegion/crea-zona-estados/crea-zona-estados.component';
 import { ActulizaZonaEstadosComponent } from './pages/admin/ZonaRegion/actuliza-zona-estados/actuliza-zona-estados.component';
 import { ActualizaCuentaDependenciaComponent } from './pages/admin/cuentasDependencias/actualiza-cuenta-dependencia/actualiza-cuenta-dependencia.component';
+import { EditaPerfilPersonalComponent } from './pages/admin/edita-perfil-personal/edita-perfil-personal.component';
 
 const routes: Routes = [
   {
@@ -77,6 +87,24 @@ const routes: Routes = [
       {
         path: 'datos_perfil',
         component: DatosPerfilComponent,
+        //title: 'hola perfil',
+      
+      },
+      {
+        path: 'Tickets_asigandos',
+        component: MisTicketAsigandosComponent,
+        //title: 'hola perfil',
+      
+      },
+      {
+        path: 'TicketsCerrados',
+        component: MisTicketCerradosComponent,
+        //title: 'hola perfil',
+      
+      },
+      {
+        path: 'estadisticas',
+        component: EstadisticasComponent,
         //title: 'hola perfil',
       
       },
@@ -137,6 +165,21 @@ const routes: Routes = [
       {
         path: 'clientes/edita/:idcliente',  
         component: ActulizaclienteComponent,
+        //title: 'hola perfil',
+      }, 
+      {
+        path: 'servicios',
+        component: ListaServiciosComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'servicios/crear_servicio',
+        component: CreaServicioComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'servicios/edita/:idservicio',  
+        component: ActualizaServicioComponent,
         //title: 'hola perfil',
       }, 
 
@@ -213,34 +256,513 @@ const routes: Routes = [
       {
         path: 'agregar-user',
         component: AgregarUserAdminComponent
-      }
+      },  {
+        path: 'Actualizainfopersonal/:username',
+        component: EditaPerfilPersonalComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'Almacen-Stock',
+        component: ListaStokComponent,
+        //title: 'hola perfil',
+      },
+
+      
+      {
+        path: 'Almacen-Stock/crea-Stock',
+        component: CreaStokComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'Almacen-Stock/edita/:idstock',
+        component: ActulizaStokComponent,
+        //title: 'hola perfil',
+      },
     ]
 
   },
   {
     path: 'gerente_general',
     component: DdashboarGerenteGeneralComponent,
-    pathMatch: 'full',
-    canActivate: [GerenteGeneralGuard]
-
+    canActivate: [GerenteGeneralGuard],
+    children: [
+      {
+        path: 'datos_perfil',
+        component: DatosPerfilComponent,
+        //title: 'hola perfil',
+      
+      },
+      {
+        path: 'Tickets_asigandos',
+        component: MisTicketAsigandosComponent,
+        //title: 'hola perfil',
+      
+      },
+      {
+        path: 'TicketsCerrados',
+        component: MisTicketCerradosComponent,
+        //title: 'hola perfil',
+      
+      },
+      {
+        path: 'estadisticas',
+        component: EstadisticasComponent,
+        //title: 'hola perfil',
+      
+      },
+      {
+        path: 'actualizar-contrasena',
+        component: CambioContrasenaComponent,
+       
+    
+      },
+    
+      {
+        path: 'cuentas_dependencia',
+        component: ListaCuentaDependenciaComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'cuentas_dependencia/crear_cuenta',
+        component: CreaCuentaDependenciaComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'cuentas_dependencia/edita/:idcuenta',
+        component: ActualizaCuentaDependenciaComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'clientes',
+        component: ListaclientesComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'clientes/crear_cliente',
+        component: CreaClienteComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'clientes/edita/:idcliente',  
+        component: ActulizaclienteComponent,
+        //title: 'hola perfil',
+      }, 
+      {
+        path: 'servicios',
+        component: ListaServiciosComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'servicios/crear_servicio',
+        component: CreaServicioComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'servicios/edita/:idservicio',  
+        component: ActualizaServicioComponent,
+        //title: 'hola perfil',
+      }, 
+      {
+        path: 'crear_ticket',
+        component: CrearticketComponent,
+        //title: 'hola perfil',
+      },
+      
+      {
+        path: 'deetalle_ticket/:idticket',
+        component: DetalleTicketComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'editar_ticket/:idticket',
+        component: EditarTicketComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'ticket_admin',
+        component: TicketAdminComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'asignar_ticket/:idticket',
+        component: AsignarTicketComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'documentar_ticket/:idticket',
+        component: DocTicketComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'Actualizainfopersonal/:username',
+        component: EditaPerfilPersonalComponent,
+        //title: 'hola perfil',
+      },
+     
+    ]
   },
   {
     path: 'cordinador_zona',
     component: CordinadorZonaComponent,
-    pathMatch: 'full',
-    canActivate: [CordinadorZonaGuard]
+  //  pathMatch: 'full',
+    canActivate: [CordinadorZonaGuard],
+    children: [
+      {
+        path: 'datos_perfil',
+        component: DatosPerfilComponent,
+        //title: 'hola perfil',
+      
+      },
+      {
+        path: 'Tickets_asigandos',
+        component: MisTicketAsigandosComponent,
+        //title: 'hola perfil',
+      
+      },
+      {
+        path: 'TicketsCerrados',
+        component: MisTicketCerradosComponent,
+        //title: 'hola perfil',
+      
+      },
+      {
+        path: 'estadisticas',
+        component: EstadisticasComponent,
+        //title: 'hola perfil',
+      
+      },
+      {
+        path: 'actualizar-contrasena',
+        component: CambioContrasenaComponent,
+       
+    
+      },
+    
+      {
+        path: 'cuentas_dependencia',
+        component: ListaCuentaDependenciaComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'cuentas_dependencia/crear_cuenta',
+        component: CreaCuentaDependenciaComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'cuentas_dependencia/edita/:idcuenta',
+        component: ActualizaCuentaDependenciaComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'clientes',
+        component: ListaclientesComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'clientes/crear_cliente',
+        component: CreaClienteComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'clientes/edita/:idcliente',  
+        component: ActulizaclienteComponent,
+        //title: 'hola perfil',
+      }, 
+      {
+        path: 'servicios',
+        component: ListaServiciosComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'servicios/crear_servicio',
+        component: CreaServicioComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'servicios/edita/:idservicio',  
+        component: ActualizaServicioComponent,
+        //title: 'hola perfil',
+      }, 
+      {
+        path: 'crear_ticket',
+        component: CrearticketComponent,
+        //title: 'hola perfil',
+      },
+      
+      {
+        path: 'deetalle_ticket/:idticket',
+        component: DetalleTicketComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'editar_ticket/:idticket',
+        component: EditarTicketComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'ticket_admin',
+        component: TicketAdminComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'asignar_ticket/:idticket',
+        component: AsignarTicketComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'documentar_ticket/:idticket',
+        component: DocTicketComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'Actualizainfopersonal/:username',
+        component: EditaPerfilPersonalComponent,
+        //title: 'hola perfil',
+      },
+     
+    ]
   },
   {
     path: 'agente-mesa',
     component: AgenteZonaComponent,
-    pathMatch: 'full',
-    canActivate: [AgenteMesaGuard]
+   // pathMatch: 'full',
+    canActivate: [AgenteMesaGuard],
+    children: [
+      {
+        path: 'datos_perfil',
+        component: DatosPerfilComponent,
+        //title: 'hola perfil',
+      
+      },
+      {
+        path: 'Tickets_asigandos',
+        component: MisTicketAsigandosComponent,
+        //title: 'hola perfil',
+      
+      },
+      {
+        path: 'TicketsCerrados',
+        component: MisTicketCerradosComponent,
+        //title: 'hola perfil',
+      
+      },
+      {
+        path: 'estadisticas',
+        component: EstadisticasComponent,
+        //title: 'hola perfil',
+      
+      },
+      {
+        path: 'actualizar-contrasena',
+        component: CambioContrasenaComponent,
+       
+    
+      },
+    
+      {
+        path: 'cuentas_dependencia',
+        component: ListaCuentaDependenciaComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'cuentas_dependencia/crear_cuenta',
+        component: CreaCuentaDependenciaComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'cuentas_dependencia/edita/:idcuenta',
+        component: ActualizaCuentaDependenciaComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'clientes',
+        component: ListaclientesComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'clientes/crear_cliente',
+        component: CreaClienteComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'clientes/edita/:idcliente',  
+        component: ActulizaclienteComponent,
+        //title: 'hola perfil',
+      }, 
+      {
+        path: 'servicios',
+        component: ListaServiciosComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'servicios/crear_servicio',
+        component: CreaServicioComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'servicios/edita/:idservicio',  
+        component: ActualizaServicioComponent,
+        //title: 'hola perfil',
+      }, 
+      {
+        path: 'crear_ticket',
+        component: CrearticketComponent,
+        //title: 'hola perfil',
+      },
+      
+      {
+        path: 'deetalle_ticket/:idticket',
+        component: DetalleTicketComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'editar_ticket/:idticket',
+        component: EditarTicketComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'ticket_admin',
+        component: TicketAdminComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'asignar_ticket/:idticket',
+        component: AsignarTicketComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'documentar_ticket/:idticket',
+        component: DocTicketComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'Actualizainfopersonal/:username',
+        component: EditaPerfilPersonalComponent,
+        //title: 'hola perfil',
+      },
+     
+    ]
   },
   {
     path: 'tecnico_especialista',
     component: TecnicoEspecComponent,
-    pathMatch: 'full',
-    canActivate: [TecnicoEspecGuard]
+    //pathMatch: 'full',
+    canActivate: [TecnicoEspecGuard],
+    children: [
+      {
+        path: 'datos_perfil',
+        component: DatosPerfilComponent,
+        //title: 'hola perfil',
+      
+      },
+      {
+        path: 'Tickets_asigandos',
+        component: MisTicketAsigandosComponent,
+        //title: 'hola perfil',
+      
+      },
+      {
+        path: 'TicketsCerrados',
+        component: MisTicketCerradosComponent,
+        //title: 'hola perfil',
+      
+      },
+      {
+        path: 'estadisticas',
+        component: EstadisticasComponent,
+        //title: 'hola perfil',
+      
+      },
+      {
+        path: 'actualizar-contrasena',
+        component: CambioContrasenaComponent,
+       
+    
+      },
+    
+      {
+        path: 'cuentas_dependencia',
+        component: ListaCuentaDependenciaComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'cuentas_dependencia/crear_cuenta',
+        component: CreaCuentaDependenciaComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'cuentas_dependencia/edita/:idcuenta',
+        component: ActualizaCuentaDependenciaComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'clientes',
+        component: ListaclientesComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'clientes/crear_cliente',
+        component: CreaClienteComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'clientes/edita/:idcliente',  
+        component: ActulizaclienteComponent,
+        //title: 'hola perfil',
+      }, 
+      {
+        path: 'servicios',
+        component: ListaServiciosComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'servicios/crear_servicio',
+        component: CreaServicioComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'servicios/edita/:idservicio',  
+        component: ActualizaServicioComponent,
+        //title: 'hola perfil',
+      }, 
+      {
+        path: 'crear_ticket',
+        component: CrearticketComponent,
+        //title: 'hola perfil',
+      },
+      
+      {
+        path: 'deetalle_ticket/:idticket',
+        component: DetalleTicketComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'editar_ticket/:idticket',
+        component: EditarTicketComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'ticket_admin',
+        component: TicketAdminComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'asignar_ticket/:idticket',
+        component: AsignarTicketComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'documentar_ticket/:idticket',
+        component: DocTicketComponent,
+        //title: 'hola perfil',
+      },
+      {
+        path: 'Actualizainfopersonal/:username',
+        component: EditaPerfilPersonalComponent,
+        //title: 'hola perfil',
+      },
+     
+    ]
   },
   {
     path: 'almacen',

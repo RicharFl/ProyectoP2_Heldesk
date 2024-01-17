@@ -1,3 +1,4 @@
+import { LoginService } from './../../../services/login.service';
 import  Swal  from 'sweetalert2';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -14,7 +15,10 @@ import { ExportarAExcelService } from 'src/app/services/exportar-aexcel.service'
 export class TicketAdminComponent implements OnInit {
 ticket : any []= [];
 pagina!:number;
-
+public dataas ={
+  username:'',
+  username2:''
+}
 
 public ticket_AGuardar = {
 
@@ -47,7 +51,10 @@ public ticket_excel = {
     filterPost = '';
     j : any =[];
 
-constructor(private tickets: TicketService, private router:Router, private histTicketService: HistorialticketService, private exportecxel: ExportarAExcelService) { }
+constructor(private tickets: TicketService, private router:Router, 
+  private histTicketService: HistorialticketService,
+   private exportecxel: ExportarAExcelService,
+   private loginser:LoginService) { }
 ngOnInit(): void {
 /*
   let dataclienteee = JSON.parse(localStorage.getItem ('dataHistorialTicket'));
@@ -70,7 +77,8 @@ this.histTicketService.AgregarAlHistorial(dataclienteee).subscribe(
 console.log(dataclienteee);
 
  }*/
-
+ if (this.loginser.getUser()=='1' || this.loginser.getUser()=='2')
+ {
   this.tickets.listaTodosLosTickets().subscribe(
     (dato:any) => {
       this.ticket = dato;
@@ -79,18 +87,60 @@ console.log(dataclienteee);
     },
     (error) => {
       console.log(error);
+      Swal.fire('Error','Error al cargar los Lista de Usuarios completos','error');
+    }
+  )
+
+ }
+ else {
+  this.dataas.username= this.loginser.getUsername();
+  this.loginser.BuscaUsario(this.dataas).subscribe(
+    (dato:any) => {
+this.dataas.username2=dato.zonaestados.id_zon;
+      this.tickets.ListaTicketsporZona(this.dataas).subscribe(
+        (dato:any) => {
+          this.ticket = dato;
+         this.ticket_AGuardar =dato;
+       
+        },
+        (error) => {
+          console.log(error);
+          Swal.fire('Error','Error al cargar los usaurios','error');
+        }
+      )
+   
+    },
+    (error) => {
+      console.log(error);
       Swal.fire('Error','Error al cargar los usaurios','error');
     }
   )
+ }
+ 
+
+ 
 
 }
 
 DetalleTicket (idticket:string)
 {
+  if (this.loginser.getUser()=='1')
+  {this.router.navigate(['admin/deetalle_ticket',idticket]);}
+  else if (this.loginser.getUser()=='2')
+  { this.router.navigate(['gerente_general/deetalle_ticket',idticket]);}
+  else if (this.loginser.getUser()=='3')
+  {this.router.navigate(['cordinador_zona/deetalle_ticket',idticket]);}
+  else if (this.loginser.getUser()=='4')
+  {this.router.navigate(['agente-mesa/deetalle_ticket',idticket]);}
+  else if (this.loginser.getUser()=='5')
+  {this.router.navigate(['tecnico_especialista/deetalle_ticket',idticket]);}
+  else if (this.loginser.getUser()=='6')
+  {this.router.navigate(['almacen/deetalle_ticket',idticket]);}
+
   //console.log("esto es lo que mando desde admin_ticket");
 //console.log("esto es lo que mando desde admin_ticket "+idticket);
 
-  this.router.navigate(['admin/deetalle_ticket',idticket]);
+  
 }
 
 
@@ -100,15 +150,39 @@ DocTicket (idticket:string)
   //console.log("esto es lo que mando desde admin_ticket");
 //console.log("esto es lo que mando desde admin_ticket "+idticket);
 
-  this.router.navigate(['admin/documentar_ticket',idticket]);
+if (this.loginser.getUser()=='1')
+  {this.router.navigate(['admin/documentar_ticket',idticket]);}
+  else if (this.loginser.getUser()=='2')
+  { //Swal.fire('Restricción de Accion', ' No tiene los permisos Necesarios, solicita actulizacion de permisos al Administrador', 'warning');
+    this.router.navigate(['gerente_general/documentar_ticket',idticket]);
+  }
+  else if (this.loginser.getUser()=='3')
+  {this.router.navigate(['cordinador_zona/documentar_ticket',idticket]);}
+  else if (this.loginser.getUser()=='4')
+  {this.router.navigate(['agente-mesa/documentar_ticket',idticket]);}
+  else if (this.loginser.getUser()=='5')
+  {this.router.navigate(['tecnico_especialista/documentar_ticket',idticket]);}
+  else if (this.loginser.getUser()=='6')
+  {this.router.navigate(['almacen/documentar_ticket',idticket]);}
 }
 
 editarTicket (idticket:string)
 {
   //console.log("esto es lo que mando desde admin_ticket");
 //console.log("esto es lo que mando desde admin_ticket "+idticket);
+if (this.loginser.getUser()=='1')
+  {this.router.navigate(['admin/editar_ticket',idticket]);}
+  else if (this.loginser.getUser()=='2')
+  {this.router.navigate(['gerente_general/editar_ticket',idticket]);}
+  else if (this.loginser.getUser()=='3')
+  {this.router.navigate(['cordinador_zona/editar_ticket',idticket]);}
+  else if (this.loginser.getUser()=='4')
+  {this.router.navigate(['agente-mesa/editar_ticket',idticket]);}
+  else if (this.loginser.getUser()=='5')
+  {Swal.fire('Restricción de Accion', ' No tiene los permisos Necesarios, solicita actulizacion de permisos al Administrador', 'warning');}
+  else if (this.loginser.getUser()=='6')
+  {Swal.fire('Restricción de Accion', ' No tiene los permisos Necesarios, solicita actulizacion de permisos al Administrador', 'warning');}
 
-  this.router.navigate(['admin/editar_ticket',idticket]);
 }
 
 asignarTicket (idticket:string)
@@ -116,8 +190,37 @@ asignarTicket (idticket:string)
   //console.log("esto es lo que mando desde admin_ticket");
 //console.log("esto es lo que mando desde admin_ticket "+idticket);
 
-  this.router.navigate(['admin/asignar_ticket',idticket]);
+if (this.loginser.getUser()=='1')
+{this.router.navigate(['admin/asignar_ticket',idticket]);}
+else if (this.loginser.getUser()=='2')
+{this.router.navigate(['gerente_general/asignar_ticket',idticket]);}
+else if (this.loginser.getUser()=='3')
+{this.router.navigate(['cordinador_zona/asignar_ticket',idticket]);}
+else if (this.loginser.getUser()=='4')
+{this.router.navigate(['agente-mesa/asignar_ticket',idticket]);}
+else if (this.loginser.getUser()=='5')
+{Swal.fire('Restricción de Accion', ' No tiene los permisos Necesarios, solicita actulizacion de permisos al Administrador', 'warning');}
+else if (this.loginser.getUser()=='6')
+{Swal.fire('Restricción de Accion', ' No tiene los permisos Necesarios, solicita actulizacion de permisos al Administrador', 'warning');}
+
 }
+creaticket ()
+{
+  if (this.loginser.getUser()=='1')
+{this.router.navigate(['admin/crear_ticket']);}
+else if (this.loginser.getUser()=='2')
+{this.router.navigate(['gerente_general/crear_ticket']);}
+else if (this.loginser.getUser()=='3')
+{this.router.navigate(['cordinador_zona/crear_ticket']);}
+else if (this.loginser.getUser()=='4')
+{this.router.navigate(['agente-mesa/crear_ticket']);}
+else if (this.loginser.getUser()=='5')
+{Swal.fire('Restricción de Accion', ' No tiene los permisos Necesarios, solicita actulizacion de permisos al Administrador', 'warning');}
+else if (this.loginser.getUser()=='6')
+{Swal.fire('Restricción de Accion', ' No tiene los permisos Necesarios, solicita actulizacion de permisos al Administrador', 'warning');}
+
+}
+
 exportarExcel(): void {
 console.log("estoy en la exportacion del Ticket");
 /*

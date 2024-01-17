@@ -1,7 +1,7 @@
 <mat-card >
     <mat-action-list >
       <div mat-subheader>Menu</div>
-      <button routerLink = "/admin" mat-list-item>
+      <button routerLink = "/admin/estadisticas" mat-list-item>
         <mat-icon mat-list-icon>home</mat-icon> Inicio
       </button>
       <button mat-list-item routerLink = "/admin/datos_perfil">
@@ -12,6 +12,12 @@
       </button>
       <button mat-list-item routerLink = "/admin/ticket_admin">
         <mat-icon mat-list-icon>assignment</mat-icon> Ticket 
+      </button>
+      <button mat-list-item routerLink = "/admin/Tickets_asigandos">
+        <mat-icon mat-list-icon>assignment</mat-icon> Mis Ticket Asignados 
+      </button>
+      <button mat-list-item routerLink = "/admin/TicketsCerrados">
+        <mat-icon mat-list-icon>assignment</mat-icon> Mis Ticket Cerrados 
       </button>
       <button mat-list-item routerLink = "/admin/agregar-user">
         <mat-icon mat-list-icon>add_circle_outline</mat-icon> Agregar Usuario 
@@ -35,8 +41,11 @@
       <button mat-list-item routerLink = "/admin/clientes">
         <mat-icon mat-list-icon>perm_identity</mat-icon> Clientes 
       </button>
-      <button mat-list-item routerLink = "/admin/examenes">
+      <button mat-list-item routerLink = "/admin/servicios">
         <mat-icon mat-list-icon>assessment</mat-icon> Servicios 
+      </button>
+      <button mat-list-item routerLink = "/admin/Almacen-Stock">
+        <mat-icon mat-list-icon>font_download</mat-icon> Stock Almacen 
       </button>
       <button mat-list-item routerLink = "/admin/actualizar-contrasena/">
         <mat-icon mat-list-icon>cached</mat-icon> Cambiar Contraseña

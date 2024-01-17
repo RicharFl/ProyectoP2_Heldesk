@@ -18,9 +18,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CrearticketComponent implements OnInit {
 
-  constructor(private ticketService: TicketService, private snack: MatSnackBar, private router: Router, private estadosRepublica: EstadosrepublicaService, private EstTicket: EstatustiketService,
+  constructor(private ticketService: TicketService, 
+    private snack: MatSnackBar, private router: Router, 
+    private estadosRepublica: EstadosrepublicaService, 
+    private EstTicket: EstatustiketService,
     private servicios: ServiciosService,
-    private clientes: ClienteService, private loginService: LoginService, 
+    private clientes: ClienteService, 
+    private loginService: LoginService, 
     private histTicket: HistorialticketService, private asignacion : AsignarTicketService) { };
   public dataTicket = {
 
@@ -82,8 +86,15 @@ export class CrearticketComponent implements OnInit {
   EstatusTicket: any = null;
   Servicio: any = null;
   Cliente: any = null;
+
+  public datas={
+    username:'',
+    id_zona :''
+  }
   ngOnInit(): void {
 
+    if (this.loginService.getUser()=='1' || this.loginService.getUser()=='2')
+ {
     this.estadosRepublica.ListaTodosLosEstadosDelaRepublica().subscribe(
       (dataestados: any) => {
         this.EstadosRepublicas = dataestados;
@@ -93,7 +104,30 @@ export class CrearticketComponent implements OnInit {
       }
 
     )
+    }else{
+      this.datas.username= this.loginService.getUsername();
+      this.loginService.BuscaUsario(this.datas).subscribe(
+        (dato:any) => {
+    this.datas.id_zona=dato.zonaestados.id_zon;
+    this.estadosRepublica.ListaTodosLosEstadosDelaRepublicaPOrZona(this.datas).subscribe(
+            (dato:any) => {
+              this.EstadosRepublicas = dato;
+           
+            },
+            (error) => {
+              console.log(error);
+              Swal.fire('Error','Error al cargar los usaurios','error');
+            }
+          )
+       
+        },
+        (error) => {
+          console.log(error);
+          Swal.fire('Error','Error al cargar los usaurios','error');
+        }
+      )
 
+    }
 
 
     this.EstTicket.ListaTodosLosEstatusdeTicket().subscribe(

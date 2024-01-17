@@ -1,0 +1,12 @@
+.example-card {
+    background-image : 
+    url("../../../assets/home.png");
+    
+    width: auto;
+    height:95%;
+    font-size: 60px;
+    margin-left: 10px; 
+    margin-top : 20px;
+    background-size: cover;
+
+}

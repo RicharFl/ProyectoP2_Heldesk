@@ -1,0 +1,53 @@
+<h2 class="text-center " style="margin-top: 20px;">Lista Mis Ticket Cerrados</h2>
+<div class="row">
+  <div class="col">
+    <div class="form-group">
+      <mat-form-field class="full-widthh" appearance="outline">
+        <mat-label>Ingrese Busqueda</mat-label>
+        <input required [(ngModel)]="filterPost" name="filterPost" matInput placeholder="Buscar....">
+      </mat-form-field>
+    </div>
+  </div>
+</div>
+<table class="table table-striped">
+  <thead class="table-dark text-center ">
+    <tr>
+      <th>ID Tikcet</th>
+      <th>Dependencia</th>
+      <th>No. Serie </th>
+      <th>Servicio</th>
+      <th> Estado</th>
+      <th> Zona Asignada</th>
+      <th> Est. Ticket</th>
+      <th> Accion</th>
+      
+    </tr>
+  </thead>
+  <tbody class="text-center ">
+    <tr *ngFor="let e of ticket |  filterTicket: filterPost |   paginate: { itemsPerPage: 6, currentPage: pagina }">
+      <td   (click)="DetalleTicket(e.id_ticket)"> {{e.id_ticket}}</td>
+      <td  (click)="DetalleTicket(e.id_ticket)">{{e.cliente.cuenta.nombre_cuen}}</td>
+      <td  (click)="DetalleTicket(e.id_ticket)">{{e.no_serie}}</td>
+      <td  (click)="DetalleTicket(e.id_ticket)">{{e.servicios.nom_service}}</td>
+      <td  (click)="DetalleTicket(e.id_ticket)">{{e.estadosrepu.nombre_esatdo}}</td>
+      <td (click)="DetalleTicket(e.id_ticket)" >{{e.estadosrepu.zona.nombree}}</td>
+      <td>{{e.status_Ticket.nom_status}}</td>
+      <td class="text-center">
+        <button  (click)="asignarTicket(e.id_ticket)" class="btn btn-success" >Asignar</button>
+        <button  (click)="editarTicket(e.id_ticket)" class="btn btn-info"  style="margin-left : 10px;">Editar</button>
+        <button  (click)="DocTicket(e.id_ticket)" class="btn btn-warning"  style="margin-left : 10px;">Doc.</button>
+        <!-- <button  (click)="DetalleTicket(e.id_ticket)" class="btn btn-primary" style="margin-left : 10px;">Detalles</button> -->
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div>
+<div class="text-center" >
+<pagination-controls (pageChange)="pagina = $event"  previousLabel="anterior" nextLabel="siguiente" 
+  screenReaderPageLabel="page" screenReaderCurrentLabel="You're on page">></pagination-controls>
+</div>
+<div class="container text-center mt20">
+  <button mat-raised-button color="primary" style="margin-left: 70px; " (click)="exportarExcel()">Descargar
+    EXCEL</button>
+  <button (click)="crearticket()" mat-raised-button color="accent"  style="margin-left: 70px;">Crear Ticket</button>
+</div>

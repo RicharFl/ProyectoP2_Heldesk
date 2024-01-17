@@ -42,8 +42,22 @@ export class DatosPerfilComponent implements OnInit {
   }
 
   EditarDelEmpleado(username:string){
-    console.log("enviare el detalle "+ username);
-    this.router.navigate(['admin/actualiza_usuario',username]);
+  //  console.log("enviare el detalle "+ username);
+   // this.router.navigate(['admin/Actualizainfopersonal',username]);
+    if (this.loginService.getUser()=='1')
+    {this.router.navigate(['admin/Actualizainfopersonal',username]);}
+    else if (this.loginService.getUser()=='2')
+    { //Swal.fire('Restricción de Accion', ' No tiene los permisos Necesarios, solicita actulizacion de permisos al Administrador', 'warning');
+      this.router.navigate(['gerente_general/Actualizainfopersonal',username]);
+    }
+    else if (this.loginService.getUser()=='3')
+    {this.router.navigate(['cordinador_zona/Actualizainfopersonal',username]);}
+    else if (this.loginService.getUser()=='4')
+    {this.router.navigate(['agente-mesa/Actualizainfopersonal',username]);}
+    else if (this.loginService.getUser()=='5')
+    {this.router.navigate(['tecnico_especialista/Actualizainfopersonal',username]);}
+    else if (this.loginService.getUser()=='6')
+    {this.router.navigate(['almacen/Actualizainfopersonal',username]);}
   }
 
 

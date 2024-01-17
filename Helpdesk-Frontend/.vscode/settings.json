@@ -1,0 +1,8 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/07293f64-55a5-4560-bccd-54202a6adfb9/resourceGroups/proyectoFinal/providers/Microsoft.Web/sites/deployfronendHelpdesk",
+    "appService.deploySubpath": ".",
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ]
+}

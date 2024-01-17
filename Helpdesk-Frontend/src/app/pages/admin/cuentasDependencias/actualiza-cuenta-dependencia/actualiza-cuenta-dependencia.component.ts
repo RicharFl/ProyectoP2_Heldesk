@@ -1,3 +1,4 @@
+import { LoginService } from 'src/app/services/login.service';
 import  Swal  from 'sweetalert2';
 import { CuentaDependenciaService } from './../../../../services/cuenta-dependencia.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -19,7 +20,7 @@ export class ActualizaCuentaDependenciaComponent implements OnInit {
     private snack: MatSnackBar,
     private route: ActivatedRoute,
     private cuentaSer:CuentaDependenciaService,
-    private router: Router) { }
+    private router: Router,private  loginser:LoginService ) { }
 
 
     ngOnInit(): void {
@@ -27,7 +28,13 @@ export class ActualizaCuentaDependenciaComponent implements OnInit {
         this.dataCuenta.id_cuen = this.route.snapshot.params['idcuenta'];
       }
       else {
-        this.router.navigate(['admin/cuentas_dependencia']);
+        if (this.loginser.getUser()=='1')
+     {this.router.navigate(['admin/cuentas_dependencia']);}
+     else if (this.loginser.getUser()=='2')
+     {this.router.navigate(['gerente_general/cuentas_dependencia']);}
+     else 
+     {Swal.fire('Restricción de Accion', 
+     ' No tiene los permisos Necesarios, solicita actulizacion de permisos al Administrador', 'warning');}
       }
 
       this.cuentaSer.ListaCuentasDependenciasId(this.dataCuenta).subscribe(
@@ -47,7 +54,13 @@ export class ActualizaCuentaDependenciaComponent implements OnInit {
         (data) => {
           //console.log(data);
           Swal.fire('Cuenta Actulizada', 'Cuenta :  '+this.Cuenta.nombre_cuen +' ha sido egistrado con exito en el sistema', 'success');
-          this.router.navigate(['admin/cuentas_dependencia']);
+          if (this.loginser.getUser()=='1')
+          {this.router.navigate(['admin/cuentas_dependencia']);}
+          else if (this.loginser.getUser()=='2')
+          {this.router.navigate(['gerente_general/cuentas_dependencia']);}
+          else 
+          {Swal.fire('Restricción de Accion', 
+          ' No tiene los permisos Necesarios, solicita actulizacion de permisos al Administrador', 'warning');}
        
           
         }, (error) => {
@@ -57,5 +70,15 @@ export class ActualizaCuentaDependenciaComponent implements OnInit {
           });
         }
       )
+    }
+    salir(){
+      if (this.loginser.getUser()=='1')
+     {this.router.navigate(['admin/cuentas_dependencia']);}
+     else if (this.loginser.getUser()=='2')
+     {this.router.navigate(['gerente_general/cuentas_dependencia']);}
+     else 
+     {Swal.fire('Restricción de Accion', 
+     ' No tiene los permisos Necesarios, solicita actulizacion de permisos al Administrador', 'warning');}
+     
     }
 }

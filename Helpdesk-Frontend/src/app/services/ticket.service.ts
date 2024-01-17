@@ -16,6 +16,18 @@ export class TicketService {
     return this.httpClient.get(`${baseUrl}/IPN/helpdesk/Ticket/`)
   }
 
+
+  public ListaTicketsporZona (zona:any){
+    return this.httpClient.get(`${baseUrl}/IPN/helpdesk/Ticket/tickeZona/${zona.username2}`,zona.username2)
+  }
+
+  public ListaMisTicketAsigandos (ticket_mios:any){
+    return this.httpClient.get(`${baseUrl}/IPN/helpdesk/Ticket/tickeActivos/${ticket_mios.id_user}`, ticket_mios.id_user)
+  }
+
+  public ListaMisTicketcerrados (ticket_mios:any){
+    return this.httpClient.get(`${baseUrl}/IPN/helpdesk/Ticket/tickeCerrados/${ticket_mios.id_user}`, ticket_mios.id_user)
+  }
   public actualizaTicket (ticket:any){
     return this.httpClient.put(`${baseUrl}/IPN/helpdesk/Ticket/`,ticket)
   }

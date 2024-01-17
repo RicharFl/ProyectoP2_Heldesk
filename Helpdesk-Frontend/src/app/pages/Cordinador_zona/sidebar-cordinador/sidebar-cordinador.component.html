@@ -1,0 +1,42 @@
+<mat-card >
+    <mat-action-list >
+      <div mat-subheader>Menu</div>
+      <button routerLink = "/cordinador_zona/estadisticas" mat-list-item>
+        <mat-icon mat-list-icon>home</mat-icon> Inicio
+      </button>
+      <button mat-list-item routerLink = "/cordinador_zona/datos_perfil">
+        <mat-icon mat-list-icon>account_circle</mat-icon> Perfil
+      </button>
+    
+      <button mat-list-item routerLink = "/cordinador_zona/ticket_admin">
+        <mat-icon mat-list-icon>assignment</mat-icon> Ticket 
+      </button>
+      <button mat-list-item routerLink = "/cordinador_zona/Tickets_asigandos">
+        <mat-icon mat-list-icon>assignment</mat-icon> Mis Ticket Asignados 
+      </button>
+      <button mat-list-item routerLink = "/cordinador_zona/TicketsCerrados">
+        <mat-icon mat-list-icon>assignment</mat-icon> Mis Ticket Cerrados 
+      </button>
+     
+      <button mat-list-item routerLink="/cordinador_zona/crear_ticket">
+        <mat-icon mat-list-icon>add_circle_outline</mat-icon> Agregar Ticket  
+      </button>
+      <button mat-list-item routerLink = "/cordinador_zona/cuentas_dependencia">
+        <mat-icon mat-list-icon>account_balance</mat-icon> Cuentas - Dependencias
+      </button>
+     
+      <button mat-list-item routerLink = "/cordinador_zona/clientes">
+        <mat-icon mat-list-icon>perm_identity</mat-icon> Clientes 
+      </button>
+      <button mat-list-item routerLink = "/cordinador_zona/servicios">
+        <mat-icon mat-list-icon>assessment</mat-icon> Servicios 
+      </button>
+      <button mat-list-item routerLink = "/cordinador_zona/actualizar-contrasena/">
+        <mat-icon mat-list-icon>cached</mat-icon> Cambiar Contraseña
+      </button>
+      <button mat-list-item (click) = "logout()">
+        <mat-icon mat-list-icon>logout</mat-icon> Salir
+      </button>
+    </mat-action-list>
+  </mat-card>
+  

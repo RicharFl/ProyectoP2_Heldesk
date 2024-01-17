@@ -46,7 +46,7 @@ public class ServiciosController {
 		return serviceSer.ListaServicioUnico(id_servicio);
 	}
 
-	@DeleteMapping("/")
+	@DeleteMapping("/{id_servicio}")
 	public void eliminarServicio(@PathVariable ("id_servicio") Long id_servicio)
 	{
 		serviceSer.EliminarServicio(id_servicio);

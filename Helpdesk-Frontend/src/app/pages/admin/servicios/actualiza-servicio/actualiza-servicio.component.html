@@ -1,1 +1,70 @@
-<p>actualiza-servicio works!</p>
+
+<mat-card style="margin-left: 10px; margin-top : 20px;">
+    <h1 class="text-center">Editando Servicios</h1>
+    <mat-card-content>
+        <div class="bootstrap-wrapper">
+            <div class="container">
+                <div class="text-center">
+                    <img src="../../../assets/roles.png" alt="" class="profile-image">
+
+                    <h1 class="mt20"> Estas editando el Servicio : {{ servicios.nom_service }} </h1>
+                </div>
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <table class="table container text-center ">
+                            <tr>
+                                <td>Nombre del Servicio</td>
+                                <td>{{  servicios.nom_service }}</td>
+                            </tr>
+                            <tr>
+                                <td>ID Servicio</td>
+                                <td>{{ servicios.id_serv }}</td>
+                            </tr>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+   
+    <form (ngSubmit)="onSubmit()" #empleadoForm="ngForm" class="container text-center">
+        <div class="form-group">
+
+
+            <mat-form-field class="full-widthh" appearance="outline">
+                <mat-label>Nombre del Estado</mat-label>
+                <input required [(ngModel)]="servicios.nom_service" name="nom_service" matInput
+                    placeholder="Digite el nombre del Servicio">
+            </mat-form-field>
+
+            <mat-form-field class="full-widthh" appearance="outline">
+                <mat-label>Descripcion</mat-label>
+                <input required [(ngModel)]="servicios.descr_ser" name="descr_ser" matInput
+                    placeholder="Digite la descripcion del Servicio">
+            </mat-form-field>
+
+            <mat-form-field class="full-widthh" appearance="outline">
+                <mat-label>Impacto del Servicio</mat-label>
+                <input required [(ngModel)]="servicios.impa_ser" name="impa_ser" matInput
+                    placeholder="Digite el Impacto del Servicio">
+            </mat-form-field>
+
+            <mat-form-field class="full-widthh" appearance="outline">
+                <mat-label>SLA en horas</mat-label>
+                <input required [(ngModel)]="servicios.sla" name="sla" matInput
+                    placeholder="Digite el sla del Servicio">
+            </mat-form-field>
+
+        
+        </div>
+        <div class="container text-center">
+            <button mat-raised-button color="warn">Actualizar</button>
+            <button type="reset" style="margin-left: 60px;" mat-raised-button
+            color="accent">Limpiar</button>
+            <button (click)="salir()" style="margin-left: 60px;" mat-raised-button
+            color="primary">Salir</button>
+        </div>
+    </form>
+</mat-card-content>
+</mat-card >

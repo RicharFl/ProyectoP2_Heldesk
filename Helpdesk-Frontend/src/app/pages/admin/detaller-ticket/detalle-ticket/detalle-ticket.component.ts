@@ -1,3 +1,4 @@
+import  Swal  from 'sweetalert2';
 import { LoginService } from 'src/app/services/login.service';
 import { HistorialticketService } from './../../../../services/historialticket.service';
 import { Component, OnInit } from '@angular/core';
@@ -77,7 +78,19 @@ export class DetalleTicketComponent implements OnInit{
   //console.log("esto es lo que mando desde admin_ticket");
 //console.log("esto es lo que mando desde admin_ticket "+idticket);
 
-  this.router.navigate(['admin/editar_ticket',idticket]);
+if (this.login.getUser()=='1')
+  {this.router.navigate(['admin/editar_ticket',idticket]);}
+  else if (this.login.getUser()=='2')
+  {this.router.navigate(['gerente_general/editar_ticket',idticket]);}
+  else if (this.login.getUser()=='3')
+  {this.router.navigate(['cordinador_zona/editar_ticket',idticket]);}
+  else if (this.login.getUser()=='4')
+  {this.router.navigate(['agente-mesa/editar_ticket',idticket]);}
+  else if (this.login.getUser()=='5')
+  {Swal.fire('Restricción de Accion', ' No tiene los permisos Necesarios, solicita actulizacion de permisos al Administrador', 'warning');}
+  else if (this.login.getUser()=='6')
+  {Swal.fire('Restricción de Accion', ' No tiene los permisos Necesarios, solicita actulizacion de permisos al Administrador', 'warning');}
+
 }
 
 

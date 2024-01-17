@@ -1,3 +1,4 @@
+import { LoginService } from 'src/app/services/login.service';
 import { ClienteService } from './../../../../services/cliente.service';
 import { ServiciosService } from './../../../../services/servicios.service';
 import { EstatustiketService } from './../../../../services/estatustiket.service';
@@ -19,7 +20,7 @@ export class EditarTicketComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private router: Router, private ticketservice: TicketService,
     private estadosRepublica: EstadosrepublicaService, private EstTicket: EstatustiketService, private servicios: ServiciosService,
-    private clientes:ClienteService) { }
+    private clientes:ClienteService, private loginser:LoginService) { }
   ticket: any = null;
   EstadosRepublicas: any = null;
   EstatusTicket: any = null;
@@ -106,7 +107,21 @@ export class EditarTicketComponent implements OnInit {
       (data) => {
         //console.log(data);
         Swal.fire('Ticket Actulizado', 'Ticket actizado exito en el sistema', 'success');
-        this.router.navigate(['admin/ticket_admin']);
+        
+      if (this.loginser.getUser()=='1')
+      {this.router.navigate(['admin/ticket_admin']);}
+      else if (this.loginser.getUser()=='2')
+      { //Swal.fire('Restricción de Accion', ' No tiene los permisos Necesarios, solicita actulizacion de permisos al Administrador', 'warning');
+        this.router.navigate(['gerente_general/ticket_admin']);
+      }
+      else if (this.loginser.getUser()=='3')
+      {this.router.navigate(['cordinador_zona/ticket_admin']);}
+      else if (this.loginser.getUser()=='4')
+      {this.router.navigate(['agente-mesa/ticket_admin']);}
+      else if (this.loginser.getUser()=='5')
+      {this.router.navigate(['tecnico_especialista/ticket_admin']);}
+      else if (this.loginser.getUser()=='6')
+      {this.router.navigate(['almacen/ticket_admin']);}
 
 
       }, (error) => {
@@ -119,5 +134,23 @@ export class EditarTicketComponent implements OnInit {
   }
 
 
+  salir()
+  {
+    if (this.loginser.getUser()=='1')
+    {this.router.navigate(['admin/ticket_admin']);}
+    else if (this.loginser.getUser()=='2')
+    { //Swal.fire('Restricción de Accion', ' No tiene los permisos Necesarios, solicita actulizacion de permisos al Administrador', 'warning');
+      this.router.navigate(['gerente_general/ticket_admin']);
+    }
+    else if (this.loginser.getUser()=='3')
+    {this.router.navigate(['cordinador_zona/ticket_admin']);}
+    else if (this.loginser.getUser()=='4')
+    {this.router.navigate(['agente-mesa/ticket_admin']);}
+    else if (this.loginser.getUser()=='5')
+    {this.router.navigate(['tecnico_especialista/ticket_admin']);}
+    else if (this.loginser.getUser()=='6')
+    {this.router.navigate(['almacen/ticket_admin']);}
+  
+  }
 
 }

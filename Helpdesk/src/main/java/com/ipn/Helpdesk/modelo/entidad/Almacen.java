@@ -20,6 +20,7 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -27,7 +28,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@NoArgsConstructor
 
 
 @Table(name = "Almacen", schema = "helpdesk_qa_prep")

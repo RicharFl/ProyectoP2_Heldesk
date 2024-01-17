@@ -65,36 +65,36 @@ export class LoginComponent implements OnInit {
                 
                 if(this.loginService.getUserRole()==1){
                  // console.log("Mandar a HOME DE USUARIO");
-                  this.router.navigate(['admin'])
+                  this.router.navigate(['admin/estadisticas'])
                  this.loginService.loginStatusSubjec.next(true);
                 }
                 else if (this.loginService.getUserRole()==2)
                 {
-                  this.router.navigate(['gerente_general'])
+                  this.router.navigate(['gerente_general/estadisticas'])
                   this.loginService.loginStatusSubjec.next(true);
                 }
                 else if (this.loginService.getUserRole()==3)
                 {
-                  this.router.navigate(['cordinador_zona'])
+                  this.router.navigate(['cordinador_zona/estadisticas'])
                   this.loginService.loginStatusSubjec.next(true);
                 }
                 else if (this.loginService.getUserRole()==4)
                 {
-                  this.router.navigate(['agente-mesa'])
+                  this.router.navigate(['agente-mesa/estadisticas'])
                   this.loginService.loginStatusSubjec.next(true);
                 } 
                 else if (this.loginService.getUserRole()==5)
                 {
-                  this.router.navigate(['tecnico_especialista'])
+                  this.router.navigate(['tecnico_especialista/estadisticas'])
                   this.loginService.loginStatusSubjec.next(true);
                 }
                 else if (this.loginService.getUserRole()==6)
                 {
-                  this.router.navigate(['almacen'])
+                  this.router.navigate(['almacen/estadisticas'])
                   this.loginService.loginStatusSubjec.next(true);
                 }
                 else {
-                  this.router.navigate(['login'])
+                  this.router.navigate(['login/estadisticas'])
                   this.loginService.loginStatusSubjec.next(true);
 
                 }

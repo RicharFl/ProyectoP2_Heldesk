@@ -21,7 +21,8 @@ password ={
   "passwordConfirmacion": '',
 }
 user: any = [];
-constructor(private snack: MatSnackBar, private router: Router, private userService : UsuariosAdminService,private loginService: LoginService) { }
+constructor(private snack: MatSnackBar, private router: Router,
+   private userService : UsuariosAdminService,private loginService: LoginService) { }
 
 ngOnInit(): void {
   this.loginData_nuevi.username = this.loginService.getUsername();
@@ -62,7 +63,21 @@ this.userService.ActulizaContrasena(this.user).subscribe(
   (data) => {
     //console.log(data);
     Swal.fire('Contraseña Actulizada', 'Actulizacion de Contraseña Correctamente', 'success');
-    this.router.navigate(['admin/lista_usuarios']);
+    this.router.navigate(['admin/estadisticas']);
+    if (this.loginService.getUser()=='1')
+  {this.router.navigate(['admin/estadisticas']);}
+  else if (this.loginService.getUser()=='2')
+  { //Swal.fire('Restricción de Accion', ' No tiene los permisos Necesarios, solicita actulizacion de permisos al Administrador', 'warning');
+    this.router.navigate(['gerente_general/estadisticas']);
+  }
+  else if (this.loginService.getUser()=='3')
+  {this.router.navigate(['cordinador_zona/estadisticas']);}
+  else if (this.loginService.getUser()=='4')
+  {this.router.navigate(['agente-mesa/estadisticas']);}
+  else if (this.loginService.getUser()=='5')
+  {this.router.navigate(['tecnico_especialista/estadisticas']);}
+  else if (this.loginService.getUser()=='6')
+  {this.router.navigate(['almacen/estadisticas']);}
     
   }, (error) => {
     console.log(error);

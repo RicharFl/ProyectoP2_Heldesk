@@ -1,1 +1,58 @@
-<p>crea-servicio works!</p>
+<div class="bootstrap-wrapper">
+    <div class="container-lg" style="width: 160%;">
+        <div class="row" style="margin-top : 30px;">
+            <div class="col-md-6 offset-md-3 text-center">
+                <mat-card>
+                    <div class="container text-center" style="margin-top : 30px;">
+                        <img src="../../../assets/gobierno.png" width="200" height="150">
+                    </div>
+
+                    <h1 class="text-center">Crear Servicio </h1>
+
+                    <form (ngSubmit)="formSubmit()">
+
+                       
+
+            <mat-form-field class="full-widthh"  style="margin-left: 10px;" appearance="outline">
+                <mat-label>Nombre del Estado</mat-label>
+                <input required [(ngModel)]="Servicios.nom_service" name="nom_service" matInput
+                    placeholder="Digite el nombre del Servicio">
+            </mat-form-field>
+
+            <mat-form-field class="full-widthh"style="margin-left: 10px;"  appearance="outline">
+                <mat-label>Descripcion</mat-label>
+                <input required [(ngModel)]="Servicios.descr_ser" name="descr_ser" matInput
+                    placeholder="Digite la descripcion del Servicio">
+            </mat-form-field>
+
+            <mat-form-field class="full-widthh" style="margin-left: 10px;" appearance="outline">
+                <mat-label>Impacto del Servicio</mat-label>
+                <input required [(ngModel)]="Servicios.impa_ser" name="impa_ser" matInput
+                    placeholder="Digite el Impacto del Servicio">
+            </mat-form-field>
+
+            <mat-form-field class="full-widthh" style="margin-left: 10px;" appearance="outline">
+                <mat-label>SLA en horas</mat-label>
+                <input required [(ngModel)]="Servicios.sla" name="sla" matInput
+                    placeholder="Digite el sla del Servicio">
+            </mat-form-field>
+
+            
+                       
+                    
+
+                        <div class="container" >
+                            <button mat-raised-button color="primary" style=" margin-bottom: 20px;">Registrar</button>
+
+                            <button type="reset" style="margin-left: 60px; margin-bottom: 20px;" mat-raised-button
+                                color="accent">Limpiar</button>
+
+                              
+                        </div>
+                    </form>
+                </mat-card>
+                <br><br><br>
+            </div>
+        </div>
+    </div>
+</div>

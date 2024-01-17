@@ -30,7 +30,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@NoArgsConstructor
+
 
 @Table(name = "ticket", schema = "helpdesk_qa_prep")
 

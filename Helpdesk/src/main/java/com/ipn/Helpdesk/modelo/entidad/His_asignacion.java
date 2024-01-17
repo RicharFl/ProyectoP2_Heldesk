@@ -23,7 +23,7 @@ import javax.persistence.ForeignKey;
 
 
 @Setter
-@NoArgsConstructor
+
 @Getter
 @Entity
 
