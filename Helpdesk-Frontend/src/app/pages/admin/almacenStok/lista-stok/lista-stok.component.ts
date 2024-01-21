@@ -55,7 +55,7 @@ this.almacenSER.ListaTodoselAlmacen().subscribe(
    // this.router.navigate(['admin/clientes/edicrear_clienteta/']);
     if (this.loginser.getUser()=='1')
      {this.router.navigate(['admin/Almacen-Stock/crea-Stock']);}
-     else if (this.loginser.getUser()=='2')
+     else if (this.loginser.getUser()=='6')
      {this.router.navigate(['gerente_general/Almacen-Stock/crea-Stock']);}
      else 
      {Swal.fire('Restricción de Accion', 

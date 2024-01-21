@@ -1,0 +1,38 @@
+.profile-image{
+    max-width: 200px;
+    max-height: 100px;
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 10%;
+  }
+  
+  .table{
+    width: 50%;
+    border-collapse: collapse;
+    font-size: 15px;
+  }
+  
+  .table tr td{
+    padding: 15px 10px;
+    border: 2px solid rgb(15, 17, 15);
+  }
+  .full-widthh {
+    width: 40%;
+    font-size: 15px;
+    margin-left: 10px; 
+    margin-top : 20px;
+  /* border: 2px solid rgb(187, 27, 27);*/
+   
+  }
+  .full-widthh2 {
+    width: 40%;
+    font-size: 15px;
+   
+   
+    margin-top : 10px;
+   
+   
+  }
+  .inputss{
+    width: 100%;
+    margin-top : 10px;
+  }

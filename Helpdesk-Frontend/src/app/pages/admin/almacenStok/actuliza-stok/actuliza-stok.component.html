@@ -1,1 +1,69 @@
-<p>actuliza-stok works!</p>
+<mat-card style="margin-left: 10px; margin-top : 20px;">
+    <h1 class="text-center" style="margin-top: 40px; font-size: 35px; ">EDITANDO PRODUCTO</h1>
+    <mat-card-content>
+        <div class="bootstrap-wrapper">
+            <div class="container">
+                <div class="text-center">
+                    <img src="../../../../../assets/gobierno.png" alt="" class="profile-image">
+
+                    <h1 class="mt20"> Estas editando el producto : {{ Almacen.marca }}  </h1>
+                </div>
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <table class="table container text-center ">
+                            <tr>
+                                <td>Marca</td>
+                                <td>{{ Almacen.marca }}  </td>
+                            </tr>
+                            <tr>
+                                <td>ID Cliente</td>
+                                <td>{{ Almacen.id_almacen }}</td>
+                            </tr>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+   
+    <form (ngSubmit)="onSubmit()" #empleadoForm="ngForm" class="container text-center">
+        <div class="form-group">
+
+
+            <mat-form-field class="full-widthh" style="margin-left: 10px;" appearance="outline">
+                <mat-label>Marca</mat-label>
+                <input required [(ngModel)]="Almacen.marca" name="marca" matInput
+                    placeholder="Digite Marca">
+            </mat-form-field>
+            <mat-form-field class="full-widthh" style="margin-left: 10px;" appearance="outline">
+                <mat-label>Modelo</mat-label>
+                <input required [(ngModel)]="Almacen.moedelo" name="moedelo" matInput
+                    placeholder="Digite Modelo">
+            </mat-form-field>
+            <mat-form-field class="full-widthh" style="margin-left: 10px;" appearance="outline">
+                <mat-label>Descripcion</mat-label>
+                <input required [(ngModel)]="Almacen.descripcin" name="apellidoM_cli" matInput
+                    placeholder="Digite Descripcion">
+            </mat-form-field>
+
+            <mat-form-field class="full-widthh" style="margin-left: 10px;" appearance="outline">
+                <mat-label>Stock</mat-label>
+                <input required [(ngModel)]="Almacen.stoc"  name="correo_cli" matInput
+                    placeholder="Digite Stock">
+            </mat-form-field>
+           
+
+         
+
+        </div>
+        <div class="container text-center">
+            <button mat-raised-button color="warn">Actualizar</button>
+            <button type="reset" style="margin-left: 60px;" mat-raised-button
+            color="accent">Limpiar</button>
+            <button (click)="salir()" style="margin-left: 60px;" mat-raised-button
+            color="primary">Salir</button>
+        </div>
+    </form>
+</mat-card-content>
+</mat-card >
